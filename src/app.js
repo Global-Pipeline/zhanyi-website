@@ -1,0 +1,2176 @@
+const STATIC_SITE = Object.freeze(window.__ZHANYI_STATIC__ || {});
+const STATIC_ROOT_URL = new URL(STATIC_SITE.root || './', location.href);
+const STATIC_BASE_PATH = STATIC_ROOT_URL.pathname.replace(/\/+$/, '') === '/'
+  ? ''
+  : STATIC_ROOT_URL.pathname.replace(/\/+$/, '');
+
+function stripStaticBase(pathname) {
+  const value = pathname || '/';
+  if (!STATIC_BASE_PATH) return value;
+  if (value === STATIC_BASE_PATH) return '/';
+  return value.startsWith(STATIC_BASE_PATH + '/') ? value.slice(STATIC_BASE_PATH.length) || '/' : value;
+}
+
+function staticFileUrl(path) {
+  return new URL(String(path || '').replace(/^\/+/, ''), STATIC_ROOT_URL).href;
+}
+
+const ASSET_ROOT = staticFileUrl('assets').replace(/\/+$/, '');
+const COMPANY = Object.freeze({
+  en: 'Dongguan Zhanyi Hardware Products Co., Ltd.',
+  zh: '东莞市展益五金制品有限公司',
+  phone: '+86 132 3832 3259',
+  phoneHref: '+8613238323259',
+  whatsapp: '8613238323259',
+});
+const DEFAULT_MAP = Object.freeze({ lat: 22.99442, lng: 113.926813 });
+const L = (en, zh) => ({ en, zh });
+const A = (path) => {
+  const value = String(path || '').trim();
+  if (/^(https?:|data:|blob:)/i.test(value)) return value;
+  if (value.startsWith('/assets/')) return staticFileUrl(value.slice(1));
+  return ASSET_ROOT + '/' + value.replace(/^\/+/, '');
+};
+
+const fallbackCategories = [
+  { id: 'stamping', label: L('Metal Stamping', '五金冲压') },
+  { id: 'sheet-metal', label: L('Sheet Metal', '精密钣金') },
+  { id: 'enclosures', label: L('Enclosures', '机箱机柜') },
+  { id: 'terminals', label: L('Terminals & Contacts', '端子与接触件') },
+  { id: 'new-energy', label: L('New Energy Parts', '新能源配件') },
+];
+
+const fallbackHero = [
+  {
+    image: A('generated/hero-stamping.webp'),
+    kicker: L('Precision metal manufacturing', '精密五金制造'),
+    title: L('Precision parts. Production-ready thinking.', '精密零件，面向量产的工程思维。'),
+    description: L(
+      'Custom stamping, sheet metal fabrication and tooling support for industrial teams that need clear communication and dependable execution.',
+      '为重视清晰沟通与可靠执行的工业客户，提供五金冲压、精密钣金与模具制造支持。'
+    ),
+  },
+  {
+    image: A('generated/tooling-workshop.webp'),
+    kicker: L('Built around your drawing', '围绕图纸展开制造'),
+    title: L('From design review to finished metal components.', '从图纸评审，到精密五金成品。'),
+    description: L(
+      'A practical project flow connects material selection, forming, bending, surface treatment and inspection.',
+      '以务实的项目流程衔接材料选择、冲压成型、折弯、表面处理与检验。'
+    ),
+  },
+  {
+    image: A('generated/global-review.webp'),
+    kicker: L('Tooling to repeat production', '从模具到重复量产'),
+    title: L('Manufacturing support that moves with your project.', '跟随项目节奏的制造支持。'),
+    description: L(
+      'Engineering feedback, sample verification and production coordination in one direct working relationship.',
+      '在直接协作中完成工程反馈、样品验证与生产协调。'
+    ),
+  },
+];
+
+const fallbackCapabilities = [
+  {
+    id: 'stamping',
+    title: L('Precision Metal Stamping', '精密五金冲压'),
+    description: L('Custom formed parts, brackets, clips and structural components produced from customer drawings.', '依据客户图纸生产定制成型件、支架、弹片与结构件。'),
+    image: A('generated/hero-stamping.webp'),
+    features: L(['Single-operation stamping', 'Compound forming', 'Custom fixtures'], ['单工序冲压', '复合成型', '定制工装']),
+  },
+  {
+    id: 'progressive-die',
+    title: L('Progressive Die Stamping', '连续模冲压'),
+    description: L('Tooling-led production planning for repeat components and stable manufacturing cycles.', '以模具为核心规划重复零件生产与稳定制造节拍。'),
+    image: A('generated/tooling-workshop.webp'),
+    features: L(['Tooling review', 'Sample validation', 'Repeat production'], ['模具评审', '样品验证', '重复量产']),
+  },
+  {
+    id: 'sheet-metal',
+    title: L('Sheet Metal Fabrication', '精密钣金加工'),
+    description: L('Cutting, punching, bending and forming for enclosures, panels and custom structures.', '面向机箱、面板与定制结构件的切割、冲孔、折弯和成型。'),
+    image: A('products/ventilated-equipment-chassis.jpg'),
+    features: L(['Laser cutting', 'CNC punching', 'Precision bending'], ['激光切割', '数控冲孔', '精密折弯']),
+  },
+  {
+    id: 'tooling',
+    title: L('Tooling & Die Making', '五金模具制造'),
+    description: L('Tooling development aligned with part geometry, material behavior and production objectives.', '结合零件结构、材料特性与生产目标进行模具开发。'),
+    image: A('generated/tooling-workshop.webp'),
+    features: L(['DFM feedback', 'Tool development', 'Trial and adjustment'], ['DFM反馈', '模具开发', '试模调试']),
+  },
+  {
+    id: 'finishing',
+    title: L('Surface Finishing', '表面处理协同'),
+    description: L('Project coordination for coating, plating, oxidation and other drawing-specified finishes.', '根据图纸要求协同喷涂、电镀、氧化等表面处理。'),
+    image: A('products/zinc-plated-offset-bracket.jpg'),
+    features: L(['Finish matching', 'Appearance review', 'Packaging planning'], ['表面匹配', '外观确认', '包装规划']),
+  },
+  {
+    id: 'assembly',
+    title: L('Assembly & Inspection', '组装与检验'),
+    description: L('Part assembly, project-specific checks and delivery preparation for finished components.', '为成品零件提供部件组装、项目检验与交付准备。'),
+    image: A('generated/global-review.webp'),
+    features: L(['Sub-assembly', 'Dimensional checks', 'Shipment preparation'], ['部件组装', '尺寸检验', '出货准备']),
+  },
+];
+
+const product = (slug, category, titleEn, titleZh, image, processEn, processZh, materialsEn, materialsZh, finishEn, finishZh) => ({
+  slug,
+  category,
+  title: L(titleEn, titleZh),
+  image: A(image),
+  process: L(processEn, processZh),
+  materials: L(materialsEn, materialsZh),
+  finish: L(finishEn, finishZh),
+  description: L(
+    'Custom manufactured from customer drawings with project-specific materials and finishing.',
+    '依据客户图纸定制生产，并按项目要求选择材料与表面处理。'
+  ),
+});
+
+const fallbackProducts = [
+  product('precision-stamped-bracket', 'stamping', 'Precision Stamped Bracket', '精密冲压支架', 'products/formed-steel-mounting-bracket.jpg', 'Stamping / Forming / Assembly', '冲压 / 成型 / 组装', 'Steel, stainless steel, aluminum', '钢材、不锈钢、铝材', 'Drawing-specified finish', '按图纸要求处理'),
+  product('formed-metal-housing', 'stamping', 'Formed Metal Housing', '冲压成型外壳', 'products/multi-angle-stamped-support.jpg', 'Stamping / Forming', '冲压 / 成型', 'Steel, aluminum', '钢材、铝材', 'Plating or coating options', '可选电镀或涂层'),
+  product('custom-sheet-metal-component', 'sheet-metal', 'Custom Sheet Metal Component', '定制钣金结构件', 'products/ventilated-equipment-chassis.jpg', 'Cutting / Bending / Joining', '切割 / 折弯 / 连接', 'Steel, stainless steel, aluminum', '钢材、不锈钢、铝材', 'Powder coating or plating', '喷粉或电镀'),
+  product('stamped-mounting-plate', 'new-energy', 'Stamped Mounting Plate', '新能源冲压安装板', 'products/battery-terminal-cover-plates.jpg', 'Stamping / Piercing / Forming', '冲压 / 冲孔 / 成型', 'Steel, aluminum', '钢材、铝材', 'Project-specific finish', '按项目要求处理'),
+  product('precision-hardware-component', 'stamping', 'Precision Hardware Component', '精密五金冲压件', 'products/zinc-plated-offset-bracket.jpg', 'Stamping / Secondary forming', '冲压 / 二次成型', 'Steel, stainless steel', '钢材、不锈钢', 'Natural or plated', '本色或电镀'),
+  product('formed-stamping-part', 'stamping', 'Formed Stamping Part', '五金成型冲压件', 'products/u-channel-support-bracket.jpg', 'Stamping / Bending', '冲压 / 折弯', 'Steel, stainless steel', '钢材、不锈钢', 'Drawing-specified finish', '按图纸要求处理'),
+  product('metal-terminal-contact', 'terminals', 'Metal Terminal Contact', '精密端子接触件', 'products/formed-electrical-contact-terminal.jpg', 'Precision stamping / Forming', '精密冲压 / 成型', 'Copper alloy, stainless steel', '铜合金、不锈钢', 'Plating options by drawing', '按图纸选择电镀'),
+  product('sheet-metal-enclosure', 'enclosures', 'Sheet Metal Enclosure', '钣金机箱外壳', 'products/powder-coated-instrument-enclosure.jpg', 'Cutting / Bending / Welding', '切割 / 折弯 / 焊接', 'Steel, stainless steel, aluminum', '钢材、不锈钢、铝材', 'Powder coating options', '可选喷粉处理'),
+  product('control-cabinet-shell', 'enclosures', 'Control Cabinet Shell', '控制机柜壳体', 'products/stainless-equipment-cabinet.jpg', 'Fabrication / Joining / Assembly', '钣金 / 连接 / 组装', 'Steel, stainless steel', '钢材、不锈钢', 'Powder coating options', '可选喷粉处理'),
+  product('custom-equipment-housing', 'enclosures', 'Custom Equipment Housing', '定制设备机箱', 'products/galvanized-electrical-junction-box.jpg', 'Cutting / Bending / Assembly', '切割 / 折弯 / 组装', 'Steel, aluminum', '钢材、铝材', 'Project-specific finish', '按项目要求处理'),
+  product('metal-chassis-frame', 'sheet-metal', 'Metal Chassis Frame', '钣金机架结构', 'products/rackmount-equipment-chassis.jpg', 'Cutting / Bending / Joining', '切割 / 折弯 / 连接', 'Steel, aluminum', '钢材、铝材', 'Natural or coated', '本色或涂层'),
+  product('stamped-shell-component', 'new-energy', 'Stamped Shell Component', '新能源冲压壳体', 'products/perforated-battery-protection-tray.jpg', 'Stamping / Deep forming', '冲压 / 拉伸成型', 'Steel, aluminum', '钢材、铝材', 'Project-specific finish', '按项目要求处理'),
+];
+
+const fallbackIndustries = [
+  { id: 'new-energy', title: L('New Energy & Storage', '新能源与储能'), description: L('Metal structures, mounting parts, housings and custom components developed around application drawings.', '围绕应用图纸开发金属结构件、安装件、壳体与定制零部件。'), image: A('products/insulated-flexible-copper-busbar.png') },
+  { id: 'automotive', title: L('Automotive Components', '汽车零部件'), description: L('Stamped brackets, formed parts and hardware components for project-specific assemblies.', '面向项目装配需求的冲压支架、成型件与五金零部件。'), image: A('products/formed-steel-mounting-bracket.jpg') },
+  { id: 'electronics', title: L('Consumer Electronics', '消费电子'), description: L('Compact metal parts, terminals, contacts and structural pieces for electronic products.', '面向电子产品的小型五金件、端子、接触件与结构零件。'), image: A('products/formed-electrical-contact-terminal.jpg') },
+  { id: 'industrial', title: L('Industrial Equipment', '工业设备'), description: L('Panels, enclosures, guards and mounting hardware for machinery and production equipment.', '用于机械与生产设备的面板、机箱、防护罩和安装五金。'), image: A('products/ventilated-equipment-chassis.jpg') },
+  { id: 'electrical', title: L('Electrical & Power', '电气与电源'), description: L('Metal housings, contacts and formed components designed for electrical product assemblies.', '用于电气产品装配的金属壳体、接触件与成型零件。'), image: A('products/power-control-chassis.jpg') },
+  { id: 'communications', title: L('Communications', '通信设备'), description: L('Custom chassis, cabinets and structural parts for communications and network equipment.', '面向通信与网络设备的定制机箱、机柜与结构件。'), image: A('products/rackmount-equipment-chassis.jpg') },
+];
+
+const fallbackInsights = [
+  {
+    slug: 'designing-stamped-parts',
+    date: '2026-08-18',
+    category: L('Engineering', '工程技术'),
+    title: L('What to review before releasing a stamped part drawing', '冲压件图纸发出前应重点检查什么'),
+    excerpt: L('Material, bend direction, burr orientation and inspection references all influence manufacturability.', '材料、折弯方向、毛刺方向与检验基准都会影响零件的可制造性。'),
+    body: L('Define material grade, thickness, critical dimensions, datum structure, surface requirements and expected quantity. Early clarification helps align tooling, sampling and inspection decisions.', '建议明确材料牌号、厚度、关键尺寸、基准体系、表面要求与预计数量。越早澄清这些信息，越有利于统一模具、打样与检验方案。'),
+    image: A('generated/hero-stamping.webp'),
+  },
+  {
+    slug: 'sheet-metal-finish-selection',
+    date: '2026-08-18',
+    category: L('Materials', '材料与工艺'),
+    title: L('Selecting a practical finish for sheet metal enclosures', '如何为钣金机箱选择合适的表面处理'),
+    excerpt: L('Appearance, corrosion resistance, grounding and assembly conditions should be considered together.', '外观、防腐、接地与装配条件需要综合考虑。'),
+    body: L('The finish should follow the working environment and functional requirements. Masking, thread protection and color references should be defined on the drawing.', '表面处理应结合使用环境与功能要求确定，图纸中还应明确遮蔽区域、螺纹保护与颜色参考。'),
+    image: A('products/powder-coated-instrument-enclosure.jpg'),
+  },
+  {
+    slug: 'from-sample-to-production',
+    date: '2026-08-18',
+    category: L('Project Flow', '项目流程'),
+    title: L('Moving from sample approval to repeat production', '从样品确认走向重复量产'),
+    excerpt: L('Approved references, controlled changes and consistent inspection points create a clearer handover.', '确认样、受控变更与一致的检验点能让量产交接更清晰。'),
+    body: L('Sample approval should record the accepted drawing revision, material, finish and inspection findings. Clear change control keeps repeat orders aligned.', '样品确认应记录图纸版本、材料、表面处理与检验结果。清晰的变更控制可让重复订单始终依据同一套要求。'),
+    image: A('generated/global-review.webp'),
+  },
+  {
+    slug: 'rfq-information-checklist',
+    date: '2026-08-18',
+    category: L('Sourcing', '采购协作'),
+    title: L('A useful RFQ checklist for custom metal components', '定制五金件询价需要准备哪些信息'),
+    excerpt: L('Drawings, quantity, material, finish and delivery expectations form the basis of a useful quotation.', '图纸、数量、材料、表面处理与交期预期是有效报价的基础。'),
+    body: L('Provide 2D drawings and, where available, 3D files. Include quantity, material, finish, application notes and required delivery date.', '建议提供2D图纸，并在条件允许时附上3D文件，同时说明数量、材料、表面处理、应用与交期。'),
+    image: A('products/formed-electrical-contact-terminal.jpg'),
+  },
+];
+
+const qualitySteps = [
+  { title: L('Requirement Review', '需求评审'), description: L('Drawings, materials, finishes and inspection expectations are aligned before work begins.', '在项目启动前统一图纸、材料、表面处理与检验要求。') },
+  { title: L('Incoming Verification', '来料确认'), description: L('Material information and project requirements are checked before production release.', '生产放行前核对材料信息与项目要求。') },
+  { title: L('First Article Check', '首件检验'), description: L('Critical dimensions and visible requirements are reviewed against the approved drawing.', '依据确认图纸检查关键尺寸与外观要求。') },
+  { title: L('Process Control', '过程控制'), description: L('Defined checkpoints support consistency through forming, fabrication and assembly.', '通过设定检验节点支持成型、钣金和组装过程的一致性。') },
+  { title: L('Final Verification', '出货确认'), description: L('Finished parts are reviewed for the agreed project requirements before delivery.', '交付前依据约定的项目要求确认成品。') },
+];
+
+const initialStaticPath = stripStaticBase(location.pathname);
+const state = {
+  lang: initialStaticPath === '/zh' || initialStaticPath.startsWith('/zh/') ? 'zh' : 'en',
+  content: {},
+  products: fallbackProducts,
+  categories: fallbackCategories,
+  settings: {},
+  filter: 'all',
+  search: '',
+  attachments: Object.create(null),
+  heroIndex: 0,
+  heroTimer: null,
+  heroPaused: false,
+  lightboxImages: [],
+  lightboxIndex: 0,
+  revealObserver: null,
+};
+
+function tx(en, zh) {
+  return state.lang === 'zh' ? zh : en;
+}
+
+function localize(value, fallback = '') {
+  if (value == null) return fallback;
+  if (typeof value === 'number') return String(value);
+  if (typeof value === 'string') return value.trim() || fallback;
+  if (Array.isArray(value)) {
+    const result = value.map((item) => localize(item)).filter(Boolean).join(', ');
+    return result || fallback;
+  }
+  if (typeof value === 'object') {
+    const candidates = [value[state.lang], value.en, value.zh, value.label, value.title];
+    for (const candidate of candidates) {
+      const result = localize(candidate, '');
+      if (result) return result;
+    }
+  }
+  return fallback;
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+function escapeAttr(value) {
+  return escapeHtml(value).replaceAll(String.fromCharCode(96), '&#096;');
+}
+
+function slugify(value, fallback = 'item') {
+  const slug = String(value ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  return slug || fallback;
+}
+
+function resolveImage(value, fallback = A('products/formed-steel-mounting-bracket.jpg')) {
+  const input = String(value || '').trim();
+  if (!input) return fallback;
+  if (/^(https?:|data:|blob:)/i.test(input)) return input;
+  if (input.startsWith('/')) return staticFileUrl(input.slice(1));
+  if (input.startsWith('uploads/') || input.startsWith('themes/')) return staticFileUrl(input);
+  return A(input);
+}
+
+function icon(name, size = 20) {
+  const paths = {
+    'arrow-right': '<path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>',
+    'arrow-left': '<path d="m11 18-6-6 6-6"/><path d="M5 12h14"/>',
+    'arrow-up': '<path d="m18 15-6-6-6 6"/>',
+    'chevron-down': '<path d="m6 9 6 6 6-6"/>',
+    phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.84.56 2.8.69A2 2 0 0 1 22 16.92z"/>',
+    message: '<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>',
+    globe: '<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+    menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+    x: '<path d="M18 6 6 18M6 6l12 12"/>',
+    upload: '<path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M20 16v4H4v-4"/>',
+    file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>',
+    trash: '<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="m19 6-1 16H6L5 6"/><path d="M10 11v6M14 11v6"/>',
+    zoom: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/><path d="M11 8v6M8 11h6"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+    layers: '<path d="m12 2 9 5-9 5-9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/>',
+    wrench: '<path d="M14.7 6.3a4 4 0 0 0-5-5l2.1 2.1-2.4 2.4-2.1-2.1a4 4 0 0 0 5 5L21 17.4 17.4 21z"/>',
+    gauge: '<path d="M20 13a8 8 0 1 0-16 0"/><path d="m12 13 4-4"/><path d="M4 18h16"/>',
+    refresh: '<path d="M20 6v5h-5"/><path d="M4 18v-5h5"/><path d="M18.5 9A7 7 0 0 0 6.2 6.2L4 8"/><path d="M5.5 15A7 7 0 0 0 17.8 17.8L20 16"/>',
+    check: '<path d="m20 6-11 11-5-5"/>',
+    'map-pin': '<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="2.5"/>',
+    box: '<path d="m21 16-9 5-9-5V8l9-5 9 5z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/>',
+    send: '<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>',
+    eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+    factory: '<path d="M3 22V10l6 3V9l6 3V4h6v18z"/><path d="M3 22h18M7 18h2M13 18h2M18 8h3"/>',
+    compass: '<circle cx="12" cy="12" r="10"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5z"/>',
+  };
+  return '<svg aria-hidden="true" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + (paths[name] || paths['arrow-right']) + '</svg>';
+}
+
+function routeInfo() {
+  let path = stripStaticBase(location.pathname || '/');
+  const lang = path === '/zh' || path.startsWith('/zh/') ? 'zh' : 'en';
+  if (lang === 'zh') path = path.slice(3) || '/';
+  else if (path === '/en' || path.startsWith('/en/')) path = path.slice(3) || '/';
+  path = path.length > 1 ? path.replace(/\/+$/, '') : path;
+  return { lang, path };
+}
+
+function routeUrl(path, lang = state.lang) {
+  const normalized = path === '/' ? '/' : '/' + String(path || '').replace(/^\/+/, '');
+  const localized = lang === 'zh' ? (normalized === '/' ? '/zh' : '/zh' + normalized) : normalized;
+  return (STATIC_BASE_PATH + localized) || '/';
+}
+
+function companyName() {
+  const configured = state.lang === 'zh' ? state.settings.companyName : state.settings.companyNameEn;
+  return configured || (state.lang === 'zh' ? COMPANY.zh : COMPANY.en);
+}
+
+function whatsappUrl(message = '') {
+  return 'https://wa.me/' + COMPANY.whatsapp + '?text=' + encodeURIComponent(message || tx('Hello, I would like to discuss a custom metal project.', '您好，我想咨询定制五金项目。'));
+}
+
+function contentList(key, fallback) {
+  const content = state.content || {};
+  const values = [content[key], content.home?.[key], content.pages?.home?.[key], content.pages?.[key]];
+  const match = values.find((value) => (Array.isArray(value) && value.length) || (value && Array.isArray(value.items) && value.items.length));
+  if (Array.isArray(match)) return match;
+  if (match && Array.isArray(match.items)) return match.items;
+  return fallback;
+}
+
+function normalizeCategory(item, index) {
+  if (typeof item === 'string') return { id: slugify(item, 'category-' + index), label: item };
+  const label = item.label || item.name || item.title || 'Category ' + (index + 1);
+  return { id: slugify(item.id || item.slug || localize(label), 'category-' + index), label };
+}
+
+function normalizeProduct(item, index) {
+  const gallery = Array.isArray(item.images) ? item.images : Array.isArray(item.gallery) ? item.gallery : [item.image || item.imageUrl || item.thumbnail].filter(Boolean);
+  const title = item.title || item.name || L('Custom Metal Component', '定制五金零部件');
+  const category = item.categoryId || item.categorySlug || (typeof item.category === 'string' ? item.category : item.category?.id || item.category?.slug || item.category?.name);
+  return {
+    slug: slugify(item.slug || item.id || localize(title), 'product-' + (index + 1)),
+    category: slugify(category || 'stamping', 'stamping'),
+    title,
+    description: item.description || item.summary || L('Custom manufactured from customer drawings with project-specific materials and finishing.', '依据客户图纸定制生产，并按项目要求选择材料与表面处理。'),
+    image: resolveImage(gallery[0] || item.image),
+    images: gallery.map((image) => resolveImage(typeof image === 'string' ? image : image.url || image.src)).filter(Boolean),
+    process: item.process || item.processes || L('Custom manufacturing', '定制加工'),
+    materials: item.materials || item.material || L('Per drawing requirements', '按图纸要求'),
+    finish: item.finish || item.surfaceFinish || L('Per drawing requirements', '按图纸要求'),
+    applications: item.applications || item.application || L('Project-specific applications', '按项目应用要求'),
+  };
+}
+
+function normalizeCapability(item, index) {
+  const base = fallbackCapabilities[index % fallbackCapabilities.length];
+  return { id: slugify(item.id || item.slug || localize(item.title), base.id), title: item.title || item.name || base.title, description: item.description || item.summary || base.description, image: resolveImage(item.image || item.imageUrl, base.image), features: item.features || item.services || item.highlights || base.features };
+}
+
+function normalizeIndustry(item, index) {
+  const base = fallbackIndustries[index % fallbackIndustries.length];
+  return { id: slugify(item.id || item.slug || localize(item.title), base.id), title: item.title || item.name || base.title, description: item.description || item.summary || base.description, image: resolveImage(item.image || item.imageUrl, base.image), productCategories: item.productCategories || [] };
+}
+
+function normalizeInsight(item, index) {
+  const base = fallbackInsights[index % fallbackInsights.length];
+  return { slug: slugify(item.slug || item.id || localize(item.title), base.slug), date: item.date || item.publishedAt || base.date, category: item.category || base.category, title: item.title || base.title, excerpt: item.excerpt || item.summary || base.excerpt, body: item.body || item.content || base.body, sections: Array.isArray(item.sections) ? item.sections : [], image: resolveImage(item.image || item.imageUrl, base.image) };
+}
+
+function heroSlides() {
+  return contentList('heroSlides', fallbackHero).map((item, index) => {
+    const base = fallbackHero[index % fallbackHero.length];
+    return { image: resolveImage(item.image || item.imageUrl || item.background, base.image), kicker: item.kicker || item.eyebrow || base.kicker, title: item.title || base.title, description: item.description || item.subtitle || base.description };
+  });
+}
+
+const capabilities = () => contentList('capabilities', fallbackCapabilities).map(normalizeCapability);
+const industries = () => contentList('industries', fallbackIndustries).map(normalizeIndustry);
+const insights = () => contentList('insights', fallbackInsights).map(normalizeInsight);
+
+function categoryLabel(id) {
+  return localize(state.categories.find((item) => item.id === id)?.label, tx('Custom Metal Parts', '定制五金件'));
+}
+
+function brandMarkup() {
+  return `
+    <img class="brand-mark brand-mark-image" src="${A('brand/zhanyi-mark.svg')}" alt="" aria-hidden="true">
+    <span class="brand-copy">
+      <strong>${escapeHtml(state.settings.brandName || 'ZHANYI PRECISION')}</strong>
+      <small>${escapeHtml(companyName())}</small>
+    </span>
+  `;
+}
+
+function navItems() {
+  return [
+    { path: '/', label: tx('Home', '首页') },
+    { path: '/capabilities', label: tx('Capabilities', '制造能力'), mega: 'capabilities' },
+    { path: '/products', label: tx('Products', '产品中心'), mega: 'products' },
+    { path: '/industries', label: tx('Industries', '应用行业') },
+    { path: '/quality', label: tx('Quality', '质量管理') },
+    { path: '/about', label: tx('About', '关于展益') },
+    { path: '/insights', label: tx('Insights', '技术洞察') },
+    { path: '/contact', label: tx('Contact', '联系我们') },
+  ];
+}
+
+function isActive(path) {
+  const current = routeInfo().path;
+  return path === '/' ? current === '/' : current === path || current.startsWith(path + '/');
+}
+
+function renderMega(type) {
+  const capabilityMode = type === 'capabilities';
+  const links = capabilityMode
+    ? capabilities().slice(0, 6).map((item) => ({ label: localize(item.title), href: routeUrl('/capabilities') + '#' + item.id }))
+    : state.categories.slice(0, 6).map((item) => ({ label: localize(item.label), href: routeUrl('/products') + '?category=' + encodeURIComponent(item.id) }));
+  return `
+    <div class="mega-menu">
+      <div class="container mega-inner">
+        <div class="mega-intro">
+          <strong>${capabilityMode ? tx('Manufacturing capabilities', '制造能力') : tx('Custom metal products', '定制五金产品')}</strong>
+          <p>${capabilityMode
+            ? tx('A connected workflow from drawing review and tooling to finished metal components.', '从图纸评审、模具开发到五金成品的连贯制造流程。')
+            : tx('Representative stamping, sheet metal, terminal and enclosure products.', '展示具有代表性的冲压、钣金、端子与机箱类产品。')}</p>
+          <a class="text-link" data-route href="${routeUrl(capabilityMode ? '/capabilities' : '/products')}">
+            ${capabilityMode ? tx('View all capabilities', '查看全部能力') : tx('Explore product catalogue', '浏览产品目录')}${icon('arrow-right', 17)}
+          </a>
+        </div>
+        <div class="mega-links">
+          ${links.map((item) => `<a data-route href="${escapeAttr(item.href)}"><span>${escapeHtml(item.label)}</span>${icon('arrow-right', 15)}</a>`).join('')}
+        </div>
+        <a class="mega-feature" data-route href="${routeUrl('/contact')}">
+          <img src="${capabilityMode ? A('generated/tooling-workshop.webp') : A('products/formed-steel-mounting-bracket.jpg')}" alt="">
+          <span>${tx('Send a drawing for project review', '发送图纸进行项目评审')} ${icon('arrow-right', 17)}</span>
+        </a>
+      </div>
+    </div>
+  `;
+}
+
+function renderHeader() {
+  const items = navItems();
+  return `
+    <div class="utility-bar">
+      <div class="container utility-inner">
+        <span class="utility-message">${icon('factory', 14)}${tx('Direct engineering support for custom metal projects', '定制五金项目的直接工程支持')}</span>
+        <div class="utility-links">
+          <a class="utility-link" href="tel:${COMPANY.phoneHref}">${icon('phone', 14)}${COMPANY.phone}</a>
+          <a class="utility-link" href="${whatsappUrl()}" target="_blank" rel="noopener">${icon('message', 14)}WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <header class="site-header" id="site-header">
+      <div class="container header-inner">
+        <a class="brand" data-route href="${routeUrl('/')}" aria-label="${escapeAttr(companyName())}">${brandMarkup()}</a>
+        <nav class="desktop-nav" aria-label="${tx('Primary navigation', '主导航')}">
+          <ul class="nav-list">
+            ${items.map((item) => `
+              <li class="nav-item">
+                <a class="nav-link ${isActive(item.path) ? 'active' : ''}" data-route href="${routeUrl(item.path)}">
+                  <span>${item.label}</span>
+                  ${item.mega ? icon('chevron-down', 14).replace('<svg ', '<svg class="nav-caret" ') : ''}
+                </a>
+                ${item.mega ? renderMega(item.mega) : ''}
+              </li>
+            `).join('')}
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <button class="language-toggle" type="button" data-action="toggle-language" aria-label="${tx('Switch to Chinese', '切换到英文')}" title="${tx('中文', 'English')}">${tx('中文', 'EN')}</button>
+          <button class="button button-primary header-quote" type="button" data-action="open-rfq">${icon('send', 17)}${tx('Request a Quote', '获取报价')}</button>
+          <button class="icon-button menu-toggle" type="button" data-action="toggle-menu" aria-expanded="false" aria-controls="mobile-drawer" aria-label="${tx('Open menu', '打开菜单')}" title="${tx('Open menu', '打开菜单')}">${icon('menu', 21)}</button>
+        </div>
+      </div>
+    </header>
+    <aside class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <ul class="mobile-nav">
+        ${items.map((item, itemIndex) => {
+          const sub = item.mega === 'capabilities'
+            ? capabilities().slice(0, 6).map((entry) => ({ label: localize(entry.title), href: routeUrl('/capabilities') + '#' + entry.id }))
+            : item.mega === 'products'
+              ? state.categories.slice(0, 6).map((entry) => ({ label: localize(entry.label), href: routeUrl('/products') + '?category=' + encodeURIComponent(entry.id) }))
+              : [];
+          const subnavId = `mobile-subnav-${itemIndex}`;
+          return `
+            <li>
+              <div class="mobile-nav-row">
+                <a data-route href="${routeUrl(item.path)}">${item.label}</a>
+                ${sub.length ? `<button class="mobile-sub-toggle" type="button" data-action="toggle-subnav" aria-expanded="false" aria-controls="${subnavId}" aria-label="${tx('Show submenu', '展开子菜单')}" title="${tx('Show submenu', '展开子菜单')}">${icon('chevron-down', 18)}</button>` : ''}
+              </div>
+              ${sub.length ? `<div class="mobile-subnav" id="${subnavId}" aria-hidden="true">${sub.map((entry) => `<a data-route href="${escapeAttr(entry.href)}">${escapeHtml(entry.label)}</a>`).join('')}</div>` : ''}
+            </li>
+          `;
+        }).join('')}
+        <li class="mobile-drawer-actions">
+          <a class="button button-outline" href="tel:${COMPANY.phoneHref}">${icon('phone', 17)}${tx('Call', '电话')}</a>
+          <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 17)}${tx('RFQ', '询价')}</button>
+        </li>
+      </ul>
+    </aside>
+  `;
+}
+
+function renderBreadcrumbs(items) {
+  return '<nav class="breadcrumbs" aria-label="' + tx('Breadcrumb', '面包屑导航') + '">' + items.map((item, index) => {
+    if (index === items.length - 1) return '<span aria-current="page">' + escapeHtml(item.label) + '</span>';
+    return '<a data-route href="' + routeUrl(item.path) + '">' + escapeHtml(item.label) + '</a><span>/</span>';
+  }).join('') + '</nav>';
+}
+
+function renderPageHero(title, description, image, crumbs) {
+  return `
+    <section class="page-hero">
+      <img src="${resolveImage(image)}" alt="">
+      <div class="container page-hero-inner">
+        ${renderBreadcrumbs(crumbs)}
+        <h1>${escapeHtml(title)}</h1>
+        <p>${escapeHtml(description)}</p>
+      </div>
+    </section>
+  `;
+}
+
+function sectionHeading(eyebrow, title, description, link) {
+  return `
+    <div class="section-heading reveal">
+      <div><span class="eyebrow">${escapeHtml(eyebrow)}</span><h2>${escapeHtml(title)}</h2></div>
+      <div>
+        <p>${escapeHtml(description)}</p>
+        ${link ? `<a class="text-link" data-route href="${routeUrl(link.path)}">${escapeHtml(link.label)}${icon('arrow-right', 17)}</a>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderHero() {
+  const slides = heroSlides();
+  state.heroIndex = Math.min(state.heroIndex, slides.length - 1);
+  return `
+    <section class="hero" aria-label="${tx('Manufacturing introduction', '制造能力介绍')}">
+      ${slides.map((slide, index) => `
+        <article class="hero-slide ${index === state.heroIndex ? 'active' : ''}" data-hero-slide="${index}" aria-hidden="${index === state.heroIndex ? 'false' : 'true'}">
+          <img src="${escapeAttr(slide.image)}" alt="">
+          <span class="hero-shade"></span><span class="hero-gridline"></span>
+          <div class="container hero-content">
+            <div class="hero-copy">
+              <span class="hero-kicker">${escapeHtml(localize(slide.kicker))}</span>
+              <h1>${escapeHtml(localize(slide.title))}</h1>
+              <p>${escapeHtml(localize(slide.description))}</p>
+              <div class="hero-actions">
+                <button class="button button-primary" type="button" data-action="open-rfq">${tx('Request a Quote', '获取报价')}${icon('arrow-right', 18)}</button>
+                <a class="button button-ghost-light" data-route href="${routeUrl('/capabilities')}">${tx('Explore Capabilities', '了解制造能力')}</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('')}
+      <div class="hero-controls">
+        <button class="hero-arrow" type="button" data-action="hero-prev" aria-label="${tx('Previous slide', '上一张')}" title="${tx('Previous slide', '上一张')}">${icon('arrow-left', 20)}</button>
+        <div class="hero-dots" role="tablist">
+          ${slides.map((_, index) => `<button class="hero-dot ${index === state.heroIndex ? 'active' : ''}" type="button" data-action="hero-dot" data-index="${index}" aria-label="${tx('Slide', '轮播图')} ${index + 1}"></button>`).join('')}
+        </div>
+        <span class="hero-index"><b data-hero-current>${String(state.heroIndex + 1).padStart(2, '0')}</b> / ${String(slides.length).padStart(2, '0')}</span>
+        <button class="hero-arrow" type="button" data-action="hero-next" aria-label="${tx('Next slide', '下一张')}" title="${tx('Next slide', '下一张')}">${icon('arrow-right', 20)}</button>
+      </div>
+      <div class="hero-process">
+        <div class="container hero-process-inner">
+          ${[tx('Drawing Review', '图纸评审'), tx('Tooling & Sampling', '模具与打样'), tx('Production Control', '生产控制'), tx('Inspection & Delivery', '检验与交付')]
+            .map((label, index) => `<div class="hero-process-item"><span>0${index + 1}</span><strong>${label}</strong></div>`).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderValueStrip() {
+  const values = [
+    ['layers', tx('Drawing-based manufacturing', '依据图纸定制'), tx('Project-specific review', '项目化工艺评审')],
+    ['wrench', tx('Tooling and fabrication', '模具与钣金协同'), tx('Connected project flow', '连贯项目流程')],
+    ['shield', tx('Defined quality checkpoints', '明确质量节点'), tx('Requirements first', '以需求为准')],
+    ['message', tx('Direct project communication', '直接项目沟通'), tx('Practical feedback', '快速务实反馈')],
+  ];
+  return `
+    <section class="value-strip"><div class="container value-strip-inner">
+      ${values.map((item) => `<div class="value-item"><span class="value-icon">${icon(item[0], 20)}</span><span><strong>${item[1]}</strong><small>${item[2]}</small></span></div>`).join('')}
+    </div></section>
+  `;
+}
+
+function renderCapabilityCards(items = capabilities()) {
+  return `
+    <div class="capability-grid reveal">
+      ${items.map((item, index) => `
+        <a class="capability-card" data-route href="${routeUrl('/capabilities')}#${escapeAttr(item.id)}">
+          <img src="${escapeAttr(item.image)}" alt="${escapeAttr(localize(item.title))}" loading="lazy">
+          <div class="capability-card-content">
+            <span class="capability-number">${String(index + 1).padStart(2, '0')}</span>
+            <h3>${escapeHtml(localize(item.title))}</h3>
+            <p>${escapeHtml(localize(item.description))}</p>
+            <span class="text-link">${tx('View capability', '查看能力')}${icon('arrow-right', 17)}</span>
+          </div>
+        </a>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderFilters() {
+  const filters = [{ id: 'all', label: tx('All Products', '全部产品') }, ...state.categories.map((item) => ({ id: item.id, label: localize(item.label) }))];
+  return '<div class="filter-list" role="group" aria-label="' + tx('Filter products', '筛选产品') + '">' + filters.map((item) =>
+    '<button class="filter-button ' + (state.filter === item.id ? 'active' : '') + '" type="button" data-action="filter-products" data-filter="' + escapeAttr(item.id) + '">' + escapeHtml(item.label) + '</button>'
+  ).join('') + '</div>';
+}
+
+function filteredProducts() {
+  const query = state.search.trim().toLowerCase();
+  return state.products.filter((item) => {
+    const categoryMatch = state.filter === 'all' || item.category === state.filter;
+    const searchable = [localize(item.title), categoryLabel(item.category), localize(item.process), localize(item.materials)].join(' ').toLowerCase();
+    return categoryMatch && (!query || searchable.includes(query));
+  });
+}
+
+function renderProductCard(item) {
+  return `
+    <article class="product-card">
+      <a data-route href="${routeUrl('/products/' + encodeURIComponent(item.slug))}">
+        <div class="product-media"><img src="${escapeAttr(item.image)}" alt="${escapeAttr(localize(item.title))}" loading="lazy"></div>
+        <div class="product-card-copy"><span class="product-category">${escapeHtml(categoryLabel(item.category))}</span><h3>${escapeHtml(localize(item.title))}</h3></div>
+      </a>
+      <button class="product-view" type="button" data-action="lightbox-product" data-product="${escapeAttr(item.slug)}" aria-label="${tx('Preview', '预览')} ${escapeAttr(localize(item.title))}" title="${tx('Preview image', '预览图片')}">${icon('eye', 19)}</button>
+    </article>
+  `;
+}
+
+function renderProductGrid(items, limit = 0) {
+  const visible = limit ? items.slice(0, limit) : items;
+  return visible.length ? visible.map(renderProductCard).join('') : '<div class="product-empty">' + tx('No products match the current filter.', '当前筛选条件下没有匹配产品。') + '</div>';
+}
+
+function productCountLabel(count) {
+  return `${count} ${tx(count === 1 ? 'item' : 'items', '项产品')}`;
+}
+
+function renderProcessSection() {
+  const steps = [
+    [tx('Share drawings and requirements', '提交图纸与需求'), tx('Provide drawings, quantity, materials, finish and delivery expectations.', '提供图纸、数量、材料、表面处理与交期预期。')],
+    [tx('Engineering and process review', '工程与工艺评审'), tx('We review manufacturability and clarify important project details.', '评估可制造性，并澄清关键项目细节。')],
+    [tx('Quotation and project alignment', '报价与项目确认'), tx('The proposed process, commercial scope and open points are aligned.', '统一建议工艺、商务范围与待确认事项。')],
+    [tx('Tooling and sample verification', '模具与样品验证'), tx('Preparation leads into sample review and adjustment.', '完成制造准备，并进入样品确认与调整。')],
+    [tx('Production and process checks', '生产与过程检验'), tx('Approved requirements guide production and defined checks.', '依据已确认要求组织生产并执行既定检验。')],
+    [tx('Final verification and delivery', '出货确认与交付'), tx('Finished parts are checked, packed and prepared for delivery.', '完成成品确认、包装与约定交付。')],
+  ];
+  return `
+    <section class="section section-dark"><div class="container process-layout">
+      <div class="process-sticky reveal">
+        <span class="eyebrow">${tx('Project workflow', '项目流程')}</span>
+        <h2>${tx('A clear path from RFQ to delivery.', '从询价到交付，路径清晰。')}</h2>
+        <p>${tx('Each project starts with the drawing and stays connected through review, sampling, production and delivery.', '每个项目从图纸出发，并贯穿评审、打样、生产与交付。')}</p>
+        <button class="button button-light" type="button" data-action="open-rfq">${tx('Start a project', '发起项目')}${icon('arrow-right', 18)}</button>
+      </div>
+      <div class="process-list reveal">
+        ${steps.map((step, index) => `<article class="process-step"><span>${String(index + 1).padStart(2, '0')}</span><div><h3>${step[0]}</h3><p>${step[1]}</p></div></article>`).join('')}
+      </div>
+    </div></section>
+  `;
+}
+
+function renderIndustryGrid(items = industries()) {
+  return `
+    <div class="industry-grid reveal">
+      ${items.map((item) => `
+        <a class="industry-card" data-route href="${routeUrl('/industries')}#${escapeAttr(item.id)}">
+          <img src="${escapeAttr(item.image)}" alt="" loading="lazy">
+          <div class="industry-card-content"><h3>${escapeHtml(localize(item.title))}</h3><p>${escapeHtml(localize(item.description))}</p></div>
+        </a>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderInsightCards(items = insights().slice(0, 3), pageClass = '') {
+  return `
+    <div class="${pageClass || 'insight-grid'}">
+      ${items.map((item) => `
+        <a class="insight-card reveal" data-route href="${routeUrl('/insights/' + encodeURIComponent(item.slug))}">
+          <div class="insight-media"><img src="${escapeAttr(item.image)}" alt="" loading="lazy"></div>
+          <div class="insight-copy">
+            <div class="insight-meta"><span></span>${escapeHtml(localize(item.category))} / ${escapeHtml(item.date)}</div>
+            <h3>${escapeHtml(localize(item.title))}</h3><p>${escapeHtml(localize(item.excerpt))}</p>
+            <span class="text-link">${tx('Read insight', '阅读全文')}${icon('arrow-right', 17)}</span>
+          </div>
+        </a>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderCta() {
+  return `
+    <section class="cta-band"><div class="container cta-inner">
+      <div class="cta-copy reveal">
+        <span class="eyebrow">${tx('Start with your drawing', '从图纸开始')}</span>
+        <h2>${tx('Have a metal part ready for review?', '有五金零件需要评审吗？')}</h2>
+        <p>${tx('Send the drawing, quantity and application requirements. We will use them as the basis for the manufacturing discussion.', '发送图纸、数量与应用要求，我们将据此展开制造沟通。')}</p>
+      </div>
+      <div class="cta-actions reveal">
+        <button class="button button-primary" type="button" data-action="open-rfq">${icon('upload', 18)}${tx('Upload drawings', '上传图纸')}</button>
+        <a class="button button-ghost-light" href="tel:${COMPANY.phoneHref}">${icon('phone', 18)}${COMPANY.phone}</a>
+      </div>
+    </div></section>
+  `;
+}
+
+function renderHome() {
+  return `
+    ${renderHero()}${renderValueStrip()}
+    <section class="section"><div class="container intro-grid">
+      <div class="intro-copy reveal">
+        <span class="eyebrow">${tx('Dongguan metal manufacturing', '东莞五金制造')}</span>
+        <h2>${tx('Built for practical engineering collaboration.', '为务实的工程协作而打造。')}</h2>
+        <p>${tx(
+          'Dongguan Zhanyi Hardware Products Co., Ltd. focuses on custom metal stamping, sheet metal fabrication, tooling and hardware components. We work from customer drawings and connect engineering feedback with production execution.',
+          '东莞市展益五金制品有限公司专注于定制五金冲压、精密钣金、模具及五金零部件。我们依据客户图纸开展工作，将工程反馈与生产执行有效衔接。'
+        )}</p>
+        <div class="intro-links">
+          <a class="text-link" data-route href="${routeUrl('/about')}">${tx('About Zhanyi', '了解展益')}${icon('arrow-right', 17)}</a>
+          <a class="text-link" data-route href="${routeUrl('/quality')}">${tx('Quality approach', '质量方法')}${icon('arrow-right', 17)}</a>
+        </div>
+      </div>
+      <div class="intro-media reveal">
+        <img class="intro-media-main" src="${A('generated/hero-stamping.webp')}" alt="${tx('Metal stamping production environment', '五金冲压生产场景')}" loading="lazy">
+        <img class="intro-media-detail" src="${A('products/formed-steel-mounting-bracket.jpg')}" alt="${tx('Custom metal products', '定制五金产品')}" loading="lazy">
+        <div class="intro-stamp"><strong>${tx('Drawing-led', '图纸驱动')}</strong><small>${tx('Custom manufacturing', '定制制造')}</small></div>
+      </div>
+    </div></section>
+    <section class="section section-dark"><div class="container">
+      ${sectionHeading(tx('Core capabilities', '核心能力'), tx('One connected metal manufacturing workflow.', '连贯的一站式五金制造流程。'), tx('Capabilities are organized around the real decisions in a custom metal project: process, tooling, finish and verification.', '围绕定制五金项目中的真实决策组织能力：工艺、模具、表面与检验。'), { path: '/capabilities', label: tx('View all capabilities', '查看全部能力') })}
+      ${renderCapabilityCards()}
+    </div></section>
+    <section class="section"><div class="container">
+      ${sectionHeading(tx('Product catalogue', '产品目录'), tx('Representative parts, made to your drawing.', '代表性产品，均可来图定制。'), tx('Browse the current product image library across stamping, sheet metal, enclosures, terminals and new energy hardware.', '浏览现有产品图库，覆盖冲压、钣金、机箱、端子与新能源五金。'), { path: '/products', label: tx('View complete catalogue', '查看完整目录') })}
+      <div class="product-toolbar reveal">${renderFilters()}<span class="product-count" data-product-count>${productCountLabel(filteredProducts().length)}</span></div>
+      <div class="product-grid reveal" data-product-grid data-limit="8">${renderProductGrid(filteredProducts(), 8)}</div>
+    </div></section>
+    ${renderProcessSection()}
+    <section class="section section-paper"><div class="container">
+      ${sectionHeading(tx('Industries', '应用行业'), tx('Metal components for demanding product teams.', '面向多类工业产品团队的五金零件。'), tx('From compact terminals to formed structures and enclosures, the same disciplined workflow supports different applications.', '从小型端子到成型结构件与机箱，同一套严谨流程服务不同应用。'), { path: '/industries', label: tx('Explore industries', '了解应用行业') })}
+      ${renderIndustryGrid()}
+    </div></section>
+    <section class="quality-band">
+      <div class="quality-media"><img src="${A('generated/quality-lab.webp')}" alt="${tx('Precision inspection environment', '精密检验场景')}" loading="lazy"></div>
+      <div class="quality-copy">
+        <span class="eyebrow">${tx('Quality approach', '质量方法')}</span><h2>${tx('Requirements become checkpoints.', '把需求转化为检验节点。')}</h2>
+        <p>${tx('Quality planning starts with the approved drawing and follows the project through incoming verification, first article review, process checks and final confirmation.', '质量规划从确认图纸开始，并贯穿来料确认、首件检验、过程检查与出货确认。')}</p>
+        <div class="quality-points">
+          ${[tx('Drawing revision control', '图纸版本控制'), tx('First article review', '首件确认'), tx('Defined inspection points', '既定检验节点'), tx('Final requirement check', '出货要求确认')].map((item) => `<span class="quality-point">${icon('check', 17)}${item}</span>`).join('')}
+        </div>
+        <a class="button button-light" data-route href="${routeUrl('/quality')}">${tx('See our quality workflow', '查看质量流程')}${icon('arrow-right', 18)}</a>
+      </div>
+    </section>
+    <section class="section"><div class="container">
+      ${sectionHeading(tx('Engineering insights', '工程洞察'), tx('Useful thinking for custom metal projects.', '服务于定制五金项目的实用思考。'), tx('Short technical notes help purchasing and engineering teams prepare clearer drawings, RFQs and production handovers.', '通过技术短文，帮助采购与工程团队准备更清晰的图纸、询价资料和量产交接。'), { path: '/insights', label: tx('Read all insights', '查看全部文章') })}
+      ${renderInsightCards()}
+    </div></section>
+    ${renderCta()}
+  `;
+}
+
+function sectionData(key) {
+  const value = state.content && state.content[key];
+  return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
+}
+
+function localizedArray(value) {
+  if (Array.isArray(value)) return value.map((item) => localize(item)).filter(Boolean);
+  if (value && typeof value === 'object') {
+    const candidate = value[state.lang] ?? value.en ?? value.zh;
+    if (Array.isArray(candidate)) return candidate.map((item) => localize(item)).filter(Boolean);
+  }
+  const text = localize(value);
+  return text ? [text] : [];
+}
+
+function renderCapabilitiesPage() {
+  const data = sectionData('capabilities');
+  const items = capabilities();
+  return `
+    ${renderPageHero(
+      localize(data.title, tx('Manufacturing Capabilities', '制造能力')),
+      localize(data.intro, tx('A connected workflow from drawing review to finished metal components.', '从图纸评审到五金成品的连贯制造流程。')),
+      A('generated/tooling-workshop.webp'),
+      [{ path: '/', label: tx('Home', '首页') }, { path: '/capabilities', label: tx('Capabilities', '制造能力') }]
+    )}
+    <section class="section"><div class="container">
+      ${sectionHeading(
+        localize(data.eyebrow, tx('Capabilities', '制造能力')),
+        tx('Processes organized around real project decisions.', '围绕真实项目决策组织制造能力。'),
+        tx('Each capability connects material behavior, part geometry, tooling, finishing and inspection requirements.', '每项能力都围绕材料特性、零件结构、模具、表面处理和检验要求展开。')
+      )}
+      <div class="capability-detail-grid reveal">
+        ${items.map((item, index) => `
+          <article class="capability-detail" id="${escapeAttr(item.id)}">
+            <img src="${escapeAttr(item.image)}" alt="${escapeAttr(localize(item.title))}" loading="lazy">
+            <div class="capability-detail-copy">
+              <span>${String(index + 1).padStart(2, '0')} / ${tx('CAPABILITY', '制造能力')}</span>
+              <h2>${escapeHtml(localize(item.title))}</h2>
+              <p>${escapeHtml(localize(item.description))}</p>
+              <ul class="service-list">
+                ${localizedArray(item.features).map((feature) => `<li>${escapeHtml(feature)}</li>`).join('')}
+              </ul>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    </div></section>
+    ${renderProcessSection()}
+    ${renderCta()}
+  `;
+}
+
+function renderProductsPage() {
+  const visible = filteredProducts();
+  return `
+    ${renderPageHero(
+      tx('Custom Metal Product Catalogue', '定制五金产品目录'),
+      tx('Representative stamped parts, terminals, brackets, enclosures and power hardware. Every production project is reviewed against its drawing and requirements.', '展示冲压件、端子、支架、机箱与电源五金等代表性产品。每个量产项目均依据图纸和具体要求评审。'),
+      A('generated/hero-stamping.webp'),
+      [{ path: '/', label: tx('Home', '首页') }, { path: '/products', label: tx('Products', '产品中心') }]
+    )}
+    <section class="section"><div class="container">
+      <div class="product-page-heading reveal">
+        <div><span class="eyebrow">${tx('Product library', '产品图库')}</span><h2>${tx('Browse representative parts.', '浏览代表性五金产品。')}</h2></div>
+        <label class="product-search">
+          <span class="skip-link">${tx('Search products', '搜索产品')}</span>
+          <input type="search" data-product-search value="${escapeAttr(state.search)}" placeholder="${tx('Search product, material or process', '搜索产品、材料或工艺')}">
+          ${icon('search', 19)}
+        </label>
+      </div>
+      <div class="product-toolbar reveal">${renderFilters()}<span class="product-count" data-product-count>${productCountLabel(visible.length)}</span></div>
+      <div class="product-grid reveal" data-product-grid>${renderProductGrid(visible)}</div>
+    </div></section>
+    ${renderCta()}
+  `;
+}
+
+function renderProductDetail(slug) {
+  const productItem = state.products.find((item) => item.slug === slug);
+  if (!productItem) return renderNotFound();
+  const images = productItem.images.length ? productItem.images : [productItem.image];
+  const related = state.products.filter((item) => item.slug !== productItem.slug && item.category === productItem.category).slice(0, 4);
+  const blocks = [
+    [tx('01', '01'), tx('Drawing review', '图纸评审'), tx('Geometry, material, quantity, finish and critical requirements are clarified before planning.', '在规划前确认结构、材料、数量、表面处理和关键要求。')],
+    [tx('02', '02'), tx('Process planning', '工艺规划'), tx('The manufacturing route is selected around the part geometry, repeatability and project stage.', '围绕零件结构、重复性和项目阶段选择制造路径。')],
+    [tx('03', '03'), tx('Verification', '检验确认'), tx('Inspection points and acceptance references follow the confirmed drawing and project scope.', '检验节点与验收依据遵循确认图纸和项目边界。')],
+  ];
+  return `
+    <section class="section section-compact"><div class="container">
+      ${renderBreadcrumbs([
+        { path: '/', label: tx('Home', '首页') },
+        { path: '/products', label: tx('Products', '产品中心') },
+        { path: '/products/' + productItem.slug, label: localize(productItem.title) },
+      ])}
+      <div class="product-detail-layout">
+        <div class="product-gallery reveal">
+          <div class="gallery-main">
+            <img data-gallery-main src="${escapeAttr(images[0])}" alt="${escapeAttr(localize(productItem.title))}">
+            <button class="icon-button gallery-zoom" type="button" data-action="zoom-product" data-product="${escapeAttr(productItem.slug)}" title="${tx('Open image viewer', '打开图片查看器')}">${icon('zoom', 20)}</button>
+          </div>
+          <div class="gallery-thumbs">
+            ${images.map((image, index) => `<button class="gallery-thumb ${index === 0 ? 'active' : ''}" type="button" data-action="gallery-thumb" data-index="${index}" data-image="${escapeAttr(image)}" aria-label="${tx('View product image', '查看产品图片')} ${index + 1}"><img src="${escapeAttr(image)}" alt=""></button>`).join('')}
+          </div>
+        </div>
+        <div class="product-detail-copy reveal">
+          <span class="eyebrow">${escapeHtml(categoryLabel(productItem.category))}</span>
+          <h1>${escapeHtml(localize(productItem.title))}</h1>
+          <p class="lead">${escapeHtml(localize(productItem.description))}</p>
+          <dl class="spec-list">
+            <div class="spec-row"><dt>${tx('Process', '工艺')}</dt><dd>${escapeHtml(localize(productItem.process, tx('Defined for the project', '按项目确定')))}</dd></div>
+            <div class="spec-row"><dt>${tx('Materials', '材料')}</dt><dd>${escapeHtml(localize(productItem.materials, tx('Per drawing requirements', '按图纸要求')))}</dd></div>
+            <div class="spec-row"><dt>${tx('Finish', '表面处理')}</dt><dd>${escapeHtml(localize(productItem.finish, tx('Per drawing requirements', '按图纸要求')))}</dd></div>
+            <div class="spec-row"><dt>${tx('Applications', '应用')}</dt><dd>${escapeHtml(localize(productItem.applications, tx('Project-specific applications', '按项目应用要求')))}</dd></div>
+          </dl>
+          <div class="detail-actions">
+            <button class="button button-primary" type="button" data-action="open-rfq" data-product="${escapeAttr(localize(productItem.title))}">${icon('send', 18)}${tx('Request a Quote', '获取报价')}</button>
+            <a class="button button-outline" href="tel:${COMPANY.phoneHref}">${icon('phone', 18)}${tx('Call us', '电话联系')}</a>
+          </div>
+          <p class="detail-note">${tx('Images show representative product types. Final specifications follow your approved drawing and project requirements.', '图片展示代表性产品类型，最终规格以确认图纸和项目要求为准。')}</p>
+        </div>
+      </div>
+    </div></section>
+    <section class="section section-paper"><div class="container">
+      <div class="detail-content-grid reveal">
+        ${blocks.map((block) => `<article class="detail-content-block"><span>${block[0]}</span><h3>${block[1]}</h3><p>${block[2]}</p></article>`).join('')}
+      </div>
+    </div></section>
+    ${related.length ? `<section class="section"><div class="container">${sectionHeading(tx('Related products', '相关产品'), tx('More parts in this category.', '浏览同类产品。'), tx('Use these images as a starting point for a drawing-based manufacturing discussion.', '这些图片可作为来图制造沟通的起点。'))}<div class="product-grid reveal">${renderProductGrid(related)}</div></div></section>` : ''}
+    ${renderCta()}
+  `;
+}
+
+function renderIndustriesPage() {
+  const data = sectionData('industries');
+  const items = industries();
+  return `
+    ${renderPageHero(
+      localize(data.title, tx('Industries', '应用行业')),
+      localize(data.intro, tx('Metal parts planned around the practical role they play in products and equipment.', '围绕金属零件在产品和设备中的实际作用规划制造。')),
+      A('generated/global-review.webp'),
+      [{ path: '/', label: tx('Home', '首页') }, { path: '/industries', label: tx('Industries', '应用行业') }]
+    )}
+    <section class="section"><div class="container">
+      ${sectionHeading(localize(data.eyebrow, tx('Industries', '应用行业')), tx('Application needs shape manufacturing decisions.', '应用需求决定制造方案。'), tx('Connection, support, protection, thermal management and service access all influence how a metal part should be made.', '连接、承托、防护、散热和维护方式都会影响金属零件的制造方案。'))}
+      <div class="industry-page-grid reveal">
+        ${items.map((item, index) => `
+          <article class="industry-page-item" id="${escapeAttr(item.id)}">
+            <img src="${escapeAttr(item.image)}" alt="${escapeAttr(localize(item.title))}" loading="lazy">
+            <div class="industry-page-copy"><span>${String(index + 1).padStart(2, '0')} / ${tx('INDUSTRY', '应用行业')}</span><h2>${escapeHtml(localize(item.title))}</h2><p>${escapeHtml(localize(item.description))}</p></div>
+          </article>
+        `).join('')}
+      </div>
+    </div></section>
+    ${renderCta()}
+  `;
+}
+
+function renderQualityPage() {
+  const data = sectionData('quality');
+  const principles = Array.isArray(data.principles) && data.principles.length ? data.principles : qualitySteps;
+  const documentation = data.documentation || {};
+  const checks = localizedArray(documentation.items);
+  return `
+    ${renderPageHero(
+      localize(data.title, tx('Quality Management', '质量管理')),
+      localize(data.summary, tx('Quality planning starts with the approved drawing and confirmed project requirements.', '质量策划从确认图纸和项目要求开始。')),
+      A('generated/quality-lab.webp'),
+      [{ path: '/', label: tx('Home', '首页') }, { path: '/quality', label: tx('Quality', '质量管理') }]
+    )}
+    <section class="section"><div class="container">
+      ${sectionHeading(localize(data.eyebrow, tx('Quality management', '质量管理')), tx('Requirements become visible checkpoints.', '把要求转化为清晰的检验节点。'), tx('Material, critical features, appearance, assembly relationships and documentation are reviewed against the confirmed project basis.', '材料、关键特征、外观、装配关系和资料均依据确认的项目基准执行。'))}
+      <div class="quality-flow reveal">
+        ${principles.slice(0, 5).map((item, index) => `<article class="quality-flow-step"><span>${String(index + 1).padStart(2, '0')}</span><h3>${escapeHtml(localize(item.title))}</h3><p>${escapeHtml(localize(item.description))}</p></article>`).join('')}
+      </div>
+    </div></section>
+    <section class="section section-paper"><div class="container quality-evidence">
+      <img class="reveal" src="${A('generated/quality-lab.webp')}" alt="${tx('Precision inspection environment', '精密检验场景')}" loading="lazy">
+      <div class="quality-evidence-copy reveal">
+        <span class="eyebrow">${tx('Project documentation', '项目资料')}</span>
+        <h2>${escapeHtml(localize(documentation.title, tx('Clear records support clear acceptance.', '清晰资料支撑清晰验收。')))}</h2>
+        <p>${escapeHtml(localize(documentation.description, tx('Inspection records and approval information are planned according to actual project requirements.', '检验记录和确认资料根据实际项目要求进行规划。')))}</p>
+        <div class="quality-checks">
+          ${(checks.length ? checks : [tx('Drawing revision records', '图纸版本记录'), tx('First-article approval', '首件确认资料'), tx('Project-agreed inspection records', '项目约定检验记录'), tx('Packing and labeling requirements', '包装与标签要求')]).map((item) => `<div class="quality-check">${icon('check', 19)}<span>${escapeHtml(item)}</span></div>`).join('')}
+        </div>
+      </div>
+    </div></section>
+    ${renderProcessSection()}
+    ${renderCta()}
+  `;
+}
+
+function renderAboutPage() {
+  const data = sectionData('about');
+  const strengths = Array.isArray(data.strengths) ? data.strengths : [];
+  const icons = ['layers', 'compass', 'wrench', 'globe'];
+  return `
+    ${renderPageHero(
+      localize(data.title, tx('About Zhanyi', '关于展益')),
+      localize(data.positioning, tx('A clear, practical interface between customer product teams and manufacturing execution.', '成为客户产品团队与制造现场之间清晰、务实的协作接口。')),
+      A('generated/global-review.webp'),
+      [{ path: '/', label: tx('Home', '首页') }, { path: '/about', label: tx('About', '关于展益') }]
+    )}
+    <section class="section"><div class="container about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">${escapeHtml(localize(data.eyebrow, tx('About us', '关于我们')))}</span>
+        <h2>${tx('Custom metal manufacturing with direct project communication.', '以直接项目沟通服务定制五金制造。')}</h2>
+        <p>${escapeHtml(localize(data.overview, tx('Dongguan Zhanyi focuses on custom metal stamping, sheet metal fabrication, tooling and hardware components.', '东莞市展益五金制品有限公司专注于定制五金冲压、钣金、模具与五金零部件。')))}</p>
+        <p>${escapeHtml(localize(data.positioning))}</p>
+        <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 18)}${tx('Discuss a project', '沟通项目')}</button>
+      </div>
+      <div class="about-media-grid reveal">
+        <img src="${A('generated/hero-stamping.webp')}" alt="${tx('Precision stamping environment', '精密冲压场景')}" loading="lazy">
+        <img src="${A('generated/tooling-workshop.webp')}" alt="${tx('Tooling review', '模具评审')}" loading="lazy">
+        <img src="${A('generated/quality-lab.webp')}" alt="${tx('Inspection environment', '检验场景')}" loading="lazy">
+      </div>
+    </div></section>
+    <section class="section section-paper"><div class="container">
+      ${sectionHeading(tx('How we work', '我们的工作方式'), tx('Built around clarity, not generic claims.', '以清晰协作为核心，而非泛化宣传。'), tx('The site presents the product range and project workflow that can be discussed and verified for each inquiry.', '网站展示可在每个询盘中进一步沟通和核实的产品范围与项目流程。'))}
+      <div class="principle-grid reveal">
+        ${strengths.map((item, index) => `<article class="principle">${icon(icons[index % icons.length], 28)}<h3>${escapeHtml(localize(item.title))}</h3><p>${escapeHtml(localize(item.description))}</p></article>`).join('')}
+      </div>
+    </div></section>
+    ${renderCta()}
+  `;
+}
+
+function renderInsightsPage() {
+  const data = sectionData('insights');
+  const items = insights();
+  const routeSlug = routeInfo().path.startsWith('/insights/') ? routeInfo().path.split('/').filter(Boolean)[1] : '';
+  const activeSlug = routeSlug || decodeURIComponent(location.hash.replace(/^#/, ''));
+  const active = items.find((item) => item.slug === activeSlug);
+  const breadcrumbs = [{ path: '/', label: tx('Home', '首页') }, { path: '/insights', label: tx('Insights', '工程洞察') }];
+  if (active) breadcrumbs.push({ path: '/insights/' + active.slug, label: localize(active.title) });
+  return `
+    ${renderPageHero(
+      localize(data.title, tx('Engineering Insights', '工程洞察')),
+      localize(data.intro, tx('Practical guidance for drawing preparation, process selection, finishing and RFQ information.', '围绕图纸准备、工艺选择、表面处理和询价资料提供实用内容。')),
+      A('generated/tooling-workshop.webp'),
+      breadcrumbs
+    )}
+    <section class="section"><div class="container">
+      ${sectionHeading(localize(data.eyebrow, tx('Insights', '技术洞察')), tx('Useful preparation for custom metal projects.', '为定制五金项目做好有效准备。'), tx('Each article is written to help purchasing and engineering teams make project information clearer.', '每篇内容都帮助采购与工程团队把项目资料准备得更清晰。'))}
+      ${active ? `<article class="article-expanded reveal" id="${escapeAttr(active.slug)}"><span class="eyebrow">${escapeHtml(localize(active.category))}</span><h2>${escapeHtml(localize(active.title))}</h2><p>${escapeHtml(localize(active.excerpt))}</p>${active.sections.length ? active.sections.map((section) => `<h3>${escapeHtml(localize(section.heading))}</h3><p>${escapeHtml(localize(section.body))}</p>`).join('') : `<p>${escapeHtml(localize(active.body))}</p>`}</article><div class="section-compact"></div>` : ''}
+      ${renderInsightCards(items, 'insights-page-grid')}
+    </div></section>
+    ${renderCta()}
+  `;
+}
+
+function renderRfqForm(formId, options = {}) {
+  const selectedProduct = options.productName || '';
+  return `
+    <form class="rfq-form" id="${escapeAttr(formId)}" data-rfq-form novalidate>
+      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-grid">
+        <div class="form-field"><label for="${formId}-name">${tx('Name', '姓名')} <span>*</span></label><input id="${formId}-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
+        <div class="form-field"><label for="${formId}-company">${tx('Company', '公司')} <span>*</span></label><input id="${formId}-company" name="company" type="text" autocomplete="organization" required maxlength="180"></div>
+        <div class="form-field"><label for="${formId}-email">${tx('Business email', '工作邮箱')} <span>*</span></label><input id="${formId}-email" name="email" type="email" autocomplete="email" required maxlength="240"></div>
+        <div class="form-field"><label for="${formId}-phone">${tx('Phone / WhatsApp', '电话 / WhatsApp')}</label><input id="${formId}-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
+        <div class="form-field"><label for="${formId}-country">${tx('Country or region', '国家或地区')}</label><input id="${formId}-country" name="country" type="text" autocomplete="country-name" maxlength="100"></div>
+        <div class="form-field"><label for="${formId}-category">${tx('Product category', '产品类别')}</label><select id="${formId}-category" name="productCategory"><option value="">${tx('Select a category', '选择产品类别')}</option>${state.categories.map((item) => `<option value="${escapeAttr(localize(item.label))}">${escapeHtml(localize(item.label))}</option>`).join('')}</select></div>
+        <div class="form-field"><label for="${formId}-quantity">${tx('Estimated quantity', '预计数量')}</label><input id="${formId}-quantity" name="quantity" type="text" maxlength="100" placeholder="${tx('Prototype, 1,000 pcs, annual volume...', '样件、1,000件、年用量等')}"></div>
+        <div class="form-field"><label for="${formId}-product">${tx('Product or project', '产品或项目')}</label><input id="${formId}-product" name="productName" type="text" maxlength="180" value="${escapeAttr(selectedProduct)}"></div>
+        <div class="form-field full"><label for="${formId}-message">${tx('Project details', '项目说明')} <span>*</span></label><textarea id="${formId}-message" name="content" required maxlength="12000" placeholder="${tx('Describe application, material, finish, assembly and target timing.', '请说明用途、材料、表面处理、装配关系和目标时间。')}"></textarea></div>
+        <div class="form-field full">
+          <span class="form-label">${tx('Drawings and attachments', '图纸与附件')}</span>
+          <label class="file-drop" for="${formId}-files" data-file-drop>
+            ${icon('upload', 24)}<strong>${tx('Choose files or drop them here', '选择文件或拖放到此处')}</strong>
+            <small>PDF, DWG, DXF, STEP, STP, IGES, IGS, ZIP, JPG, PNG, WEBP · ${tx('12 files / 30 MB total', '最多12个 / 总计30 MB')}</small>
+            <input id="${formId}-files" type="file" data-file-input multiple accept=".pdf,.dwg,.dxf,.step,.stp,.iges,.igs,.zip,.jpg,.jpeg,.png,.webp">
+          </label>
+          <p class="static-form-note">${tx('File names are included in the WhatsApp message. Attach the actual drawings in WhatsApp after the chat opens.', '文件名会写入 WhatsApp 询价内容；聊天打开后，请在 WhatsApp 中手动发送实际图纸。')}</p>
+          <div class="file-list" data-file-list></div>
+        </div>
+        <label class="checkbox-row form-field full"><input type="checkbox" name="nda" value="yes"><span>${tx('Please note if an NDA is required before detailed drawing review.', '如需在详细图纸评审前签署保密协议，请勾选说明。')}</span></label>
+      </div>
+      <div class="form-actions static-form-actions">
+        <button class="button button-primary" type="submit">${icon('message', 18)}${tx('Continue on WhatsApp', '通过 WhatsApp 继续')}</button>
+        <button class="button button-outline" type="button" data-action="copy-rfq" data-form="${escapeAttr(formId)}">${icon('file', 18)}${tx('Copy inquiry details', '复制询价内容')}</button>
+        <span class="muted">${tx('Initial response target: within 24 hours after complete information is received.', '服务目标：收到完整资料后24小时内首次响应。')}</span>
+      </div>
+      <p class="form-status" data-form-status role="status"></p>
+    </form>
+  `;
+}
+
+function renderMapSection() {
+  const lat = Number(state.settings.mapLatitude) || DEFAULT_MAP.lat;
+  const lng = Number(state.settings.mapLongitude) || DEFAULT_MAP.lng;
+  const zoom = Math.min(18, Math.max(3, Number(state.settings.mapZoom) || 12));
+  const provider = ['leaflet', 'baidu', 'baidu-embed'].includes(String(state.settings.mapProvider || '').toLowerCase())
+    ? String(state.settings.mapProvider).toLowerCase()
+    : 'baidu-embed';
+  const mapStatus = ['exact', 'city_level', 'region_level'].includes(String(state.settings.mapStatus || '').toLowerCase())
+    ? String(state.settings.mapStatus).toLowerCase()
+    : 'city_level';
+  const address = state.lang === 'zh'
+    ? (state.settings.address || '中国广东省东莞市（具体地址请在项目联系时确认）')
+    : (state.settings.addressEn || 'Dongguan, Guangdong, China (full address shared during project contact)');
+  const markerUrl = `https://api.map.baidu.com/marker?location=${lat},${lng}&title=${encodeURIComponent(companyName())}&content=${encodeURIComponent(address)}&output=html&src=zhanyi-static-site`;
+  const precisionLabel = mapStatus === 'exact'
+    ? tx('Verified location', '已核实位置')
+    : mapStatus === 'region_level'
+      ? tx('Registered address area', '登记地址区域')
+      : tx('City-level location', '城市级定位');
+  return `
+    <section class="map-section">
+      <div class="map-copy">
+        <span class="eyebrow">${tx('Dongguan, China', '中国 · 东莞')}</span>
+        <h2>${tx('Located in the Pearl River Delta manufacturing region.', '位于珠三角制造业核心区域。')}</h2>
+        <p>${escapeHtml(address)}</p>
+        <a class="button button-light" href="${escapeAttr(markerUrl)}" target="_blank" rel="noopener">${icon('map-pin', 18)}${tx('Plan a route with Baidu Maps', '使用百度地图规划路线')}</a>
+      </div>
+      <div class="map-canvas map-is-loading" role="region" aria-label="${escapeAttr(tx('Interactive location map', '交互式位置地图'))}" data-map data-provider="${provider}" data-lat="${lat}" data-lng="${lng}" data-zoom="${zoom}" data-map-status="${mapStatus}" data-address="${escapeAttr(address)}">
+        <div class="map-surface" data-map-surface></div>
+        <div class="map-fallback">
+          <div class="map-label">
+            <strong>${escapeHtml(companyName())}</strong>
+            <small>${escapeHtml(address)}</small>
+            <span class="map-load-state" data-map-state>${tx('Loading interactive map...', '正在加载交互地图...')}</span>
+            <button class="map-retry" type="button" data-action="retry-map" hidden>${icon('refresh', 15)}${tx('Retry map', '重新加载')}</button>
+          </div>
+        </div>
+        <div class="map-location-badge">${icon('map-pin', 14)}<span>${precisionLabel}</span></div>
+      </div>
+    </section>
+  `;
+}
+
+function renderContactPage() {
+  const data = sectionData('contact');
+  const phone = state.settings.phone || COMPANY.phone;
+  const phoneHref = String(phone).replace(/[^+\d]/g, '');
+  const address = state.lang === 'zh' ? state.settings.address : state.settings.addressEn;
+  return `
+    ${renderPageHero(
+      localize(data.title, tx('Share Your Project Requirement', '提交您的项目需求')),
+      localize(data.description, tx('Send drawings, quantity, material, finish and target timing where possible.', '请尽量提供图纸、数量、材料、表面处理和目标时间。')),
+      A('generated/global-review.webp'),
+      [{ path: '/', label: tx('Home', '首页') }, { path: '/contact', label: tx('Contact', '联系我们') }]
+    )}
+    <section class="section"><div class="container contact-layout">
+      <aside class="contact-sidebar reveal">
+        <span class="eyebrow">${escapeHtml(localize(data.eyebrow, tx('Project inquiry', '项目咨询')))}</span>
+        <h2>${tx('Start with the part information you already have.', '从您已有的零件资料开始。')}</h2>
+        <p>${escapeHtml(localize(data.description))}</p>
+        <div class="contact-methods">
+          <a class="contact-method" href="tel:${escapeAttr(phoneHref)}">${icon('phone', 23)}<span><small>${tx('Phone', '联系电话')}</small><strong>${escapeHtml(phone)}</strong></span></a>
+          <a class="contact-method" href="${escapeAttr(whatsappUrl())}" target="_blank" rel="noopener">${icon('message', 23)}<span><small>WhatsApp</small><strong>${escapeHtml(phone)}</strong></span></a>
+          <div class="contact-method">${icon('map-pin', 23)}<span><small>${tx('Location', '所在地区')}</small><strong>${escapeHtml(address || tx('Dongguan, Guangdong, China', '中国广东省东莞市'))}</strong></span></div>
+          <div class="contact-method">${icon('gauge', 23)}<span><small>${tx('Service target', '服务目标')}</small><strong>${tx('Initial response within 24 hours after complete information is received', '收到完整资料后24小时内首次响应')}</strong></span></div>
+        </div>
+      </aside>
+      <div class="rfq-panel reveal">
+        <div class="rfq-panel-heading"><h2>${tx('Request a manufacturing review', '申请制造评审')}</h2><p>${tx('Complete the project details and continue directly in WhatsApp. Selected drawing names are added to the message for a clearer handover.', '填写项目资料后可直接进入 WhatsApp 沟通，所选图纸名称会加入询价内容，便于后续发送文件。')}</p></div>
+        ${renderRfqForm('contact-rfq')}
+      </div>
+    </div></section>
+    ${renderMapSection()}
+  `;
+}
+
+function renderNotFound() {
+  return `
+    ${renderPageHero('404', tx('The page you requested could not be found.', '未找到您访问的页面。'), A('generated/hero-stamping.webp'), [{ path: '/', label: tx('Home', '首页') }, { path: location.pathname, label: '404' }])}
+    <section class="section"><div class="container"><h2 class="display-title">${tx('Return to the project starting point.', '返回项目起点。')}</h2><p class="muted">${tx('Use the product catalogue or send us a drawing for review.', '您可以浏览产品目录，或发送图纸进行评审。')}</p><div class="detail-actions"><a class="button button-dark" data-route href="${routeUrl('/')}">${tx('Back to home', '返回首页')}</a><a class="button button-outline" data-route href="${routeUrl('/products')}">${tx('Browse products', '浏览产品')}</a></div></div></section>
+  `;
+}
+
+function renderFooter() {
+  const phone = state.settings.phone || COMPANY.phone;
+  const phoneHref = String(phone).replace(/[^+\d]/g, '');
+  const disclaimer = localize(state.content.common?.disclaimer, tx('Generated capability visuals are illustrative. Product images show representative parts; final specifications follow approved drawings.', '能力场景图为示意视觉，产品图片展示代表性零件，最终规格以确认图纸为准。'));
+  return `
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <div class="footer-brand">
+          <a class="brand" data-route href="${routeUrl('/')}">${brandMarkup()}</a>
+          <p>${escapeHtml(disclaimer)}</p>
+          <a class="footer-phone" href="tel:${escapeAttr(phoneHref)}">${icon('phone', 19)}${escapeHtml(phone)}</a>
+        </div>
+        <div class="footer-column">
+          <h2>${tx('Company', '公司')}</h2>
+          <div class="footer-links">
+            <a data-route href="${routeUrl('/about')}">${tx('About Zhanyi', '关于展益')}</a>
+            <a data-route href="${routeUrl('/quality')}">${tx('Quality Management', '质量管理')}</a>
+            <a data-route href="${routeUrl('/industries')}">${tx('Industries', '应用行业')}</a>
+            <a data-route href="${routeUrl('/insights')}">${tx('Engineering Insights', '工程洞察')}</a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h2>${tx('Capabilities', '制造能力')}</h2>
+          <div class="footer-links">
+            ${capabilities().slice(0, 5).map((item) => `<a data-route href="${routeUrl('/capabilities')}#${escapeAttr(item.id)}">${escapeHtml(localize(item.title))}</a>`).join('')}
+          </div>
+        </div>
+        <div class="footer-column">
+          <h2>${tx('Start a project', '开始项目')}</h2>
+          <div class="footer-contact-actions">
+            <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 18)}${tx('Request a Quote', '获取报价')}</button>
+            <a class="button button-ghost-light" href="${escapeAttr(whatsappUrl())}" target="_blank" rel="noopener">${icon('message', 18)}WhatsApp</a>
+            <a class="button button-ghost-light" data-route href="${routeUrl('/contact')}">${icon('map-pin', 18)}${tx('Contact page', '联系页面')}</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© ${new Date().getFullYear()} ${escapeHtml(companyName())} ${tx('All rights reserved.', '保留所有权利。')}</span>
+        <div class="footer-bottom-links"><a data-route href="${routeUrl('/contact')}">${tx('Project contact', '项目联系')}</a><a href="${staticFileUrl('sitemap.xml')}" target="_blank">Sitemap</a></div>
+      </div>
+    </footer>
+  `;
+}
+
+function renderDialogs() {
+  return `
+    <dialog class="rfq-dialog" id="rfq-dialog">
+      <div class="dialog-header"><h2>${tx('Request a Manufacturing Review', '申请制造评审')}</h2><button class="icon-button dialog-close" type="button" data-action="close-rfq" title="${tx('Close', '关闭')}">${icon('x', 20)}</button></div>
+      <div class="dialog-body">${renderRfqForm('modal-rfq')}</div>
+    </dialog>
+    <dialog class="lightbox-dialog" id="lightbox-dialog">
+      <div class="lightbox-stage">
+        <button class="icon-button dialog-close" type="button" data-action="close-lightbox" title="${tx('Close', '关闭')}">${icon('x', 21)}</button>
+        <button class="icon-button lightbox-nav lightbox-prev" type="button" data-action="lightbox-prev" title="${tx('Previous image', '上一张')}">${icon('arrow-left', 22)}</button>
+        <img data-lightbox-image alt="">
+        <button class="icon-button lightbox-nav lightbox-next" type="button" data-action="lightbox-next" title="${tx('Next image', '下一张')}">${icon('arrow-right', 22)}</button>
+      </div>
+    </dialog>
+    <div class="toast-region" data-toast-region aria-live="polite" aria-atomic="false"></div>
+  `;
+}
+
+function renderMobileContactBar() {
+  const phone = state.settings.phone || COMPANY.phone;
+  const phoneHref = String(phone).replace(/[^+\d]/g, '');
+  return `
+    <div class="mobile-contact-bar">
+      <a href="tel:${escapeAttr(phoneHref)}">${icon('phone', 18)}${tx('Call', '电话')}</a>
+      <a href="${escapeAttr(whatsappUrl())}" target="_blank" rel="noopener">${icon('message', 18)}WhatsApp</a>
+      <button type="button" data-action="open-rfq">${icon('send', 18)}${tx('Request Quote', '获取报价')}</button>
+    </div>
+    <button class="icon-button back-to-top" type="button" data-action="back-to-top" title="${tx('Back to top', '返回顶部')}">${icon('arrow-up', 20)}</button>
+  `;
+}
+
+function renderRouteBody() {
+  const { path } = routeInfo();
+  const aliases = {
+    '/chanpinzhongxin.html': '/products',
+    '/lianxiwomen.html': '/contact',
+    '/gongsijianjie.html': '/about',
+    '/shebeizhanshi.html': '/capabilities',
+    '/xinwenzixun.html': '/insights',
+  };
+  const activePath = aliases[path] || path;
+  if (activePath === '/') return renderHome();
+  if (activePath === '/capabilities' || activePath.startsWith('/capabilities/')) return renderCapabilitiesPage();
+  if (activePath === '/products') return renderProductsPage();
+  if (activePath.startsWith('/products/')) return renderProductDetail(decodeURIComponent(activePath.slice('/products/'.length)));
+  if (activePath === '/industries') return renderIndustriesPage();
+  if (activePath === '/quality') return renderQualityPage();
+  if (activePath === '/about') return renderAboutPage();
+  if (activePath === '/insights' || activePath.startsWith('/insights/')) return renderInsightsPage();
+  if (activePath === '/contact') return renderContactPage();
+  return renderNotFound();
+}
+
+function renderShell(body) {
+  return `${renderHeader()}<main id="main-content">${body}</main>${renderFooter()}${renderDialogs()}${renderMobileContactBar()}`;
+}
+
+function pageKey(path) {
+  if (path === '/') return 'home';
+  return path.split('/').filter(Boolean)[0] || 'home';
+}
+
+function updateMetadata() {
+  const { path } = routeInfo();
+  const key = pageKey(path);
+  const seo = state.content.seo || {};
+  const page = seo.pages?.[key] || {};
+  let title = localize(page.title, localize(seo.defaultTitle, `${companyName()} | ${tx('Custom Metal Manufacturing', '定制五金制造')}`));
+  let description = localize(page.description, localize(seo.defaultDescription, tx('Custom metal stamping, sheet metal fabrication, tooling and precision hardware manufacturing support.', '提供定制五金冲压、钣金、模具及精密五金制造支持。')));
+  const imageByPage = {
+    quality: A('generated/quality-lab.webp'),
+    about: A('generated/global-review.webp'),
+    insights: A('generated/tooling-workshop.webp'),
+  };
+  let socialImage = imageByPage[key] || A('generated/hero-stamping.webp');
+  if (path.startsWith('/products/')) {
+    const productItem = productForSlug(decodeURIComponent(path.slice('/products/'.length)));
+    if (productItem) {
+      title = `${localize(productItem.title)} | ${companyName()}`;
+      description = localize(productItem.description, description);
+      socialImage = productItem.image || socialImage;
+    }
+  } else if (path.startsWith('/insights/')) {
+    const insight = insights().find((item) => item.slug === decodeURIComponent(path.slice('/insights/'.length)));
+    if (insight) {
+      title = `${localize(insight.title)} | ${companyName()}`;
+      description = localize(insight.excerpt, description);
+      socialImage = insight.image || socialImage;
+    }
+  }
+  document.title = title;
+  document.documentElement.lang = state.lang === 'zh' ? 'zh-CN' : 'en';
+  const skipLink = document.querySelector('.skip-link');
+  if (skipLink) skipLink.textContent = tx('Skip to content', '跳到主要内容');
+  const setMeta = (selector, value) => {
+    const element = document.querySelector(selector);
+    if (element) element.setAttribute('content', value);
+  };
+  setMeta('meta[name="description"]', description);
+  setMeta('meta[property="og:title"]', title);
+  setMeta('meta[property="og:description"]', description);
+  setMeta('meta[property="og:image"]', socialImage);
+  setMeta('meta[property="og:url"]', location.origin + routeUrl(path, state.lang));
+  setMeta('meta[property="og:locale"]', state.lang === 'zh' ? 'zh_CN' : 'en_US');
+  setMeta('meta[property="og:locale:alternate"]', state.lang === 'zh' ? 'en_US' : 'zh_CN');
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.rel = 'canonical';
+    document.head.appendChild(canonical);
+  }
+  canonical.href = location.origin + routeUrl(path, state.lang);
+  const setAlternate = (hreflang, href) => {
+    let alternate = document.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`);
+    if (!alternate) {
+      alternate = document.createElement('link');
+      alternate.rel = 'alternate';
+      alternate.hreflang = hreflang;
+      document.head.appendChild(alternate);
+    }
+    alternate.href = href;
+  };
+  const englishUrl = location.origin + routeUrl(path, 'en');
+  const chineseUrl = location.origin + routeUrl(path, 'zh');
+  setAlternate('en', englishUrl);
+  setAlternate('zh-CN', chineseUrl);
+  setAlternate('x-default', englishUrl);
+}
+
+function syncRouteState() {
+  const route = routeInfo();
+  state.lang = route.lang;
+  if (route.path === '/products') {
+    const params = new URLSearchParams(location.search);
+    const requestedCategory = params.get('category') || 'all';
+    state.filter = requestedCategory === 'all' || state.categories.some((item) => item.id === requestedCategory) ? requestedCategory : 'all';
+    state.search = params.get('q') || '';
+  }
+}
+
+function scrollToRouteTarget() {
+  const route = routeInfo();
+  let targetId = decodeURIComponent(location.hash.replace(/^#/, ''));
+  if (!targetId && route.path.startsWith('/capabilities/')) targetId = route.path.slice('/capabilities/'.length);
+  if (!targetId) {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    return;
+  }
+  requestAnimationFrame(() => {
+    const target = document.getElementById(targetId);
+    if (target) target.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+}
+
+function renderApp(options = {}) {
+  clearInterval(state.heroTimer);
+  state.heroTimer = null;
+  state.revealObserver?.disconnect();
+  state.revealObserver = null;
+  destroyActiveMap();
+  syncRouteState();
+  const root = document.getElementById('app');
+  try {
+    root.innerHTML = renderShell(renderRouteBody());
+    updateMetadata();
+    initializeReveals();
+    initializeHero();
+    initializeMap();
+    updateScrollUi();
+    if (options.scroll !== false) scrollToRouteTarget();
+  } catch (error) {
+    console.error(error);
+    root.innerHTML = `<main class="app-error"><div><strong>${tx('The page could not be rendered.', '页面暂时无法显示。')}</strong><p>${escapeHtml(error.message || '')}</p><button class="button button-dark" type="button" onclick="location.reload()">${tx('Reload', '重新加载')}</button></div></main>`;
+  }
+}
+
+async function fetchJson(url) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+  try {
+    const response = await fetch(url, { headers: { Accept: 'application/json' }, signal: controller.signal });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || payload.ok === false) throw new Error(payload.message || payload.error || `Request failed: ${response.status}`);
+    return payload;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function loadApplicationData() {
+  bindGlobalEvents();
+  const results = await Promise.allSettled([
+    fetchJson(staticFileUrl('data/site-content.json')),
+    fetchJson(staticFileUrl('data/products.json')),
+    fetchJson(staticFileUrl('data/settings.json')),
+  ]);
+  const failures = [];
+  if (results[0].status === 'fulfilled') state.content = results[0].value.content || results[0].value.data || results[0].value || {};
+  else failures.push(tx('content', '内容'));
+  if (results[1].status === 'fulfilled') {
+    const payload = results[1].value;
+    const rawCategories = payload.categories || payload.data?.categories || [];
+    const rawProducts = payload.products || payload.items || payload.data?.products || [];
+    if (rawCategories.length) state.categories = rawCategories.map(normalizeCategory);
+    if (rawProducts.length) state.products = rawProducts.map(normalizeProduct);
+  } else failures.push(tx('products', '产品'));
+  if (results[2].status === 'fulfilled') state.settings = results[2].value.settings || results[2].value.data || results[2].value || {};
+  else failures.push(tx('settings', '设置'));
+  renderApp();
+  if (failures.length) showToast(tx(`Some live data could not be loaded: ${failures.join(', ')}. Fallback content is active.`, `部分在线数据加载失败：${failures.join('、')}。当前已启用本地内容。`), 'error');
+}
+
+function initializeReveals() {
+  const elements = [...document.querySelectorAll('.reveal')];
+  if (!elements.length) return;
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach((element) => element.classList.add('is-visible'));
+    return;
+  }
+  state.revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px' });
+  elements.forEach((element) => state.revealObserver.observe(element));
+}
+
+function activateHero(index, restart = true) {
+  const slides = [...document.querySelectorAll('[data-hero-slide]')];
+  if (!slides.length) return;
+  state.heroIndex = (Number(index) + slides.length) % slides.length;
+  slides.forEach((slide, slideIndex) => {
+    const active = slideIndex === state.heroIndex;
+    slide.classList.toggle('active', active);
+    slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+  });
+  document.querySelectorAll('.hero-dot').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === state.heroIndex));
+  const current = document.querySelector('[data-hero-current]');
+  if (current) current.textContent = String(state.heroIndex + 1).padStart(2, '0');
+  if (restart) startHeroTimer();
+}
+
+function stopHeroTimer() {
+  clearInterval(state.heroTimer);
+  state.heroTimer = null;
+}
+
+function pauseHeroTimer() {
+  state.heroPaused = true;
+  stopHeroTimer();
+}
+
+function resumeHeroTimer() {
+  state.heroPaused = false;
+  startHeroTimer();
+}
+
+function startHeroTimer() {
+  stopHeroTimer();
+  const slides = document.querySelectorAll('[data-hero-slide]');
+  if (slides.length < 2 || state.heroPaused || document.hidden || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  state.heroTimer = setInterval(() => activateHero(state.heroIndex + 1, false), 5200);
+}
+
+function initializeHero() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const controls = hero.querySelector('.hero-controls');
+  state.heroPaused = false;
+  activateHero(Math.min(state.heroIndex, Math.max(0, heroSlides().length - 1)), false);
+  controls?.addEventListener('mouseenter', pauseHeroTimer);
+  controls?.addEventListener('mouseleave', resumeHeroTimer);
+  controls?.addEventListener('focusin', pauseHeroTimer);
+  controls?.addEventListener('focusout', (event) => {
+    if (!controls.contains(event.relatedTarget)) resumeHeroTimer();
+  });
+  startHeroTimer();
+}
+
+function updateScrollUi() {
+  document.getElementById('site-header')?.classList.toggle('is-scrolled', window.scrollY > 18);
+  document.querySelector('.back-to-top')?.classList.toggle('visible', window.scrollY > 520);
+}
+
+function navigateTo(target, options = {}) {
+  const url = target instanceof URL ? target : new URL(target, location.href);
+  if (url.origin !== location.origin) {
+    location.href = url.href;
+    return;
+  }
+  closeNavigationMenu();
+  closeDialog('rfq-dialog');
+  closeDialog('lightbox-dialog');
+  const next = url.pathname + url.search + url.hash;
+  if (options.replace) history.replaceState({}, '', next);
+  else if (next !== location.pathname + location.search + location.hash) history.pushState({}, '', next);
+  renderApp({ scroll: options.scroll !== false });
+}
+
+function updateNavigationMenuButton(button, open) {
+  if (!button) return;
+  const label = open ? tx('Close menu', '关闭菜单') : tx('Open menu', '打开菜单');
+  button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  button.setAttribute('aria-label', label);
+  button.setAttribute('title', label);
+  button.innerHTML = icon(open ? 'x' : 'menu', 21);
+}
+
+function setMobileSubnavState(item, open) {
+  if (!item) return;
+  const button = item.querySelector('[data-action="toggle-subnav"]');
+  const panel = item.querySelector('.mobile-subnav');
+  item.classList.toggle('sub-open', Boolean(open));
+  if (!button) return;
+  const label = open ? tx('Hide submenu', '收起子菜单') : tx('Show submenu', '展开子菜单');
+  button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  button.setAttribute('aria-label', label);
+  button.setAttribute('title', label);
+  panel?.setAttribute('aria-hidden', open ? 'false' : 'true');
+}
+
+function closeNavigationMenu() {
+  const drawer = document.getElementById('mobile-drawer');
+  const button = document.querySelector('[data-action="toggle-menu"]');
+  drawer?.classList.remove('open');
+  drawer?.setAttribute('aria-hidden', 'true');
+  drawer?.querySelectorAll('.mobile-nav > li').forEach((item) => setMobileSubnavState(item, false));
+  updateNavigationMenuButton(button, false);
+  syncBodyScrollLock();
+}
+
+function toggleNavigationMenu() {
+  const drawer = document.getElementById('mobile-drawer');
+  const button = document.querySelector('[data-action="toggle-menu"]');
+  if (!drawer || !button) return;
+  const open = !drawer.classList.contains('open');
+  drawer.classList.toggle('open', open);
+  drawer.setAttribute('aria-hidden', open ? 'false' : 'true');
+  if (!open) drawer.querySelectorAll('.mobile-nav > li').forEach((item) => setMobileSubnavState(item, false));
+  updateNavigationMenuButton(button, open);
+  syncBodyScrollLock();
+}
+
+function syncBodyScrollLock() {
+  const menuOpen = document.getElementById('mobile-drawer')?.classList.contains('open');
+  const dialogOpen = [...document.querySelectorAll('dialog')].some((dialog) => dialog.open);
+  document.body.classList.toggle('no-scroll', Boolean(menuOpen || dialogOpen));
+}
+
+function closeDialog(id) {
+  const dialog = document.getElementById(id);
+  if (!dialog?.open) return;
+  dialog.close();
+  syncBodyScrollLock();
+}
+
+function openRfq(productName = '') {
+  closeNavigationMenu();
+  const dialog = document.getElementById('rfq-dialog');
+  if (!dialog) return;
+  const productInput = dialog.querySelector('[name="productName"]');
+  if (productInput && productName) productInput.value = productName;
+  if (typeof dialog.showModal === 'function') dialog.showModal();
+  else dialog.setAttribute('open', '');
+  syncBodyScrollLock();
+  requestAnimationFrame(() => dialog.querySelector('[name="name"]')?.focus());
+}
+
+function productForSlug(slug) {
+  return state.products.find((item) => item.slug === slug);
+}
+
+function updateLightbox() {
+  const dialog = document.getElementById('lightbox-dialog');
+  const image = dialog?.querySelector('[data-lightbox-image]');
+  if (!dialog || !image || !state.lightboxImages.length) return;
+  state.lightboxIndex = (state.lightboxIndex + state.lightboxImages.length) % state.lightboxImages.length;
+  image.src = state.lightboxImages[state.lightboxIndex];
+  image.alt = state.lightboxAlt || tx('Product image', '产品图片');
+  dialog.querySelectorAll('.lightbox-nav').forEach((button) => { button.hidden = state.lightboxImages.length < 2; });
+}
+
+function openLightbox(images, index = 0, alt = '') {
+  const validImages = (Array.isArray(images) ? images : [images]).filter(Boolean);
+  if (!validImages.length) return;
+  state.lightboxImages = validImages;
+  state.lightboxIndex = Number(index) || 0;
+  state.lightboxAlt = alt;
+  const dialog = document.getElementById('lightbox-dialog');
+  if (!dialog) return;
+  updateLightbox();
+  if (typeof dialog.showModal === 'function') dialog.showModal();
+  else dialog.setAttribute('open', '');
+  syncBodyScrollLock();
+}
+
+function updateProductUrl() {
+  if (routeInfo().path !== '/products') return;
+  const url = new URL(location.href);
+  if (state.filter && state.filter !== 'all') url.searchParams.set('category', state.filter);
+  else url.searchParams.delete('category');
+  if (state.search) url.searchParams.set('q', state.search);
+  else url.searchParams.delete('q');
+  history.replaceState({}, '', url.pathname + url.search + url.hash);
+}
+
+function refreshProductResults() {
+  const products = filteredProducts();
+  document.querySelectorAll('[data-product-grid]').forEach((grid) => {
+    const limit = Number(grid.dataset.limit || 0);
+    grid.innerHTML = renderProductGrid(products, limit);
+  });
+  document.querySelectorAll('[data-product-count]').forEach((count) => { count.textContent = productCountLabel(products.length); });
+  document.querySelectorAll('[data-action="filter-products"]').forEach((button) => button.classList.toggle('active', button.dataset.filter === state.filter));
+}
+
+const FILE_EXTENSIONS = new Set(['pdf', 'dwg', 'dxf', 'step', 'stp', 'iges', 'igs', 'zip', 'jpg', 'jpeg', 'png', 'webp']);
+const FILE_MAX_SIZE = 12 * 1024 * 1024;
+const FILE_TOTAL_SIZE = 30 * 1024 * 1024;
+
+function fileExtension(name) {
+  return String(name || '').split('.').pop().toLowerCase();
+}
+
+function formatBytes(bytes) {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+}
+
+function formFiles(form) {
+  return state.attachments[form.id] || (state.attachments[form.id] = []);
+}
+
+function renderFileList(form) {
+  const list = form.querySelector('[data-file-list]');
+  if (!list) return;
+  list.innerHTML = formFiles(form).map((file, index) => `
+    <div class="file-item">
+      <span class="file-preview">${escapeHtml(fileExtension(file.name).toUpperCase())}</span>
+      <span class="file-copy"><strong>${escapeHtml(file.name)}</strong><small>${formatBytes(file.size)}</small></span>
+      <button class="file-remove" type="button" data-action="remove-file" data-form="${escapeAttr(form.id)}" data-index="${index}" title="${tx('Remove file', '移除文件')}">${icon('trash', 17)}</button>
+    </div>
+  `).join('');
+}
+
+function addFiles(form, incoming) {
+  const files = formFiles(form);
+  const candidates = [...incoming];
+  let rejected = '';
+  for (const file of candidates) {
+    const extension = fileExtension(file.name);
+    if (!FILE_EXTENSIONS.has(extension)) {
+      rejected = tx(`Unsupported file type: ${extension || 'unknown'}`, `不支持的文件类型：${extension || '未知'}`);
+      continue;
+    }
+    if (file.size > FILE_MAX_SIZE) {
+      rejected = tx(`${file.name} exceeds 12 MB.`, `${file.name} 超过12 MB。`);
+      continue;
+    }
+    if (files.some((item) => item.name === file.name && item.size === file.size && item.lastModified === file.lastModified)) continue;
+    if (files.length >= 12) {
+      rejected = tx('A maximum of 12 files is allowed.', '最多上传12个文件。');
+      break;
+    }
+    const total = files.reduce((sum, item) => sum + item.size, 0);
+    if (total + file.size > FILE_TOTAL_SIZE) {
+      rejected = tx('Total attachment size cannot exceed 30 MB.', '附件总大小不能超过30 MB。');
+      break;
+    }
+    files.push(file);
+  }
+  renderFileList(form);
+  if (rejected) showToast(rejected, 'error');
+}
+
+function buildRfqMessage(form) {
+  const values = new FormData(form);
+  const files = formFiles(form);
+  const fields = [
+    [tx('Name', '姓名'), values.get('name')],
+    [tx('Company', '公司'), values.get('company')],
+    [tx('Business email', '工作邮箱'), values.get('email')],
+    [tx('Phone / WhatsApp', '电话 / WhatsApp'), values.get('phone')],
+    [tx('Country or region', '国家或地区'), values.get('country')],
+    [tx('Product category', '产品类别'), values.get('productCategory')],
+    [tx('Product or project', '产品或项目'), values.get('productName')],
+    [tx('Estimated quantity', '预计数量'), values.get('quantity')],
+    [tx('NDA required', '需要保密协议'), values.get('nda') === 'yes' ? tx('Yes', '是') : tx('No', '否')],
+  ].filter(([, value]) => String(value || '').trim());
+  const lines = [
+    tx('ZHANYI PRECISION - Project RFQ', '展益精密 - 项目询价'),
+    '',
+    ...fields.map(([label, value]) => `${label}: ${String(value).trim()}`),
+    '',
+    `${tx('Project details', '项目说明')}:`,
+    String(values.get('content') || '').trim(),
+  ];
+  if (files.length) {
+    lines.push('', `${tx('Selected drawing files', '已选择的图纸文件')}:`, ...files.map((file) => `- ${file.name} (${formatBytes(file.size)})`));
+    lines.push(tx('I will attach these files in WhatsApp.', '我将在 WhatsApp 中发送这些文件。'));
+  }
+  lines.push('', `${tx('Source page', '来源页面')}: ${location.href}`);
+  return lines.join('\n');
+}
+
+async function copyText(value) {
+  if (navigator.clipboard && window.isSecureContext) {
+    await navigator.clipboard.writeText(value);
+    return;
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = value;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  const copied = document.execCommand('copy');
+  textarea.remove();
+  if (!copied) throw new Error(tx('Could not copy the inquiry.', '无法复制询价内容。'));
+}
+
+async function copyRfqMessage(form) {
+  if (!form) return;
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  try {
+    await copyText(buildRfqMessage(form));
+    const message = tx('Inquiry details copied. Paste them into your preferred private chat.', '询价内容已复制，可粘贴到您常用的私域聊天工具。');
+    const status = form.querySelector('[data-form-status]');
+    status.className = 'form-status success';
+    status.textContent = message;
+    showToast(message, 'success');
+  } catch (error) {
+    showToast(error.message || tx('Could not copy the inquiry.', '无法复制询价内容。'), 'error');
+  }
+}
+
+function submitRfq(form) {
+  const status = form.querySelector('[data-form-status]');
+  const submit = form.querySelector('button[type="submit"]');
+  status.className = 'form-status';
+  status.textContent = '';
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  submit.disabled = true;
+  submit.textContent = tx('Opening WhatsApp...', '正在打开 WhatsApp...');
+  try {
+    const message = buildRfqMessage(form);
+    window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
+    copyText(message).catch(() => {});
+    const success = tx('WhatsApp has been opened with your project details. Attach the selected drawings in the chat before sending.', 'WhatsApp 已携带项目资料打开，请在发送前把所选图纸附加到聊天中。');
+    status.className = 'form-status success';
+    status.textContent = success;
+    showToast(success, 'success');
+  } catch (error) {
+    status.className = 'form-status error';
+    status.textContent = error.message || tx('Could not prepare the inquiry. Please call us directly.', '无法生成询价内容，请直接电话联系我们。');
+    showToast(status.textContent, 'error');
+  } finally {
+    submit.disabled = false;
+    submit.innerHTML = `${icon('message', 18)}${tx('Continue on WhatsApp', '通过 WhatsApp 继续')}`;
+  }
+}
+
+let baiduMapPromise = null;
+let activeMap = null;
+let mapLoadToken = 0;
+
+function mapIsCurrent(canvas, token) {
+  return token === mapLoadToken && document.body.contains(canvas);
+}
+
+function destroyActiveMap() {
+  mapLoadToken += 1;
+  if (!activeMap) return;
+  clearTimeout(activeMap.timeout);
+  try {
+    if (activeMap.type === 'leaflet') activeMap.instance.remove();
+    else if (activeMap.type === 'baidu') activeMap.instance.clearOverlays();
+    else if (activeMap.type === 'baidu-embed') activeMap.instance.remove();
+  } catch (_) {
+    // The previous route may already have removed the map container.
+  }
+  activeMap = null;
+}
+
+function setMapState(canvas, mode, message = '') {
+  canvas.classList.toggle('map-is-loading', mode === 'loading');
+  canvas.classList.toggle('map-ready', mode === 'ready');
+  canvas.classList.toggle('map-error', mode === 'error');
+  const status = canvas.querySelector('[data-map-state]');
+  const retry = canvas.querySelector('[data-action="retry-map"]');
+  if (status && message) status.textContent = message;
+  if (retry) retry.hidden = mode !== 'error';
+}
+
+function mapPrecisionText(status) {
+  if (status === 'exact') return tx('Verified factory location', '已核实厂址');
+  if (status === 'region_level') return tx('The marker shows the registered address area; confirm the entrance before visiting.', '标记显示登记地址区域，到访前请确认具体入口。');
+  return tx('Dongguan city-level location; the full address is shared during project contact.', '当前显示东莞市级位置，具体地址将在项目联系时提供。');
+}
+
+function addLeafletResetControl(Leaflet, map, lat, lng, zoom) {
+  const reset = Leaflet.control({ position: 'topright' });
+  reset.onAdd = () => {
+    const wrapper = Leaflet.DomUtil.create('div', 'leaflet-bar map-reset-control');
+    const button = Leaflet.DomUtil.create('button', '', wrapper);
+    button.type = 'button';
+    button.title = tx('Reset map view', '复位地图视图');
+    button.setAttribute('aria-label', button.title);
+    button.innerHTML = icon('map-pin', 17);
+    Leaflet.DomEvent.disableClickPropagation(wrapper);
+    Leaflet.DomEvent.disableScrollPropagation(wrapper);
+    button.addEventListener('click', () => map.setView([lat, lng], zoom, { animate: true }));
+    return wrapper;
+  };
+  reset.addTo(map);
+}
+
+function initializeLeafletMap(canvas, token) {
+  const Leaflet = window.L;
+  const surface = canvas.querySelector('[data-map-surface]');
+  if (!Leaflet || typeof Leaflet.map !== 'function' || !surface) {
+    setMapState(canvas, 'error', tx('The interactive map could not start.', '交互地图无法启动。'));
+    return;
+  }
+
+  const lat = Number(canvas.dataset.lat) || DEFAULT_MAP.lat;
+  const lng = Number(canvas.dataset.lng) || DEFAULT_MAP.lng;
+  const zoom = Math.min(18, Math.max(3, Number(canvas.dataset.zoom) || 12));
+  const address = canvas.dataset.address || tx('Dongguan, Guangdong, China', '中国广东省东莞市');
+  const status = canvas.dataset.mapStatus || 'city_level';
+  const map = Leaflet.map(surface, {
+    center: [lat, lng],
+    zoom,
+    zoomControl: true,
+    scrollWheelZoom: true,
+    doubleClickZoom: true,
+    boxZoom: true,
+    keyboard: true,
+    dragging: true,
+    touchZoom: true,
+    attributionControl: true,
+  });
+  map.attributionControl.setPrefix(false);
+  activeMap = { type: 'leaflet', instance: map, canvas, timeout: null, tileLayer: null };
+
+  const markerIcon = Leaflet.divIcon({
+    className: 'zhanyi-map-marker-shell',
+    html: '<span class="zhanyi-map-marker"><span></span></span>',
+    iconSize: [38, 46],
+    iconAnchor: [19, 46],
+    popupAnchor: [0, -42],
+    tooltipAnchor: [0, -40],
+  });
+  const marker = Leaflet.marker([lat, lng], { icon: markerIcon, keyboard: true, title: companyName() }).addTo(map);
+  const popup = document.createElement('div');
+  popup.className = 'zhanyi-map-popup';
+  const popupTitle = document.createElement('strong');
+  popupTitle.textContent = companyName();
+  const popupAddress = document.createElement('span');
+  popupAddress.textContent = address;
+  const popupStatus = document.createElement('small');
+  popupStatus.textContent = mapPrecisionText(status);
+  popup.append(popupTitle, popupAddress, popupStatus);
+  marker.bindPopup(popup, { maxWidth: 320, minWidth: 210 });
+  marker.bindTooltip(companyName(), { permanent: true, direction: 'top', opacity: 1, className: 'zhanyi-map-tooltip' });
+  addLeafletResetControl(Leaflet, map, lat, lng, zoom);
+
+  const tileProviders = [
+    {
+      url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+      options: {
+        maxZoom: 19,
+        attribution: 'Tiles &copy; Esri &mdash; Sources: Esri, HERE, Garmin, FAO, NOAA, USGS',
+      },
+    },
+    {
+      url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+      options: {
+        subdomains: 'abcd',
+        maxZoom: 20,
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+      },
+    },
+  ];
+
+  const loadTiles = (providerIndex) => {
+    if (!mapIsCurrent(canvas, token) || activeMap?.instance !== map) return;
+    const provider = tileProviders[providerIndex];
+    if (!provider) {
+      setMapState(canvas, 'error', tx('The map tiles are temporarily unavailable.', '地图底图暂时无法加载。'));
+      return;
+    }
+    if (activeMap.tileLayer) map.removeLayer(activeMap.tileLayer);
+    let settled = false;
+    let errors = 0;
+    const layer = Leaflet.tileLayer(provider.url, provider.options);
+    activeMap.tileLayer = layer;
+    const advance = () => {
+      if (settled || !mapIsCurrent(canvas, token)) return;
+      settled = true;
+      clearTimeout(activeMap?.timeout);
+      if (map.hasLayer(layer)) map.removeLayer(layer);
+      loadTiles(providerIndex + 1);
+    };
+    layer.once('tileload', () => {
+      if (settled || !mapIsCurrent(canvas, token)) return;
+      settled = true;
+      clearTimeout(activeMap?.timeout);
+      setMapState(canvas, 'ready');
+      requestAnimationFrame(() => map.invalidateSize({ animate: false }));
+    });
+    layer.on('tileerror', () => {
+      errors += 1;
+      if (errors >= 4) advance();
+    });
+    layer.addTo(map);
+    activeMap.timeout = setTimeout(advance, 10000);
+  };
+
+  loadTiles(0);
+  requestAnimationFrame(() => map.invalidateSize({ animate: false }));
+}
+
+function initializeBaiduEmbedMap(canvas, token) {
+  const surface = canvas.querySelector('[data-map-surface]');
+  if (!surface) {
+    setMapState(canvas, 'error', tx('The interactive map could not start.', '交互地图无法启动。'));
+    return;
+  }
+  const lat = Number(canvas.dataset.lat) || DEFAULT_MAP.lat;
+  const lng = Number(canvas.dataset.lng) || DEFAULT_MAP.lng;
+  const zoom = Math.min(18, Math.max(3, Number(canvas.dataset.zoom) || 12));
+  const address = canvas.dataset.address || tx('Dongguan, Guangdong, China', '中国广东省东莞市');
+  const mapUrl = new URL('https://api.map.baidu.com/marker');
+  mapUrl.searchParams.set('location', `${lat},${lng}`);
+  mapUrl.searchParams.set('title', companyName());
+  mapUrl.searchParams.set('content', address);
+  mapUrl.searchParams.set('output', 'html');
+  mapUrl.searchParams.set('zoom', String(zoom));
+  mapUrl.searchParams.set('src', 'zhanyi-static-site');
+
+  const frame = document.createElement('iframe');
+  frame.className = 'baidu-map-frame';
+  frame.title = tx('Interactive Baidu location map', '百度交互式位置地图');
+  frame.src = mapUrl.toString();
+  frame.loading = 'eager';
+  frame.referrerPolicy = 'strict-origin-when-cross-origin';
+  frame.allow = 'fullscreen';
+  let settled = false;
+  const fallback = () => {
+    if (settled || !mapIsCurrent(canvas, token)) return;
+    settled = true;
+    clearTimeout(activeMap?.timeout);
+    frame.remove();
+    initializeLeafletMap(canvas, token);
+  };
+  frame.addEventListener('load', () => {
+    if (settled || !mapIsCurrent(canvas, token)) return;
+    settled = true;
+    clearTimeout(activeMap?.timeout);
+    setMapState(canvas, 'ready');
+  });
+  frame.addEventListener('error', fallback);
+  surface.replaceChildren(frame);
+  activeMap = {
+    type: 'baidu-embed',
+    instance: frame,
+    canvas,
+    timeout: setTimeout(fallback, 15000),
+  };
+}
+
+function loadBaiduMap(ak) {
+  if (window.BMap) return Promise.resolve(window.BMap);
+  if (baiduMapPromise) return baiduMapPromise;
+  baiduMapPromise = new Promise((resolve, reject) => {
+    const callbackName = `__zhanyiMapReady${Date.now()}`;
+    const script = document.createElement('script');
+    let settled = false;
+    const finish = (handler, value) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      delete window[callbackName];
+      handler(value);
+    };
+    const timer = setTimeout(() => finish(reject, new Error('Map loading timed out.')), 12000);
+    window[callbackName] = () => finish(resolve, window.BMap);
+    script.src = `https://api.map.baidu.com/api?v=3.0&ak=${encodeURIComponent(ak)}&callback=${callbackName}`;
+    script.async = true;
+    script.onerror = () => finish(reject, new Error('Map script failed to load.'));
+    document.head.appendChild(script);
+  });
+  return baiduMapPromise;
+}
+
+function initializeBaiduMap(canvas, token, ak) {
+  const surface = canvas.querySelector('[data-map-surface]');
+  const lat = Number(canvas.dataset.lat) || DEFAULT_MAP.lat;
+  const lng = Number(canvas.dataset.lng) || DEFAULT_MAP.lng;
+  const zoom = Math.min(18, Math.max(3, Number(canvas.dataset.zoom) || 12));
+  loadBaiduMap(ak).then((BMap) => {
+    if (!BMap || !surface || !mapIsCurrent(canvas, token)) return;
+    const map = new BMap.Map(surface, { enableMapClick: false });
+    const point = new BMap.Point(lng, lat);
+    map.centerAndZoom(point, zoom);
+    map.enableDragging();
+    map.enableScrollWheelZoom(true);
+    map.enableDoubleClickZoom();
+    map.enableContinuousZoom();
+    if (typeof map.enablePinchToZoom === 'function') map.enablePinchToZoom();
+    map.addControl(new BMap.NavigationControl({ anchor: window.BMAP_ANCHOR_TOP_LEFT }));
+    if (BMap.ScaleControl) map.addControl(new BMap.ScaleControl({ anchor: window.BMAP_ANCHOR_BOTTOM_LEFT }));
+    const marker = new BMap.Marker(point);
+    map.addOverlay(marker);
+    const label = new BMap.Label(companyName(), { offset: new BMap.Size(22, -12) });
+    label.setStyle({ border: '0', padding: '7px 10px', boxShadow: '0 4px 14px rgba(17,20,23,.18)', fontSize: '12px' });
+    marker.setLabel(label);
+    const info = new BMap.InfoWindow(`<div class="baidu-map-popup"><strong>${escapeHtml(companyName())}</strong><span>${escapeHtml(canvas.dataset.address || '')}</span><small>${escapeHtml(mapPrecisionText(canvas.dataset.mapStatus || 'city_level'))}</small></div>`, { width: 280 });
+    marker.addEventListener('click', () => map.openInfoWindow(info, point));
+    activeMap = { type: 'baidu', instance: map, canvas, timeout: null };
+    setMapState(canvas, 'ready');
+  }).catch(() => {
+    baiduMapPromise = null;
+    if (mapIsCurrent(canvas, token)) initializeLeafletMap(canvas, token);
+  });
+}
+
+function initializeMap() {
+  const canvas = document.querySelector('[data-map]');
+  if (!canvas) return;
+  const token = ++mapLoadToken;
+  setMapState(canvas, 'loading', tx('Loading interactive map...', '正在加载交互地图...'));
+  const provider = String(canvas.dataset.provider || 'leaflet').toLowerCase();
+  const ak = String(state.settings.baiduMapAk || '').trim();
+  if (provider === 'baidu-embed') initializeBaiduEmbedMap(canvas, token);
+  else if (provider === 'baidu' && ak) initializeBaiduMap(canvas, token, ak);
+  else initializeLeafletMap(canvas, token);
+}
+
+function showToast(message, type = 'success') {
+  const region = document.querySelector('[data-toast-region]');
+  if (!region || !message) return;
+  const toast = document.createElement('div');
+  toast.className = `toast ${type === 'error' ? 'error' : ''}`;
+  toast.innerHTML = `${icon(type === 'error' ? 'x' : 'check', 20)}<p>${escapeHtml(message)}</p><button type="button" data-action="close-toast" title="${tx('Close', '关闭')}">${icon('x', 16)}</button>`;
+  region.appendChild(toast);
+  setTimeout(() => toast.remove(), 5200);
+}
+
+function handleAction(element) {
+  const action = element.dataset.action;
+  if (action === 'toggle-menu') toggleNavigationMenu();
+  else if (action === 'toggle-subnav') {
+    const item = element.closest('li');
+    setMobileSubnavState(item, !item?.classList.contains('sub-open'));
+  }
+  else if (action === 'toggle-language') {
+    const nextLanguage = state.lang === 'zh' ? 'en' : 'zh';
+    const route = routeInfo();
+    navigateTo(routeUrl(route.path, nextLanguage) + location.search + location.hash);
+  } else if (action === 'hero-prev') activateHero(state.heroIndex - 1);
+  else if (action === 'hero-next') activateHero(state.heroIndex + 1);
+  else if (action === 'hero-dot') activateHero(Number(element.dataset.index || 0));
+  else if (action === 'filter-products') {
+    state.filter = element.dataset.filter || 'all';
+    updateProductUrl();
+    refreshProductResults();
+  } else if (action === 'lightbox-product') {
+    const product = productForSlug(element.dataset.product);
+    if (product) openLightbox(product.images.length ? product.images : [product.image], 0, localize(product.title));
+  } else if (action === 'zoom-product') {
+    const product = productForSlug(element.dataset.product);
+    const mainImage = document.querySelector('[data-gallery-main]')?.src;
+    if (product) {
+      const images = product.images.length ? product.images : [product.image];
+      const activeIndex = Math.max(0, images.findIndex((image) => mainImage && mainImage.endsWith(image)));
+      openLightbox(images, activeIndex, localize(product.title));
+    }
+  } else if (action === 'gallery-thumb') {
+    const main = document.querySelector('[data-gallery-main]');
+    if (main) main.src = element.dataset.image;
+    element.parentElement?.querySelectorAll('.gallery-thumb').forEach((thumb) => thumb.classList.toggle('active', thumb === element));
+  } else if (action === 'open-rfq') openRfq(element.dataset.product || '');
+  else if (action === 'copy-rfq') copyRfqMessage(document.getElementById(element.dataset.form));
+  else if (action === 'close-rfq') closeDialog('rfq-dialog');
+  else if (action === 'close-lightbox') closeDialog('lightbox-dialog');
+  else if (action === 'lightbox-prev') { state.lightboxIndex -= 1; updateLightbox(); }
+  else if (action === 'lightbox-next') { state.lightboxIndex += 1; updateLightbox(); }
+  else if (action === 'remove-file') {
+    const form = document.getElementById(element.dataset.form);
+    if (form) {
+      formFiles(form).splice(Number(element.dataset.index), 1);
+      renderFileList(form);
+    }
+  } else if (action === 'retry-map') {
+    destroyActiveMap();
+    initializeMap();
+  } else if (action === 'back-to-top') window.scrollTo({ top: 0, behavior: 'smooth' });
+  else if (action === 'close-toast') element.closest('.toast')?.remove();
+}
+
+let eventsBound = false;
+
+function bindGlobalEvents() {
+  if (eventsBound) return;
+  eventsBound = true;
+  document.addEventListener('click', (event) => {
+    const actionElement = event.target.closest('[data-action]');
+    if (actionElement) {
+      event.preventDefault();
+      handleAction(actionElement);
+      return;
+    }
+    const routeLink = event.target.closest('a[data-route]');
+    if (!routeLink || event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || routeLink.target || routeLink.hasAttribute('download')) return;
+    const url = new URL(routeLink.href, location.href);
+    if (url.origin !== location.origin) return;
+    event.preventDefault();
+    navigateTo(url);
+  });
+  document.addEventListener('input', (event) => {
+    if (!event.target.matches('[data-product-search]')) return;
+    state.search = event.target.value.trim();
+    updateProductUrl();
+    refreshProductResults();
+  });
+  document.addEventListener('change', (event) => {
+    if (!event.target.matches('[data-file-input]')) return;
+    const form = event.target.closest('[data-rfq-form]');
+    if (form) addFiles(form, event.target.files || []);
+    event.target.value = '';
+  });
+  document.addEventListener('submit', (event) => {
+    if (!event.target.matches('[data-rfq-form]')) return;
+    event.preventDefault();
+    submitRfq(event.target);
+  });
+  document.addEventListener('dragover', (event) => {
+    const drop = event.target.closest('[data-file-drop]');
+    if (!drop) return;
+    event.preventDefault();
+    drop.classList.add('dragover');
+  });
+  document.addEventListener('dragleave', (event) => event.target.closest('[data-file-drop]')?.classList.remove('dragover'));
+  document.addEventListener('drop', (event) => {
+    const drop = event.target.closest('[data-file-drop]');
+    if (!drop) return;
+    event.preventDefault();
+    drop.classList.remove('dragover');
+    const form = drop.closest('[data-rfq-form]');
+    if (form) addFiles(form, event.dataTransfer?.files || []);
+  });
+  document.addEventListener('keydown', (event) => {
+    const lightbox = document.getElementById('lightbox-dialog');
+    if (event.key === 'Escape') closeNavigationMenu();
+    if (!lightbox?.open) return;
+    if (event.key === 'ArrowLeft') { state.lightboxIndex -= 1; updateLightbox(); }
+    if (event.key === 'ArrowRight') { state.lightboxIndex += 1; updateLightbox(); }
+  });
+  document.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLDialogElement) closeDialog(event.target.id);
+  });
+  document.addEventListener('close', syncBodyScrollLock, true);
+  document.addEventListener('cancel', () => requestAnimationFrame(syncBodyScrollLock), true);
+  window.addEventListener('popstate', () => renderApp());
+  window.addEventListener('scroll', updateScrollUi, { passive: true });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 980) closeNavigationMenu();
+    if (activeMap?.type === 'leaflet') activeMap.instance.invalidateSize({ animate: false });
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopHeroTimer();
+    else startHeroTimer();
+  });
+}
+
+loadApplicationData();

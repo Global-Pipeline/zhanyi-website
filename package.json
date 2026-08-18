@@ -1,0 +1,16 @@
+{
+  "name": "zhanyi-pages-static",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static GitHub Pages edition of the Zhanyi international company website.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs",
+    "validate": "node scripts/validate.mjs",
+    "check": "node --check src/app.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node --check scripts/validate.mjs && npm run build && npm run validate"
+  }
+}

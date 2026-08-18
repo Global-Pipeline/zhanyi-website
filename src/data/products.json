@@ -1,0 +1,1312 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "slug": "precision-stamping",
+      "name": {
+        "zh": "精密冲压件",
+        "en": "Precision Stampings"
+      },
+      "description": {
+        "zh": "面向结构、固定、连接与弹性接触需求的定制冲压及成形件。",
+        "en": "Custom stamped and formed components for structural, fastening, connection and spring-contact applications."
+      }
+    },
+    {
+      "slug": "sheet-metal-enclosures",
+      "name": {
+        "zh": "钣金机箱与外壳",
+        "en": "Sheet Metal Enclosures"
+      },
+      "description": {
+        "zh": "用于工业、电气与商用设备的钣金机箱、机柜和结构外壳。",
+        "en": "Sheet metal chassis, cabinets and structural enclosures for industrial, electrical and commercial equipment."
+      }
+    },
+    {
+      "slug": "terminals-contacts",
+      "name": {
+        "zh": "端子与触点",
+        "en": "Terminals & Contacts"
+      },
+      "description": {
+        "zh": "用于导电、连接和装配的冲压端子、触点与接触片。",
+        "en": "Stamped terminals, contacts and conductive clips for electrical connection and assembly."
+      }
+    },
+    {
+      "slug": "plug-hardware",
+      "name": {
+        "zh": "插头五金",
+        "en": "Plug Hardware"
+      },
+      "description": {
+        "zh": "适用于插头、插座和电气连接组件的弹片、插针与接触五金。",
+        "en": "Spring clips, pins and contact hardware for plugs, sockets and electrical connection assemblies."
+      }
+    },
+    {
+      "slug": "power-components",
+      "name": {
+        "zh": "电源结构件",
+        "en": "Power Components"
+      },
+      "description": {
+        "zh": "面向电源、电气控制和配电设备的盒体、底板、盖板及结构件。",
+        "en": "Boxes, bases, covers and structural parts for power, electrical control and distribution equipment."
+      }
+    },
+    {
+      "slug": "new-energy",
+      "name": {
+        "zh": "新能源五金",
+        "en": "New Energy Components"
+      },
+      "description": {
+        "zh": "用于储能、电池和新能源设备的铜排、盖板、托盘与定制结构件。",
+        "en": "Busbars, cover plates, trays and custom structures for energy storage, battery and new-energy equipment."
+      }
+    },
+    {
+      "slug": "brackets-heat-sinks",
+      "name": {
+        "zh": "支架与散热件",
+        "en": "Brackets & Heat Sinks"
+      },
+      "description": {
+        "zh": "用于安装、承托、定位和热管理的折弯支架与散热结构件。",
+        "en": "Formed brackets and thermal-management structures for mounting, support, positioning and heat transfer."
+      }
+    }
+  ],
+  "products": [
+    {
+      "slug": "formed-steel-mounting-bracket",
+      "category": "precision-stamping",
+      "featured": true,
+      "images": [
+        "/assets/products/formed-steel-mounting-bracket.jpg"
+      ],
+      "name": {
+        "zh": "成形钢制安装支架",
+        "en": "Formed Steel Mounting Bracket"
+      },
+      "description": {
+        "zh": "多折弯一体成形支架，集成安装孔、长槽和定位边，适合需要稳定装配关系的设备结构。",
+        "en": "A multi-bend bracket with integrated mounting holes, slots and locating edges for equipment structures that require consistent assembly geometry."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "不锈钢"
+        ],
+        "en": [
+          "Carbon steel",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "落料",
+          "冲孔",
+          "折弯成形"
+        ],
+        "en": [
+          "Blanking",
+          "Piercing",
+          "Bending and forming"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "工业设备",
+          "电气装配",
+          "机械结构"
+        ],
+        "en": [
+          "Industrial equipment",
+          "Electrical assemblies",
+          "Mechanical structures"
+        ]
+      }
+    },
+    {
+      "slug": "multi-angle-stamped-support",
+      "category": "precision-stamping",
+      "featured": true,
+      "images": [
+        "/assets/products/multi-angle-stamped-support.jpg"
+      ],
+      "name": {
+        "zh": "多角度冲压支撑件",
+        "en": "Multi-Angle Stamped Support"
+      },
+      "description": {
+        "zh": "通过切口、长槽和多向折弯形成的轻量支撑结构，可用于定位、承托和快速装配。",
+        "en": "A lightweight support formed with cutouts, slots and multi-directional bends for positioning, support and efficient assembly."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "不锈钢"
+        ],
+        "en": [
+          "Carbon steel",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲压",
+          "开槽",
+          "多工位折弯"
+        ],
+        "en": [
+          "Stamping",
+          "Slotting",
+          "Multi-stage bending"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "设备支架",
+          "电子装配",
+          "内部骨架"
+        ],
+        "en": [
+          "Equipment supports",
+          "Electronics assembly",
+          "Internal frames"
+        ]
+      }
+    },
+    {
+      "slug": "formed-retainer-clip",
+      "category": "precision-stamping",
+      "featured": true,
+      "images": [
+        "/assets/products/formed-retainer-clip.jpg"
+      ],
+      "name": {
+        "zh": "一体成形固定卡座",
+        "en": "One-Piece Formed Retainer"
+      },
+      "description": {
+        "zh": "由单片材料冲压折弯形成的固定卡座，带有弹性夹持边和底部安装孔，可减少装配零件数量。",
+        "en": "A one-piece stamped retainer with spring gripping tabs and base mounting holes, designed to reduce separate assembly components."
+      },
+      "materials": {
+        "zh": [
+          "不锈钢",
+          "弹簧钢"
+        ],
+        "en": [
+          "Stainless steel",
+          "Spring steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "精密冲压",
+          "折弯",
+          "弹性成形"
+        ],
+        "en": [
+          "Precision stamping",
+          "Bending",
+          "Spring forming"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "线束固定",
+          "部件夹持",
+          "电子设备"
+        ],
+        "en": [
+          "Harness retention",
+          "Component holding",
+          "Electronic equipment"
+        ]
+      }
+    },
+    {
+      "slug": "spring-contact-clip",
+      "category": "precision-stamping",
+      "featured": false,
+      "images": [
+        "/assets/products/spring-contact-clip.jpg"
+      ],
+      "name": {
+        "zh": "弹性接触卡片",
+        "en": "Spring Contact Clip"
+      },
+      "description": {
+        "zh": "带有回弹臂和卡扣端部的冲压弹片，适合在有限空间内实现接触、压紧或快速连接。",
+        "en": "A stamped spring clip with resilient arms and locking ends for contact, clamping or quick connection in compact assemblies."
+      },
+      "materials": {
+        "zh": [
+          "不锈钢",
+          "弹簧钢"
+        ],
+        "en": [
+          "Stainless steel",
+          "Spring steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "精密冲压",
+          "弹性折弯",
+          "去毛刺"
+        ],
+        "en": [
+          "Precision stamping",
+          "Spring bending",
+          "Deburring"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电子装配",
+          "接地连接",
+          "机械卡扣"
+        ],
+        "en": [
+          "Electronics assembly",
+          "Grounding contacts",
+          "Mechanical latching"
+        ]
+      }
+    },
+    {
+      "slug": "rackmount-equipment-chassis",
+      "category": "sheet-metal-enclosures",
+      "featured": true,
+      "images": [
+        "/assets/products/rackmount-equipment-chassis.jpg"
+      ],
+      "name": {
+        "zh": "机架式设备机箱",
+        "en": "Rackmount Equipment Chassis"
+      },
+      "description": {
+        "zh": "带前面板开孔、通风位、把手和侧板安装结构的机架式钣金机箱，适合按设备布局进行定制。",
+        "en": "A rackmount sheet metal chassis with front-panel cutouts, ventilation, handles and side-panel mounting features, adaptable to equipment layouts."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "不锈钢"
+        ],
+        "en": [
+          "Carbon steel",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "激光切割",
+          "数控冲孔",
+          "折弯",
+          "表面喷涂",
+          "装配"
+        ],
+        "en": [
+          "Laser cutting",
+          "CNC punching",
+          "Bending",
+          "Powder coating",
+          "Assembly"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "工业控制",
+          "通信设备",
+          "测试设备"
+        ],
+        "en": [
+          "Industrial control",
+          "Communications equipment",
+          "Test equipment"
+        ]
+      }
+    },
+    {
+      "slug": "powder-coated-instrument-enclosure",
+      "category": "sheet-metal-enclosures",
+      "featured": false,
+      "images": [
+        "/assets/products/powder-coated-instrument-enclosure.jpg"
+      ],
+      "name": {
+        "zh": "喷粉仪器外壳",
+        "en": "Powder-Coated Instrument Enclosure"
+      },
+      "description": {
+        "zh": "由上盖与箱体组成的紧凑型钣金外壳，支持按面板、接口和内部安装需求配置开孔。",
+        "en": "A compact two-piece sheet metal enclosure configurable for panel openings, interfaces and internal mounting requirements."
+      },
+      "materials": {
+        "zh": [
+          "碳钢"
+        ],
+        "en": [
+          "Carbon steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "切割",
+          "冲孔",
+          "折弯",
+          "焊接",
+          "粉末喷涂"
+        ],
+        "en": [
+          "Cutting",
+          "Punching",
+          "Bending",
+          "Welding",
+          "Powder coating"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "仪器仪表",
+          "电源设备",
+          "桌面设备"
+        ],
+        "en": [
+          "Instrumentation",
+          "Power equipment",
+          "Desktop equipment"
+        ]
+      }
+    },
+    {
+      "slug": "stainless-equipment-cabinet",
+      "category": "sheet-metal-enclosures",
+      "featured": true,
+      "images": [
+        "/assets/products/stainless-equipment-cabinet.jpg"
+      ],
+      "name": {
+        "zh": "不锈钢设备柜体",
+        "en": "Stainless Steel Equipment Cabinet"
+      },
+      "description": {
+        "zh": "带操作面板、门体和侧面功能开孔的不锈钢柜体，可用于需要易清洁表面和模块化装配的设备。",
+        "en": "A stainless steel cabinet with operator-panel openings, access doors and side features for equipment requiring cleanable surfaces and modular assembly."
+      },
+      "materials": {
+        "zh": [
+          "不锈钢"
+        ],
+        "en": [
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "激光切割",
+          "折弯",
+          "焊接",
+          "拉丝处理",
+          "装配"
+        ],
+        "en": [
+          "Laser cutting",
+          "Bending",
+          "Welding",
+          "Brushed finishing",
+          "Assembly"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "商用设备",
+          "工业终端",
+          "自助设备"
+        ],
+        "en": [
+          "Commercial equipment",
+          "Industrial terminals",
+          "Self-service equipment"
+        ]
+      }
+    },
+    {
+      "slug": "ventilated-equipment-chassis",
+      "category": "sheet-metal-enclosures",
+      "featured": false,
+      "images": [
+        "/assets/products/ventilated-equipment-chassis.jpg"
+      ],
+      "name": {
+        "zh": "通风设备底盘",
+        "en": "Ventilated Equipment Chassis"
+      },
+      "description": {
+        "zh": "集成长条通风孔、安装法兰和内部固定位置的设备底盘，兼顾空气流动与结构支撑。",
+        "en": "An equipment chassis with elongated ventilation slots, mounting flanges and internal fixing points for airflow and structural support."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "铝板"
+        ],
+        "en": [
+          "Carbon steel",
+          "Aluminum sheet"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "激光切割",
+          "冲孔",
+          "折弯",
+          "表面喷涂"
+        ],
+        "en": [
+          "Laser cutting",
+          "Punching",
+          "Bending",
+          "Powder coating"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电气设备",
+          "通信设备",
+          "散热机箱"
+        ],
+        "en": [
+          "Electrical equipment",
+          "Communications equipment",
+          "Ventilated enclosures"
+        ]
+      }
+    },
+    {
+      "slug": "carrier-strip-crimp-terminals",
+      "category": "terminals-contacts",
+      "featured": true,
+      "images": [
+        "/assets/products/carrier-strip-crimp-terminals.jpg"
+      ],
+      "name": {
+        "zh": "料带式压接端子",
+        "en": "Carrier-Strip Crimp Terminals"
+      },
+      "description": {
+        "zh": "以连续料带形式生产的压接端子，包含压接翼、连接孔和成形接触区域，便于后续自动化装配。",
+        "en": "Crimp terminals produced on a continuous carrier strip with crimp wings, connection holes and formed contact areas for downstream automated assembly."
+      },
+      "materials": {
+        "zh": [
+          "铜合金",
+          "不锈钢"
+        ],
+        "en": [
+          "Copper alloy",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "连续冲压",
+          "精密成形",
+          "表面处理配套"
+        ],
+        "en": [
+          "Progressive stamping",
+          "Precision forming",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "线束连接",
+          "电气端子",
+          "自动化装配"
+        ],
+        "en": [
+          "Wire harnesses",
+          "Electrical terminals",
+          "Automated assembly"
+        ]
+      }
+    },
+    {
+      "slug": "formed-electrical-contact-terminal",
+      "category": "terminals-contacts",
+      "featured": false,
+      "images": [
+        "/assets/products/formed-electrical-contact-terminal.jpg"
+      ],
+      "name": {
+        "zh": "成形电气接触端子",
+        "en": "Formed Electrical Contact Terminal"
+      },
+      "description": {
+        "zh": "带压接区、定位孔和折弯接触臂的一体式端子，可根据连接方向调整成形结构。",
+        "en": "A one-piece terminal with a crimp zone, locating holes and a formed contact arm, adaptable to connection orientation."
+      },
+      "materials": {
+        "zh": [
+          "铜合金",
+          "不锈钢"
+        ],
+        "en": [
+          "Copper alloy",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲裁",
+          "冲孔",
+          "端子成形",
+          "表面处理配套"
+        ],
+        "en": [
+          "Blanking",
+          "Piercing",
+          "Terminal forming",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电源连接",
+          "控制设备",
+          "线束组件"
+        ],
+        "en": [
+          "Power connections",
+          "Control equipment",
+          "Harness assemblies"
+        ]
+      }
+    },
+    {
+      "slug": "box-receptacle-terminal",
+      "category": "terminals-contacts",
+      "featured": false,
+      "images": [
+        "/assets/products/box-receptacle-terminal.jpg"
+      ],
+      "name": {
+        "zh": "盒式插接端子",
+        "en": "Box Receptacle Terminal"
+      },
+      "description": {
+        "zh": "由多面折弯形成的盒式接触端子，具有导向和夹持结构，适合插接式电气连接。",
+        "en": "A box-shaped receptacle terminal formed through multiple bends, with guiding and retention features for plug-in electrical connections."
+      },
+      "materials": {
+        "zh": [
+          "铜合金",
+          "不锈钢"
+        ],
+        "en": [
+          "Copper alloy",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "精密冲压",
+          "卷圆与折弯",
+          "表面处理配套"
+        ],
+        "en": [
+          "Precision stamping",
+          "Rolling and bending",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "连接器",
+          "电器组件",
+          "插接端子"
+        ],
+        "en": [
+          "Connectors",
+          "Electrical assemblies",
+          "Plug-in terminals"
+        ]
+      }
+    },
+    {
+      "slug": "angled-crimp-contact",
+      "category": "terminals-contacts",
+      "featured": false,
+      "images": [
+        "/assets/products/angled-crimp-contact.jpg"
+      ],
+      "name": {
+        "zh": "折弯压接触点",
+        "en": "Angled Crimp Contact"
+      },
+      "description": {
+        "zh": "集成压接翼、安装孔与折弯触点的端子结构，适用于需要转向连接的紧凑空间。",
+        "en": "A terminal integrating crimp wings, mounting holes and an angled contact for directional connections in compact spaces."
+      },
+      "materials": {
+        "zh": [
+          "铜合金",
+          "不锈钢"
+        ],
+        "en": [
+          "Copper alloy",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲压",
+          "压接结构成形",
+          "折弯"
+        ],
+        "en": [
+          "Stamping",
+          "Crimp-feature forming",
+          "Bending"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电气连接",
+          "家电组件",
+          "紧凑型设备"
+        ],
+        "en": [
+          "Electrical connections",
+          "Appliance assemblies",
+          "Compact equipment"
+        ]
+      }
+    },
+    {
+      "slug": "plug-spring-contact-pair",
+      "category": "plug-hardware",
+      "featured": false,
+      "images": [
+        "/assets/products/plug-spring-contact-pair.jpg"
+      ],
+      "name": {
+        "zh": "插头弹簧触点对",
+        "en": "Plug Spring Contact Pair"
+      },
+      "description": {
+        "zh": "成对使用的弹性夹持触点，带有安装孔和卷曲接触区，用于稳定夹持插针或导电部件。",
+        "en": "Paired spring contacts with mounting holes and rolled contact zones for retaining plug pins or conductive elements."
+      },
+      "materials": {
+        "zh": [
+          "铜合金",
+          "不锈钢"
+        ],
+        "en": [
+          "Copper alloy",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "精密冲压",
+          "卷曲成形",
+          "表面处理配套"
+        ],
+        "en": [
+          "Precision stamping",
+          "Curl forming",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "插头",
+          "插座",
+          "电源连接组件"
+        ],
+        "en": [
+          "Plugs",
+          "Sockets",
+          "Power connection assemblies"
+        ]
+      }
+    },
+    {
+      "slug": "copper-plug-contact-set",
+      "category": "plug-hardware",
+      "featured": true,
+      "images": [
+        "/assets/products/copper-plug-contact-set.jpg"
+      ],
+      "name": {
+        "zh": "铜制插头接触件组",
+        "en": "Copper Plug Contact Set"
+      },
+      "description": {
+        "zh": "包含夹持、导向和连接结构的多种铜制接触件，适用于不同插头及电气接口设计。",
+        "en": "A set of copper contact components with gripping, guiding and connection features for varied plug and electrical interface designs."
+      },
+      "materials": {
+        "zh": [
+          "铜",
+          "黄铜"
+        ],
+        "en": [
+          "Copper",
+          "Brass"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲压",
+          "折弯成形",
+          "表面处理配套"
+        ],
+        "en": [
+          "Stamping",
+          "Bending and forming",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "插头组件",
+          "插座组件",
+          "电气连接"
+        ],
+        "en": [
+          "Plug assemblies",
+          "Socket assemblies",
+          "Electrical connections"
+        ]
+      }
+    },
+    {
+      "slug": "plug-pins-contact-components",
+      "category": "plug-hardware",
+      "featured": false,
+      "images": [
+        "/assets/products/plug-pins-contact-components.jpg"
+      ],
+      "name": {
+        "zh": "插针与接触五金组件",
+        "en": "Plug Pins & Contact Components"
+      },
+      "description": {
+        "zh": "由插针、导电片和弹性接触件组成的插头五金组合，可按不同接口结构进行定制。",
+        "en": "A plug hardware group combining pins, conductive blades and spring contacts, configurable for different interface structures."
+      },
+      "materials": {
+        "zh": [
+          "黄铜",
+          "铜"
+        ],
+        "en": [
+          "Brass",
+          "Copper"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲压",
+          "切断",
+          "折弯",
+          "表面处理配套"
+        ],
+        "en": [
+          "Stamping",
+          "Cutting",
+          "Bending",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电源插头",
+          "插座",
+          "电器连接组件"
+        ],
+        "en": [
+          "Power plugs",
+          "Sockets",
+          "Appliance connection assemblies"
+        ]
+      }
+    },
+    {
+      "slug": "galvanized-electrical-junction-box",
+      "category": "power-components",
+      "featured": true,
+      "images": [
+        "/assets/products/galvanized-electrical-junction-box.jpg"
+      ],
+      "name": {
+        "zh": "镀锌电气接线盒",
+        "en": "Galvanized Electrical Junction Box"
+      },
+      "description": {
+        "zh": "带敲落孔、可拆盖板和内部安装位的电气盒体，便于线缆引入、维护和模块安装。",
+        "en": "An electrical box with knockouts, removable covers and internal mounting points for cable entry, maintenance and component installation."
+      },
+      "materials": {
+        "zh": [
+          "镀锌钢板"
+        ],
+        "en": [
+          "Galvanized steel sheet"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲孔",
+          "折弯",
+          "压铆",
+          "装配"
+        ],
+        "en": [
+          "Punching",
+          "Bending",
+          "Hardware insertion",
+          "Assembly"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "配电设备",
+          "电气安装",
+          "工业控制"
+        ],
+        "en": [
+          "Power distribution",
+          "Electrical installations",
+          "Industrial control"
+        ]
+      }
+    },
+    {
+      "slug": "power-module-rail-cover",
+      "category": "power-components",
+      "featured": false,
+      "images": [
+        "/assets/products/power-module-rail-cover.jpg"
+      ],
+      "name": {
+        "zh": "电源模块导轨盖板",
+        "en": "Power Module Rail Cover"
+      },
+      "description": {
+        "zh": "长条形折弯底座与盖板组合，带有卡扣和安装特征，可用于电源模块或线性组件防护。",
+        "en": "A long formed base-and-cover set with latching and mounting features for protecting power modules or linear assemblies."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "镀锌钢板"
+        ],
+        "en": [
+          "Carbon steel",
+          "Galvanized steel sheet"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "切割",
+          "冲孔",
+          "长边折弯",
+          "表面处理配套"
+        ],
+        "en": [
+          "Cutting",
+          "Punching",
+          "Long-edge bending",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电源模块",
+          "线性组件",
+          "电气防护"
+        ],
+        "en": [
+          "Power modules",
+          "Linear assemblies",
+          "Electrical protection"
+        ]
+      }
+    },
+    {
+      "slug": "power-control-chassis",
+      "category": "power-components",
+      "featured": false,
+      "images": [
+        "/assets/products/power-control-chassis.jpg"
+      ],
+      "name": {
+        "zh": "电源控制机壳",
+        "en": "Power Control Chassis"
+      },
+      "description": {
+        "zh": "由通风前板、底盘和可拆盖板组成的电源控制机壳，便于内部元件安装和维护。",
+        "en": "A power-control chassis with a ventilated front panel, base and removable cover for internal component installation and service access."
+      },
+      "materials": {
+        "zh": [
+          "碳钢"
+        ],
+        "en": [
+          "Carbon steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "激光切割",
+          "冲孔",
+          "折弯",
+          "粉末喷涂",
+          "装配"
+        ],
+        "en": [
+          "Laser cutting",
+          "Punching",
+          "Bending",
+          "Powder coating",
+          "Assembly"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电源控制",
+          "工业电气",
+          "配电模块"
+        ],
+        "en": [
+          "Power control",
+          "Industrial electrical equipment",
+          "Distribution modules"
+        ]
+      }
+    },
+    {
+      "slug": "insulated-flexible-copper-busbar",
+      "category": "new-energy",
+      "featured": true,
+      "images": [
+        "/assets/products/insulated-flexible-copper-busbar.png"
+      ],
+      "name": {
+        "zh": "绝缘柔性铜排",
+        "en": "Insulated Flexible Copper Busbar"
+      },
+      "description": {
+        "zh": "带端部连接孔和绝缘包覆的柔性铜排，可适应设备内部的空间转向与导电连接需求。",
+        "en": "A flexible copper busbar with terminal holes and insulation covering for routed conductive connections inside equipment."
+      },
+      "materials": {
+        "zh": [
+          "铜",
+          "绝缘套管"
+        ],
+        "en": [
+          "Copper",
+          "Insulation sleeve"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "铜排切割",
+          "冲孔",
+          "折弯成形",
+          "绝缘包覆"
+        ],
+        "en": [
+          "Busbar cutting",
+          "Piercing",
+          "Bending and forming",
+          "Insulation covering"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "储能设备",
+          "电池系统",
+          "电气连接"
+        ],
+        "en": [
+          "Energy storage equipment",
+          "Battery systems",
+          "Electrical connections"
+        ]
+      }
+    },
+    {
+      "slug": "battery-terminal-cover-plates",
+      "category": "new-energy",
+      "featured": false,
+      "images": [
+        "/assets/products/battery-terminal-cover-plates.jpg"
+      ],
+      "name": {
+        "zh": "电池端子盖板组件",
+        "en": "Battery Terminal Cover Plates"
+      },
+      "description": {
+        "zh": "带端子安装位、通孔和定位特征的金属盖板，用于电池或储能模块的连接与结构防护。",
+        "en": "Metal cover plates with terminal seats, openings and locating features for connection and structural protection in battery or energy-storage modules."
+      },
+      "materials": {
+        "zh": [
+          "铝板",
+          "不锈钢"
+        ],
+        "en": [
+          "Aluminum sheet",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲压",
+          "冲孔",
+          "局部成形",
+          "装配配套"
+        ],
+        "en": [
+          "Stamping",
+          "Piercing",
+          "Local forming",
+          "Assembly coordination"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电池模块",
+          "储能设备",
+          "新能源电源"
+        ],
+        "en": [
+          "Battery modules",
+          "Energy storage equipment",
+          "New-energy power systems"
+        ]
+      }
+    },
+    {
+      "slug": "perforated-battery-protection-tray",
+      "category": "new-energy",
+      "featured": false,
+      "images": [
+        "/assets/products/perforated-battery-protection-tray.jpg"
+      ],
+      "name": {
+        "zh": "新能源多孔防护托盘",
+        "en": "Perforated New-Energy Protection Tray"
+      },
+      "description": {
+        "zh": "大面积均布冲孔并带折边加强的金属托盘，可用于需要通风、隔离或承托的新能源设备结构。",
+        "en": "A metal tray with dense perforations and reinforced formed edges for ventilation, separation or support in new-energy equipment."
+      },
+      "materials": {
+        "zh": [
+          "不锈钢",
+          "碳钢"
+        ],
+        "en": [
+          "Stainless steel",
+          "Carbon steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "数控冲孔",
+          "折弯",
+          "边缘成形",
+          "表面处理配套"
+        ],
+        "en": [
+          "CNC punching",
+          "Bending",
+          "Edge forming",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "储能结构",
+          "电池设备",
+          "通风防护组件"
+        ],
+        "en": [
+          "Energy storage structures",
+          "Battery equipment",
+          "Ventilated protection assemblies"
+        ]
+      }
+    },
+    {
+      "slug": "u-channel-support-bracket",
+      "category": "brackets-heat-sinks",
+      "featured": true,
+      "images": [
+        "/assets/products/u-channel-support-bracket.jpg"
+      ],
+      "name": {
+        "zh": "U形承重支架",
+        "en": "U-Channel Support Bracket"
+      },
+      "description": {
+        "zh": "带上下安装孔和底部开口的U形支架，可为模块、框架或内部组件提供承托与定位。",
+        "en": "A U-channel bracket with upper, lower and base mounting features for supporting and locating modules, frames or internal components."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "不锈钢"
+        ],
+        "en": [
+          "Carbon steel",
+          "Stainless steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "切割",
+          "冲孔",
+          "折弯",
+          "去毛刺"
+        ],
+        "en": [
+          "Cutting",
+          "Piercing",
+          "Bending",
+          "Deburring"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "设备安装",
+          "框架支撑",
+          "内部模块固定"
+        ],
+        "en": [
+          "Equipment mounting",
+          "Frame support",
+          "Internal module retention"
+        ]
+      }
+    },
+    {
+      "slug": "zinc-plated-offset-bracket",
+      "category": "brackets-heat-sinks",
+      "featured": false,
+      "images": [
+        "/assets/products/zinc-plated-offset-bracket.jpg"
+      ],
+      "name": {
+        "zh": "镀锌偏置安装支架",
+        "en": "Zinc-Plated Offset Bracket"
+      },
+      "description": {
+        "zh": "两端折弯并集成螺纹连接位的偏置支架，用于跨距固定、间距补偿和结构连接。",
+        "en": "An offset bracket with formed ends and threaded fixing points for spanning, spacing compensation and structural connection."
+      },
+      "materials": {
+        "zh": [
+          "碳钢",
+          "镀锌钢"
+        ],
+        "en": [
+          "Carbon steel",
+          "Zinc-plated steel"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "冲压",
+          "折弯",
+          "螺纹成形",
+          "镀锌配套"
+        ],
+        "en": [
+          "Stamping",
+          "Bending",
+          "Thread forming",
+          "Coordinated zinc plating"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "设备支撑",
+          "内部连接",
+          "安装间隔件"
+        ],
+        "en": [
+          "Equipment support",
+          "Internal connections",
+          "Mounting spacers"
+        ]
+      }
+    },
+    {
+      "slug": "finned-aluminum-heat-spreader",
+      "category": "brackets-heat-sinks",
+      "featured": true,
+      "images": [
+        "/assets/products/finned-aluminum-heat-spreader.jpg"
+      ],
+      "name": {
+        "zh": "鳍片式铝制散热板",
+        "en": "Finned Aluminum Heat Spreader"
+      },
+      "description": {
+        "zh": "集成散热鳍片、安装边和结构孔位的铝制散热板，可与电源或电子模块配合装配。",
+        "en": "An aluminum heat spreader integrating cooling fins, mounting edges and structural holes for assembly with power or electronic modules."
+      },
+      "materials": {
+        "zh": [
+          "铝"
+        ],
+        "en": [
+          "Aluminum"
+        ]
+      },
+      "processes": {
+        "zh": [
+          "切割",
+          "冲孔",
+          "成形",
+          "表面处理配套"
+        ],
+        "en": [
+          "Cutting",
+          "Piercing",
+          "Forming",
+          "Coordinated surface finishing"
+        ]
+      },
+      "applications": {
+        "zh": [
+          "电源模块",
+          "电子设备",
+          "热管理组件"
+        ],
+        "en": [
+          "Power modules",
+          "Electronic equipment",
+          "Thermal-management assemblies"
+        ]
+      }
+    }
+  ]
+}

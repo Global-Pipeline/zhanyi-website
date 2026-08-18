@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 88" role="img" aria-labelledby="title desc">
+  <title id="title">ZHANYI Precision</title>
+  <desc id="desc">Dongguan Zhanyi Hardware Products company logo</desc>
+  <g transform="translate(4 7)">
+    <path d="M4 3h60L51 18H4z" fill="#173047"/>
+    <path d="M45 12h19L27 68H8z" fill="#d92d2a"/>
+    <path d="M20 51h49L56 68H7z" fill="#173047"/>
+    <path d="M45 12h7L19 63h-7z" fill="#ffffff" opacity=".38"/>
+  </g>
+  <text x="92" y="48" fill="#152536" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800" letter-spacing="0">ZHANYI</text>
+  <text x="94" y="69" fill="#5f6b75" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="0">PRECISION METALWORKS</text>
+</svg>

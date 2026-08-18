@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Zhanyi Precision mark</title>
+  <path d="M7 9h47L44 21H7z" fill="#173047"/>
+  <path d="M39 16h15L24 55H9z" fill="#d92d2a"/>
+  <path d="M18 42h39L47 55H8z" fill="#173047"/>
+  <path d="M39 16h6L18 51h-6z" fill="#ffffff" opacity=".38"/>
+</svg>
