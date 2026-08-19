@@ -33,6 +33,8 @@ if (routeIndexes.length !== expectedRoutes) throw new Error(`Expected ${expected
 if (app.includes("fetch('/api/") || app.includes('fetch("/api/')) throw new Error('Static app still contains a runtime API submission.');
 if (app.includes('href="/admin/"')) throw new Error('Static app still links to the private admin console.');
 if (settings.mapProvider !== 'baidu-embed') throw new Error('Static map provider must default to baidu-embed.');
-if (!app.includes('Continue on WhatsApp') || !app.includes('copy-rfq')) throw new Error('Static lead handoff controls are missing.');
+if (settings.formspreeFormId !== 'xbgrpbkd') throw new Error('Formspree form ID is not configured.');
+if (!app.includes("const FORMSPREE_FORM_ID = 'xbgrpbkd'") || !app.includes("formspree('initForm'") || !app.includes('Send Inquiry')) throw new Error('Formspree inquiry integration is missing.');
+if (!app.includes('copy-rfq')) throw new Error('Inquiry copy fallback is missing.');
 
 console.log(`Validated ${files.length} files and ${routeIndexes.length} localized routes.`);

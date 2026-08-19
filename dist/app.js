@@ -24,6 +24,7 @@ const COMPANY = Object.freeze({
   whatsapp: '8613238323259',
 });
 const DEFAULT_MAP = Object.freeze({ lat: 22.99442, lng: 113.926813 });
+const FORMSPREE_FORM_ID = 'xbgrpbkd';
 const L = (en, zh) => ({ en, zh });
 const A = (path) => {
   const value = String(path || '').trim();
@@ -1024,19 +1025,21 @@ function renderInsightsPage() {
 
 function renderRfqForm(formId, options = {}) {
   const selectedProduct = options.productName || '';
+  const formspreeFormId = String(state.settings.formspreeFormId || FORMSPREE_FORM_ID).trim();
   return `
-    <form class="rfq-form" id="${escapeAttr(formId)}" data-rfq-form novalidate>
-      <input class="honeypot" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <form class="rfq-form" id="${escapeAttr(formId)}" data-rfq-form action="https://formspree.io/f/${escapeAttr(formspreeFormId)}" method="POST">
+      <input type="hidden" name="_subject" value="New manufacturing inquiry from the Zhanyi website">
+      <input class="honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-grid">
-        <div class="form-field"><label for="${formId}-name">${tx('Name', '姓名')} <span>*</span></label><input id="${formId}-name" name="name" type="text" autocomplete="name" required maxlength="120"></div>
-        <div class="form-field"><label for="${formId}-company">${tx('Company', '公司')} <span>*</span></label><input id="${formId}-company" name="company" type="text" autocomplete="organization" required maxlength="180"></div>
-        <div class="form-field"><label for="${formId}-email">${tx('Business email', '工作邮箱')} <span>*</span></label><input id="${formId}-email" name="email" type="email" autocomplete="email" required maxlength="240"></div>
+        <div class="form-field"><label for="${formId}-name">${tx('Name', '姓名')} <span>*</span></label><input id="${formId}-name" name="name" type="text" autocomplete="name" required maxlength="120" data-fs-field><span class="field-error" data-fs-error="name"></span></div>
+        <div class="form-field"><label for="${formId}-company">${tx('Company', '公司')} <span>*</span></label><input id="${formId}-company" name="company" type="text" autocomplete="organization" required maxlength="180" data-fs-field><span class="field-error" data-fs-error="company"></span></div>
+        <div class="form-field"><label for="${formId}-email">${tx('Business email', '工作邮箱')} <span>*</span></label><input id="${formId}-email" name="email" type="email" autocomplete="email" required maxlength="240" data-fs-field><span class="field-error" data-fs-error="email"></span></div>
         <div class="form-field"><label for="${formId}-phone">${tx('Phone / WhatsApp', '电话 / WhatsApp')}</label><input id="${formId}-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
         <div class="form-field"><label for="${formId}-country">${tx('Country or region', '国家或地区')}</label><input id="${formId}-country" name="country" type="text" autocomplete="country-name" maxlength="100"></div>
         <div class="form-field"><label for="${formId}-category">${tx('Product category', '产品类别')}</label><select id="${formId}-category" name="productCategory"><option value="">${tx('Select a category', '选择产品类别')}</option>${state.categories.map((item) => `<option value="${escapeAttr(localize(item.label))}">${escapeHtml(localize(item.label))}</option>`).join('')}</select></div>
         <div class="form-field"><label for="${formId}-quantity">${tx('Estimated quantity', '预计数量')}</label><input id="${formId}-quantity" name="quantity" type="text" maxlength="100" placeholder="${tx('Prototype, 1,000 pcs, annual volume...', '样件、1,000件、年用量等')}"></div>
         <div class="form-field"><label for="${formId}-product">${tx('Product or project', '产品或项目')}</label><input id="${formId}-product" name="productName" type="text" maxlength="180" value="${escapeAttr(selectedProduct)}"></div>
-        <div class="form-field full"><label for="${formId}-message">${tx('Project details', '项目说明')} <span>*</span></label><textarea id="${formId}-message" name="content" required maxlength="12000" placeholder="${tx('Describe application, material, finish, assembly and target timing.', '请说明用途、材料、表面处理、装配关系和目标时间。')}"></textarea></div>
+        <div class="form-field full"><label for="${formId}-message">${tx('Project details', '项目说明')} <span>*</span></label><textarea id="${formId}-message" name="message" required maxlength="12000" placeholder="${tx('Describe application, material, finish, assembly and target timing.', '请说明用途、材料、表面处理、装配关系和目标时间。')}" data-fs-field></textarea><span class="field-error" data-fs-error="message"></span></div>
         <div class="form-field full">
           <span class="form-label">${tx('Drawings and attachments', '图纸与附件')}</span>
           <label class="file-drop" for="${formId}-files" data-file-drop>
@@ -1044,13 +1047,13 @@ function renderRfqForm(formId, options = {}) {
             <small>PDF, DWG, DXF, STEP, STP, IGES, IGS, ZIP, JPG, PNG, WEBP · ${tx('12 files / 30 MB total', '最多12个 / 总计30 MB')}</small>
             <input id="${formId}-files" type="file" data-file-input multiple accept=".pdf,.dwg,.dxf,.step,.stp,.iges,.igs,.zip,.jpg,.jpeg,.png,.webp">
           </label>
-          <p class="static-form-note">${tx('File names are included in the WhatsApp message. Attach the actual drawings in WhatsApp after the chat opens.', '文件名会写入 WhatsApp 询价内容；聊天打开后，请在 WhatsApp 中手动发送实际图纸。')}</p>
+          <p class="static-form-note">${tx('Selected file names are included with your inquiry. Send the actual drawings by replying to our email or through WhatsApp after submission.', '所选文件名会随询盘提交；提交后请通过回复邮件或 WhatsApp 发送实际图纸。')}</p>
           <div class="file-list" data-file-list></div>
         </div>
         <label class="checkbox-row form-field full"><input type="checkbox" name="nda" value="yes"><span>${tx('Please note if an NDA is required before detailed drawing review.', '如需在详细图纸评审前签署保密协议，请勾选说明。')}</span></label>
       </div>
       <div class="form-actions static-form-actions">
-        <button class="button button-primary" type="submit">${icon('message', 18)}${tx('Continue on WhatsApp', '通过 WhatsApp 继续')}</button>
+        <button class="button button-primary" type="submit" data-fs-submit-btn>${icon('send', 18)}${tx('Send Inquiry', '提交询盘')}</button>
         <button class="button button-outline" type="button" data-action="copy-rfq" data-form="${escapeAttr(formId)}">${icon('file', 18)}${tx('Copy inquiry details', '复制询价内容')}</button>
         <span class="muted">${tx('Initial response target: within 24 hours after complete information is received.', '服务目标：收到完整资料后24小时内首次响应。')}</span>
       </div>
@@ -1127,7 +1130,7 @@ function renderContactPage() {
         </div>
       </aside>
       <div class="rfq-panel reveal">
-        <div class="rfq-panel-heading"><h2>${tx('Request a manufacturing review', '申请制造评审')}</h2><p>${tx('Complete the project details and continue directly in WhatsApp. Selected drawing names are added to the message for a clearer handover.', '填写项目资料后可直接进入 WhatsApp 沟通，所选图纸名称会加入询价内容，便于后续发送文件。')}</p></div>
+        <div class="rfq-panel-heading"><h2>${tx('Request a manufacturing review', '申请制造评审')}</h2><p>${tx('Send your project details directly to our team. Selected drawing names are included so the actual files can be matched when you reply by email or continue on WhatsApp.', '将项目资料直接提交给我们的团队。所选图纸名称会一并发送，便于您随后通过回复邮件或 WhatsApp 发送实际文件。')}</p></div>
         ${renderRfqForm('contact-rfq')}
       </div>
     </div></section>
@@ -1354,6 +1357,7 @@ function renderApp(options = {}) {
     initializeReveals();
     initializeHero();
     initializeMap();
+    initializeRfqForms();
     updateScrollUi();
     if (options.scroll !== false) scrollToRouteTarget();
   } catch (error) {
@@ -1684,7 +1688,7 @@ function buildRfqMessage(form) {
     ...fields.map(([label, value]) => `${label}: ${String(value).trim()}`),
     '',
     `${tx('Project details', '项目说明')}:`,
-    String(values.get('content') || '').trim(),
+    String(values.get('message') || '').trim(),
   ];
   if (files.length) {
     lines.push('', `${tx('Selected drawing files', '已选择的图纸文件')}:`, ...files.map((file) => `- ${file.name} (${formatBytes(file.size)})`));
@@ -1729,33 +1733,74 @@ async function copyRfqMessage(form) {
   }
 }
 
-function submitRfq(form) {
+function setRfqStatus(form, message = '', type = '') {
   const status = form.querySelector('[data-form-status]');
-  const submit = form.querySelector('button[type="submit"]');
-  status.className = 'form-status';
-  status.textContent = '';
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
-  submit.disabled = true;
-  submit.textContent = tx('Opening WhatsApp...', '正在打开 WhatsApp...');
-  try {
-    const message = buildRfqMessage(form);
-    window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
-    copyText(message).catch(() => {});
-    const success = tx('WhatsApp has been opened with your project details. Attach the selected drawings in the chat before sending.', 'WhatsApp 已携带项目资料打开，请在发送前把所选图纸附加到聊天中。');
-    status.className = 'form-status success';
-    status.textContent = success;
-    showToast(success, 'success');
-  } catch (error) {
-    status.className = 'form-status error';
-    status.textContent = error.message || tx('Could not prepare the inquiry. Please call us directly.', '无法生成询价内容，请直接电话联系我们。');
-    showToast(status.textContent, 'error');
-  } finally {
-    submit.disabled = false;
-    submit.innerHTML = `${icon('message', 18)}${tx('Continue on WhatsApp', '通过 WhatsApp 继续')}`;
-  }
+  if (!status) return;
+  status.className = `form-status${type ? ` ${type}` : ''}`;
+  status.textContent = message;
+}
+
+function setRfqSubmitting(form, submitting) {
+  const submit = form.querySelector('[data-fs-submit-btn]');
+  form.toggleAttribute('aria-busy', submitting);
+  if (!submit) return;
+  submit.disabled = submitting;
+  submit.innerHTML = submitting
+    ? `${icon('send', 18)}${tx('Sending Inquiry...', '正在提交询盘...')}`
+    : `${icon('send', 18)}${tx('Send Inquiry', '提交询盘')}`;
+}
+
+function formspreeErrorMessage(error) {
+  const formErrors = typeof error?.getFormErrors === 'function' ? error.getFormErrors() : [];
+  if (formErrors.length) return formErrors.map((item) => item.message).filter(Boolean).join(' ');
+  const fieldErrors = typeof error?.getAllFieldErrors === 'function' ? error.getAllFieldErrors() : [];
+  if (fieldErrors.length) return tx('Please review the highlighted fields and submit again.', '请检查标出的字段后重新提交。');
+  return tx('The inquiry could not be sent. Please try again or contact us through WhatsApp.', '询盘未能发送，请重试或通过 WhatsApp 联系我们。');
+}
+
+function initializeRfqForms() {
+  const formspreeFormId = String(state.settings.formspreeFormId || FORMSPREE_FORM_ID).trim();
+  if (!formspreeFormId || typeof window.formspree !== 'function') return;
+  document.querySelectorAll('[data-rfq-form]').forEach((form) => {
+    window.formspree('initForm', {
+      formElement: form,
+      formId: formspreeFormId,
+      useDefaultStyles: false,
+      data: {
+        inquiryChannel: 'Zhanyi website',
+        sourcePage: () => location.href,
+        pageLanguage: () => state.lang === 'zh' ? 'Chinese' : 'English',
+        drawingFiles: () => {
+          const files = formFiles(form);
+          return files.length ? files.map((file) => `${file.name} (${formatBytes(file.size)})`).join('\n') : undefined;
+        },
+      },
+      onInit: () => { form.dataset.formspreeReady = 'true'; },
+      onSubmit: () => { setRfqStatus(form); },
+      onSuccess: () => {
+        const message = tx('Thank you. Your inquiry has been sent successfully. Our team will review it and respond as soon as possible.', '感谢提交。您的询盘已成功发送，我们会尽快完成评审并回复。');
+        form.reset();
+        state.attachments[form.id] = [];
+        renderFileList(form);
+        setRfqStatus(form, message, 'success');
+        showToast(message, 'success');
+      },
+      onError: (_context, error) => {
+        const message = formspreeErrorMessage(error);
+        setRfqStatus(form, message, 'error');
+        showToast(message, 'error');
+      },
+      onFailure: () => {
+        const message = tx('A network error prevented submission. Please try again or contact us through WhatsApp.', '网络错误导致提交失败，请重试或通过 WhatsApp 联系我们。');
+        setRfqStatus(form, message, 'error');
+        showToast(message, 'error');
+      },
+      disable: () => { setRfqSubmitting(form, true); },
+      enable: () => { setRfqSubmitting(form, false); },
+      renderSuccess: () => {},
+      renderFormError: () => {},
+    });
+  });
 }
 
 let baiduMapPromise = null;
@@ -2131,8 +2176,8 @@ function bindGlobalEvents() {
   });
   document.addEventListener('submit', (event) => {
     if (!event.target.matches('[data-rfq-form]')) return;
-    event.preventDefault();
-    submitRfq(event.target);
+    if (event.target.dataset.formspreeReady === 'true') return;
+    setRfqSubmitting(event.target, true);
   });
   document.addEventListener('dragover', (event) => {
     const drop = event.target.closest('[data-file-drop]');

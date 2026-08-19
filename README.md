@@ -11,8 +11,8 @@
 - 24 个产品及独立详情页
 - 4 篇 Insights 及独立文章页
 - 产品图片灯箱、前进后退和 URL 状态恢复
-- 电话、WhatsApp 和结构化项目询价
-- 图纸文件名整理与 WhatsApp 手动附件提示
+- Formspree 邮件询盘、电话、WhatsApp 和结构化项目询价
+- 图纸文件名整理与邮件回复 / WhatsApp 手动附件提示
 - 网页内直接嵌入的百度交互地图
 - 百度地图加载失败时的 Leaflet 国际地图降级
 - Sitemap、robots、Canonical、Open Graph 和双语 alternate
@@ -79,17 +79,19 @@ npm run preview
 
 如需改用百度 JavaScript API，在 `src/data/settings.json` 中把 `mapProvider` 改为 `baidu` 并填写 `baiduMapAk`。静态网页中的 AK 对访客可见，必须在百度地图控制台设置 Referer 域名白名单。
 
-## 询价与私域引流
+## Formspree 询价与私域引流
 
-GitHub Pages 无法安全保存询盘、账号、私有附件或管理员会话。因此静态版采用以下流程：
+GitHub Pages 本身不保存询盘、账号、私有附件或管理员会话。当前网站使用 Formspree 表单 `xbgrpbkd` 接收项目资料，并保留 WhatsApp 与复制询价内容作为备用方式：
 
 1. 客户填写项目资料。
 2. 前端完成必填项和文件类型检查。
-3. 生成结构化 WhatsApp 询价内容。
-4. 自动打开与 `+86 132 3832 3259` 的 WhatsApp 对话。
-5. 客户在 WhatsApp 中手动附加图纸。
+3. 表单通过 AJAX 提交到 Formspree，页面内显示成功或错误状态。
+4. 所选图纸的文件名随询盘提交，实际文件不上传到 Formspree。
+5. 客户可回复通知邮件，或通过 `+86 132 3832 3259` 的 WhatsApp 补充发送图纸。
 
-“复制询价内容”可用于微信、邮件或其他私域工具。静态网站不会声称文件已经上传或存储。
+“复制询价内容”可用于微信、邮件或其他私域工具。页面会明确说明实际图纸尚未上传或存储。
+
+Formspree 表单 ID 位于 `src/data/settings.json` 的 `formspreeFormId`。构建页固定加载 `@formspree/ajax@1.1.5`，不需要安装前端依赖。
 
 ## 更新产品和内容
 

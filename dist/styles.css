@@ -2147,6 +2147,22 @@ h4 {
   box-shadow: 0 0 0 3px rgba(227, 74, 43, 0.12);
 }
 
+.form-field [data-fs-field][aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.field-error {
+  display: none;
+  margin-top: 6px;
+  color: var(--error);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.field-error[data-fs-active] {
+  display: block;
+}
+
 .file-drop {
   position: relative;
   display: grid;

@@ -177,7 +177,7 @@ function pageHtml(route) {
   <title>${escapeHtml(seo.title)}</title>
   <link rel="icon" type="image/svg+xml" href="${root}assets/brand/favicon.svg">
   <link rel="stylesheet" href="${root}vendor/leaflet/leaflet.css?v=1.9.4">
-  <link rel="stylesheet" href="${root}styles.css?v=20260818.2-static">
+  <link rel="stylesheet" href="${root}styles.css?v=20260819.1-static">
   <script>window.__ZHANYI_STATIC__=${runtimeConfig};</script>
   ${analyticsMarkup()}
 </head>
@@ -190,8 +190,10 @@ function pageHtml(route) {
     </div>
   </div>
   <noscript>${noScript}</noscript>
+  <script>window.formspree=window.formspree||function(){(window.formspree.q=window.formspree.q||[]).push(arguments)};</script>
+  <script src="https://unpkg.com/@formspree/ajax@1.1.5/dist/global.js" defer></script>
   <script src="${root}vendor/leaflet/leaflet.js?v=1.9.4" defer></script>
-  <script src="${root}app.js?v=20260818.2-static" defer></script>
+  <script src="${root}app.js?v=20260819.1-static" defer></script>
 </body>
 </html>`;
 }
