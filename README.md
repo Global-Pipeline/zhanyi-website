@@ -34,6 +34,12 @@ npm run preview
 
 最终静态文件位于 `dist/`。
 
+## Vercel 自动部署
+
+仓库已包含 `vercel.json`，Vercel 会自动执行 `npm run build` 并发布 `dist/`，不需要手动填写 Framework Preset、Build Command 或 Output Directory。
+
+在 Vercel 导入本 GitHub 仓库后，后续推送到 `main` 会自动触发生产构建。构建器会自动使用 Vercel 提供的生产域名生成 Canonical、Sitemap 和 Open Graph URL；如需固定为自定义域名，可在 Vercel 项目的 Environment Variables 中设置 `SITE_URL`（完整网址）或 `CUSTOM_DOMAIN`（仅域名）。
+
 ## 直接上传 GitHub
 
 1. 在 GitHub 创建一个空仓库。

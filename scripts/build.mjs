@@ -44,9 +44,15 @@ function githubPagesUrl() {
     : `https://${owner}.github.io/${repositoryName}`;
 }
 
+function vercelUrl() {
+  const domain = String(process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL || '').trim();
+  if (!domain) return '';
+  return /^https?:\/\//i.test(domain) ? domain : `https://${domain}`;
+}
+
 const customDomain = normalizeDomain(process.env.CUSTOM_DOMAIN || config.customDomain);
 const configuredSiteUrl = String(process.env.SITE_URL || config.siteUrl || '').trim();
-const siteUrl = (configuredSiteUrl || (customDomain ? `https://${customDomain}` : '') || githubPagesUrl() || 'http://localhost:4180').replace(/\/+$/, '');
+const siteUrl = (configuredSiteUrl || (customDomain ? `https://${customDomain}` : '') || vercelUrl() || githubPagesUrl() || 'http://localhost:4180').replace(/\/+$/, '');
 const deployment = new URL(siteUrl + '/');
 const deploymentBasePath = deployment.pathname.replace(/\/+$/, '') === '/' ? '' : deployment.pathname.replace(/\/+$/, '');
 
