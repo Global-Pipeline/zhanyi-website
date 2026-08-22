@@ -44,29 +44,29 @@ const fallbackCategories = [
 const fallbackHero = [
   {
     image: A('generated/hero-stamping.webp'),
-    kicker: L('Precision metal manufacturing', '精密五金制造'),
-    title: L('Precision parts. Production-ready thinking.', '精密零件，面向量产的工程思维。'),
+    kicker: L('Precision Metal Manufacturing', '精密金属制造'),
+    title: L('From Drawing to Dependable Delivery', '从图纸，到可靠交付'),
     description: L(
-      'Custom stamping, sheet metal fabrication and tooling support for industrial teams that need clear communication and dependable execution.',
-      '为重视清晰沟通与可靠执行的工业客户，提供五金冲压、精密钣金与模具制造支持。'
+      'Zhanyi helps engineering and sourcing teams move demanding metal designs into production through disciplined review, practical manufacturing and clear project ownership.',
+      '展益以严谨评审、务实制造和清晰负责的项目沟通，帮助工程与采购团队让复杂金属设计稳妥走向生产。'
     ),
   },
   {
     image: A('generated/tooling-workshop.webp'),
-    kicker: L('Built around your drawing', '围绕图纸展开制造'),
-    title: L('From design review to finished metal components.', '从图纸评审，到精密五金成品。'),
+    kicker: L('Stamping & Sheet Metal', '冲压与钣金'),
+    title: L('Built to Fit. Prepared to Repeat.', '为精准装配而制造，为稳定量产而准备'),
     description: L(
-      'A practical project flow connects material selection, forming, bending, surface treatment and inspection.',
-      '以务实的项目流程衔接材料选择、冲压成型、折弯、表面处理与检验。'
+      'From precision stampings to complete enclosures, every process decision begins with how the part must fit, function and be inspected.',
+      '从精密冲压件到完整机箱，每一个工艺决定都回到零件如何配合、如何工作，以及如何被清晰验收。'
     ),
   },
   {
     image: A('generated/global-review.webp'),
-    kicker: L('Tooling to repeat production', '从模具到重复量产'),
-    title: L('Manufacturing support that moves with your project.', '跟随项目节奏的制造支持。'),
+    kicker: L('New Energy & Electrical', '新能源与电气'),
+    title: L('Critical Metal Components, Handled with Clarity.', '关键金属部件，更需要清晰而可靠的制造'),
     description: L(
-      'Engineering feedback, sample verification and production coordination in one direct working relationship.',
-      '在直接协作中完成工程反馈、样品验证与生产协调。'
+      'For busbars, terminals, covers, trays, brackets and enclosures, we align material, geometry, assembly, inspection and delivery before production begins.',
+      '铜排、端子、盖板、托盘、支架与箱体，从材料和结构评审开始，把连接、装配、检验与交付边界逐项说清。'
     ),
   },
 ];
@@ -103,7 +103,7 @@ const fallbackCapabilities = [
   {
     id: 'finishing',
     title: L('Surface Finishing', '表面处理协同'),
-    description: L('Project coordination for coating, plating, oxidation and other drawing-specified finishes.', '根据图纸要求协同喷涂、电镀、氧化等表面处理。'),
+    description: L('Finishing is reviewed as part of function and assembly, with coating, plating and anodizing aligned to the drawing.', '把表面处理纳入功能与装配评审，并依据图纸衔接喷涂、电镀和氧化要求。'),
     image: A('products/zinc-plated-offset-bracket.jpg'),
     features: L(['Finish matching', 'Appearance review', 'Packaging planning'], ['表面匹配', '外观确认', '包装规划']),
   },
@@ -125,8 +125,8 @@ const product = (slug, category, titleEn, titleZh, image, processEn, processZh, 
   materials: L(materialsEn, materialsZh),
   finish: L(finishEn, finishZh),
   description: L(
-    'Custom manufactured from customer drawings with project-specific materials and finishing.',
-    '依据客户图纸定制生产，并按项目要求选择材料与表面处理。'
+    'Manufactured from the approved drawing, with material, finish and acceptance aligned to the application.',
+    '依据确认图纸制造，并让材料、表面处理与验收方式服务于实际应用。'
   ),
 });
 
@@ -146,12 +146,12 @@ const fallbackProducts = [
 ];
 
 const fallbackIndustries = [
-  { id: 'new-energy', title: L('New Energy & Storage', '新能源与储能'), description: L('Metal structures, mounting parts, housings and custom components developed around application drawings.', '围绕应用图纸开发金属结构件、安装件、壳体与定制零部件。'), image: A('products/insulated-flexible-copper-busbar.png') },
-  { id: 'automotive', title: L('Automotive Components', '汽车零部件'), description: L('Stamped brackets, formed parts and hardware components for project-specific assemblies.', '面向项目装配需求的冲压支架、成型件与五金零部件。'), image: A('products/formed-steel-mounting-bracket.jpg') },
-  { id: 'electronics', title: L('Consumer Electronics', '消费电子'), description: L('Compact metal parts, terminals, contacts and structural pieces for electronic products.', '面向电子产品的小型五金件、端子、接触件与结构零件。'), image: A('products/formed-electrical-contact-terminal.jpg') },
-  { id: 'industrial', title: L('Industrial Equipment', '工业设备'), description: L('Panels, enclosures, guards and mounting hardware for machinery and production equipment.', '用于机械与生产设备的面板、机箱、防护罩和安装五金。'), image: A('products/ventilated-equipment-chassis.jpg') },
-  { id: 'electrical', title: L('Electrical & Power', '电气与电源'), description: L('Metal housings, contacts and formed components designed for electrical product assemblies.', '用于电气产品装配的金属壳体、接触件与成型零件。'), image: A('products/power-control-chassis.jpg') },
-  { id: 'communications', title: L('Communications', '通信设备'), description: L('Custom chassis, cabinets and structural parts for communications and network equipment.', '面向通信与网络设备的定制机箱、机柜与结构件。'), image: A('products/rackmount-equipment-chassis.jpg') },
+  { id: 'new-energy', title: L('New Energy & Storage', '新能源与储能'), description: L('Connection geometry, insulation interfaces, ventilation and structural support must work together in battery and storage equipment.', '电池与储能设备中的连接几何、绝缘界面、通风和结构承托需要协同考虑。'), image: A('products/insulated-flexible-copper-busbar.png') },
+  { id: 'automotive', title: L('Automotive Components', '汽车零部件'), description: L('Stamped brackets and formed components developed around fit, retention and repeatable assembly.', '围绕配合、固定和重复装配开发冲压支架与成形零件。'), image: A('products/formed-steel-mounting-bracket.jpg') },
+  { id: 'electronics', title: L('Consumer Electronics', '消费电子'), description: L('Compact terminals, contacts and structures depend on precise relationships between holes, bends and mating features.', '紧凑端子、触点与结构件依赖孔位、折弯和配合特征之间的精准关系。'), image: A('products/formed-electrical-contact-terminal.jpg') },
+  { id: 'industrial', title: L('Industrial Equipment', '工业设备'), description: L('Panels, enclosures, guards and brackets planned around layouts, assembly access and maintenance.', '面板、机箱、护罩和支架围绕设备布局、装配空间与维护需求规划。'), image: A('products/ventilated-equipment-chassis.jpg') },
+  { id: 'electrical', title: L('Electrical & Power', '电气与电源'), description: L('Housings, contacts and formed parts that balance connection, protection and service access.', '兼顾连接、防护与维护空间的壳体、触点和成形零件。'), image: A('products/power-control-chassis.jpg') },
+  { id: 'communications', title: L('Communications', '通信设备'), description: L('Chassis, cabinets and structures shaped by modular layouts, airflow and serviceability.', '围绕模块化布局、空气流动和维护便利性开发机箱、机柜与结构件。'), image: A('products/rackmount-equipment-chassis.jpg') },
 ];
 
 const fallbackInsights = [
@@ -194,11 +194,11 @@ const fallbackInsights = [
 ];
 
 const qualitySteps = [
-  { title: L('Requirement Review', '需求评审'), description: L('Drawings, materials, finishes and inspection expectations are aligned before work begins.', '在项目启动前统一图纸、材料、表面处理与检验要求。') },
-  { title: L('Incoming Verification', '来料确认'), description: L('Material information and project requirements are checked before production release.', '生产放行前核对材料信息与项目要求。') },
-  { title: L('First Article Check', '首件检验'), description: L('Critical dimensions and visible requirements are reviewed against the approved drawing.', '依据确认图纸检查关键尺寸与外观要求。') },
-  { title: L('Process Control', '过程控制'), description: L('Defined checkpoints support consistency through forming, fabrication and assembly.', '通过设定检验节点支持成型、钣金和组装过程的一致性。') },
-  { title: L('Final Verification', '出货确认'), description: L('Finished parts are reviewed for the agreed project requirements before delivery.', '交付前依据约定的项目要求确认成品。') },
+  { title: L('Requirement Review', '需求评审'), description: L('The approved drawing, material, finish and acceptance basis are aligned before production begins.', '生产开始前，对齐确认图纸、材料、表面处理与验收依据。') },
+  { title: L('Incoming Verification', '来料确认'), description: L('Material identity and project-specific conditions are checked before release.', '生产放行前确认材料信息与项目特定要求。') },
+  { title: L('First Article Check', '首件检验'), description: L('Critical geometry, fit and appearance are reviewed before volume production.', '批量生产前复核关键结构、配合与外观。') },
+  { title: L('Process Control', '过程控制'), description: L('Checkpoints are placed where forming, fabrication or assembly variation matters.', '在成形、钣金和装配变化真正影响结果的位置设置检查节点。') },
+  { title: L('Final Verification', '出货确认'), description: L('Finished parts, quantity and agreed records are reviewed before packing.', '包装前复核成品、数量与项目约定资料。') },
 ];
 
 const initialStaticPath = stripStaticBase(location.pathname);
@@ -321,7 +321,7 @@ function companyName() {
 }
 
 function whatsappUrl(message = '') {
-  return 'https://wa.me/' + COMPANY.whatsapp + '?text=' + encodeURIComponent(message || tx('Hello, I would like to discuss a custom metal project.', '您好，我想咨询定制五金项目。'));
+  return 'https://wa.me/' + COMPANY.whatsapp + '?text=' + encodeURIComponent(message || tx('Hello, I have a metal part I would like Zhanyi to review.', '您好，我有一个金属零件项目，希望请展益协助评审。'));
 }
 
 function contentList(key, fallback) {
@@ -347,7 +347,7 @@ function normalizeProduct(item, index) {
     slug: slugify(item.slug || item.id || localize(title), 'product-' + (index + 1)),
     category: slugify(category || 'stamping', 'stamping'),
     title,
-    description: item.description || item.summary || L('Custom manufactured from customer drawings with project-specific materials and finishing.', '依据客户图纸定制生产，并按项目要求选择材料与表面处理。'),
+    description: item.description || item.summary || L('Manufactured from the approved drawing, with material, finish and acceptance aligned to the application.', '依据确认图纸制造，并让材料、表面处理与验收方式服务于实际应用。'),
     image: resolveImage(gallery[0] || item.image),
     images: gallery.map((image) => resolveImage(typeof image === 'string' ? image : image.url || image.src)).filter(Boolean),
     process: item.process || item.processes || L('Custom manufacturing', '定制加工'),
@@ -426,8 +426,8 @@ function renderMega(type) {
         <div class="mega-intro">
           <strong>${capabilityMode ? tx('Manufacturing capabilities', '制造能力') : tx('Custom metal products', '定制五金产品')}</strong>
           <p>${capabilityMode
-            ? tx('A connected workflow from drawing review and tooling to finished metal components.', '从图纸评审、模具开发到五金成品的连贯制造流程。')
-            : tx('Representative stamping, sheet metal, terminal and enclosure products.', '展示具有代表性的冲压、钣金、端子与机箱类产品。')}</p>
+            ? tx('See how engineering review, process planning, production and inspection connect around the final part.', '了解工程评审、工艺规划、生产与检验如何围绕最终零件衔接。')
+            : tx('Representative part families for a drawing-led manufacturing discussion.', '用于来图制造沟通的代表性产品系列。')}</p>
           <a class="text-link" data-route href="${routeUrl(capabilityMode ? '/capabilities' : '/products')}">
             ${capabilityMode ? tx('View all capabilities', '查看全部能力') : tx('Explore product catalogue', '浏览产品目录')}${icon('arrow-right', 17)}
           </a>
@@ -437,7 +437,7 @@ function renderMega(type) {
         </div>
         <a class="mega-feature" data-route href="${routeUrl('/contact')}">
           <img src="${capabilityMode ? A('generated/tooling-workshop.webp') : A('products/formed-steel-mounting-bracket.jpg')}" alt="">
-          <span>${tx('Send a drawing for project review', '发送图纸进行项目评审')} ${icon('arrow-right', 17)}</span>
+          <span>${tx('Send your drawing for review', '发送图纸，开始评审')} ${icon('arrow-right', 17)}</span>
         </a>
       </div>
     </div>
@@ -449,7 +449,7 @@ function renderHeader() {
   return `
     <div class="utility-bar">
       <div class="container utility-inner">
-        <span class="utility-message">${icon('factory', 14)}${tx('Direct engineering support for custom metal projects', '定制五金项目的直接工程支持')}</span>
+        <span class="utility-message">${icon('factory', 14)}${tx('Engineering clarity for custom metal projects', '让定制五金项目更清晰、更可控')}</span>
         <div class="utility-links">
           <a class="utility-link" href="tel:${COMPANY.phoneHref}">${icon('phone', 14)}${COMPANY.phone}</a>
           <a class="utility-link" href="${whatsappUrl()}" target="_blank" rel="noopener">${icon('message', 14)}WhatsApp</a>
@@ -474,7 +474,7 @@ function renderHeader() {
         </nav>
         <div class="header-actions">
           <button class="language-toggle" type="button" data-action="toggle-language" aria-label="${tx('Switch to Chinese', '切换到英文')}" title="${tx('中文', 'English')}">${tx('中文', 'EN')}</button>
-          <button class="button button-primary header-quote" type="button" data-action="open-rfq">${icon('send', 17)}${tx('Request a Quote', '获取报价')}</button>
+          <button class="button button-primary header-quote" type="button" data-action="open-rfq">${icon('send', 17)}${tx('Start an RFQ', '发起询价')}</button>
           <button class="icon-button menu-toggle" type="button" data-action="toggle-menu" aria-expanded="false" aria-controls="mobile-drawer" aria-label="${tx('Open menu', '打开菜单')}" title="${tx('Open menu', '打开菜单')}">${icon('menu', 21)}</button>
         </div>
       </div>
@@ -500,7 +500,7 @@ function renderHeader() {
         }).join('')}
         <li class="mobile-drawer-actions">
           <a class="button button-outline" href="tel:${COMPANY.phoneHref}">${icon('phone', 17)}${tx('Call', '电话')}</a>
-          <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 17)}${tx('RFQ', '询价')}</button>
+          <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 17)}${tx('Start RFQ', '发起询价')}</button>
         </li>
       </ul>
     </aside>
@@ -554,8 +554,8 @@ function renderHero() {
               <h1>${escapeHtml(localize(slide.title))}</h1>
               <p>${escapeHtml(localize(slide.description))}</p>
               <div class="hero-actions">
-                <button class="button button-primary" type="button" data-action="open-rfq">${tx('Request a Quote', '获取报价')}${icon('arrow-right', 18)}</button>
-                <a class="button button-ghost-light" data-route href="${routeUrl('/capabilities')}">${tx('Explore Capabilities', '了解制造能力')}</a>
+                <button class="button button-primary" type="button" data-action="open-rfq">${tx('Send Your Drawings', '发送图纸')}${icon('arrow-right', 18)}</button>
+                <a class="button button-ghost-light" data-route href="${routeUrl('/capabilities')}">${tx('See How We Work', '了解我们如何制造')}</a>
               </div>
             </div>
           </div>
@@ -571,7 +571,7 @@ function renderHero() {
       </div>
       <div class="hero-process">
         <div class="container hero-process-inner">
-          ${[tx('Drawing Review', '图纸评审'), tx('Tooling & Sampling', '模具与打样'), tx('Production Control', '生产控制'), tx('Inspection & Delivery', '检验与交付')]
+          ${[tx('Understand the Part', '理解零件'), tx('Plan the Route', '规划路径'), tx('Control Production', '控制生产'), tx('Verify & Deliver', '确认交付')]
             .map((label, index) => `<div class="hero-process-item"><span>0${index + 1}</span><strong>${label}</strong></div>`).join('')}
         </div>
       </div>
@@ -581,10 +581,10 @@ function renderHero() {
 
 function renderValueStrip() {
   const values = [
-    ['layers', tx('Drawing-based manufacturing', '依据图纸定制'), tx('Project-specific review', '项目化工艺评审')],
-    ['wrench', tx('Tooling and fabrication', '模具与钣金协同'), tx('Connected project flow', '连贯项目流程')],
-    ['shield', tx('Defined quality checkpoints', '明确质量节点'), tx('Requirements first', '以需求为准')],
-    ['message', tx('Direct project communication', '直接项目沟通'), tx('Practical feedback', '快速务实反馈')],
+    ['layers', tx('Drawing-led decisions', '由图纸驱动决策'), tx('Clear before production', '投产之前先说清')],
+    ['wrench', tx('Process matched to the part', '工艺匹配零件'), tx('A practical path to scale', '为量产选择务实路径')],
+    ['shield', tx('Quality built into the workflow', '质量融入流程'), tx('Checkpoints you can follow', '每个节点都有依据')],
+    ['message', tx('Direct project ownership', '直接项目负责'), tx('Answers without distance', '沟通不绕弯')],
   ];
   return `
     <section class="value-strip"><div class="container value-strip-inner">
@@ -649,21 +649,26 @@ function productCountLabel(count) {
 }
 
 function renderProcessSection() {
-  const steps = [
-    [tx('Share drawings and requirements', '提交图纸与需求'), tx('Provide drawings, quantity, materials, finish and delivery expectations.', '提供图纸、数量、材料、表面处理与交期预期。')],
-    [tx('Engineering and process review', '工程与工艺评审'), tx('We review manufacturability and clarify important project details.', '评估可制造性，并澄清关键项目细节。')],
-    [tx('Quotation and project alignment', '报价与项目确认'), tx('The proposed process, commercial scope and open points are aligned.', '统一建议工艺、商务范围与待确认事项。')],
-    [tx('Tooling and sample verification', '模具与样品验证'), tx('Preparation leads into sample review and adjustment.', '完成制造准备，并进入样品确认与调整。')],
-    [tx('Production and process checks', '生产与过程检验'), tx('Approved requirements guide production and defined checks.', '依据已确认要求组织生产并执行既定检验。')],
-    [tx('Final verification and delivery', '出货确认与交付'), tx('Finished parts are checked, packed and prepared for delivery.', '完成成品确认、包装与约定交付。')],
+  const data = sectionData('workflow');
+  const fallbackSteps = [
+    [tx('Start with what you have', '从已有资料开始'), tx('Drawings, samples, application, quantity and target timing all help us begin.', '图纸、样件、用途、数量和目标时间都可以成为起点。')],
+    [tx('Surface manufacturing risks early', '提前看见制造风险'), tx('Questions that affect forming, assembly, appearance, inspection or cost are raised early.', '尽早提出可能影响成形、装配、外观、检验或成本的问题。')],
+    [tx('Align the route and commercial scope', '让方案与报价基于同一前提'), tx('Process, quotation scope, open points and timing are aligned against shared information.', '工艺、报价边界、开放问题与节奏基于同一套资料确认。')],
+    [tx('Use the sample to confirm the result', '用样件确认真实结果'), tx('Critical geometry, fit and appearance are reviewed before moving forward.', '进入下一阶段前，以样件确认关键结构、配合与外观。')],
+    [tx('Produce to the confirmed basis', '按确认要求组织生产'), tx('Approved drawings, samples and checkpoints guide production.', '让确认图纸、样件与检查节点贯穿生产。')],
+    [tx('Treat delivery as part of the project', '把交付细节也纳入项目'), tx('Final review, packing, labeling and delivery details close the loop.', '终检、包装、标签与交付安排共同完成项目闭环。')],
   ];
+  const configuredSteps = Array.isArray(data.steps)
+    ? data.steps.map((step) => [localize(step.title), localize(step.description)]).filter((step) => step[0] && step[1])
+    : [];
+  const steps = configuredSteps.length ? configuredSteps : fallbackSteps;
   return `
     <section class="section section-dark"><div class="container process-layout">
       <div class="process-sticky reveal">
-        <span class="eyebrow">${tx('Project workflow', '项目流程')}</span>
-        <h2>${tx('A clear path from RFQ to delivery.', '从询价到交付，路径清晰。')}</h2>
-        <p>${tx('Each project starts with the drawing and stays connected through review, sampling, production and delivery.', '每个项目从图纸出发，并贯穿评审、打样、生产与交付。')}</p>
-        <button class="button button-light" type="button" data-action="open-rfq">${tx('Start a project', '发起项目')}${icon('arrow-right', 18)}</button>
+        <span class="eyebrow">${escapeHtml(localize(data.eyebrow, tx('From RFQ to delivery', '从询价到交付')))}</span>
+        <h2>${escapeHtml(localize(data.title, tx('A clearer path from first review to final delivery.', '从首次评审到最终交付，每一步都更清楚。')))}</h2>
+        <p>${escapeHtml(localize(data.intro, tx('You should always know what has been confirmed, what remains open and what happens next.', '您应该始终知道哪些事项已经确认、哪些问题仍待决定，以及下一步会发生什么。')))}</p>
+        <button class="button button-light" type="button" data-action="open-rfq">${tx('Start with your drawing', '从图纸开始')}${icon('arrow-right', 18)}</button>
       </div>
       <div class="process-list reveal">
         ${steps.map((step, index) => `<article class="process-step"><span>${String(index + 1).padStart(2, '0')}</span><div><h3>${step[0]}</h3><p>${step[1]}</p></div></article>`).join('')}
@@ -706,12 +711,12 @@ function renderCta() {
   return `
     <section class="cta-band"><div class="container cta-inner">
       <div class="cta-copy reveal">
-        <span class="eyebrow">${tx('Start with your drawing', '从图纸开始')}</span>
-        <h2>${tx('Have a metal part ready for review?', '有五金零件需要评审吗？')}</h2>
-        <p>${tx('Send the drawing, quantity and application requirements. We will use them as the basis for the manufacturing discussion.', '发送图纸、数量与应用要求，我们将据此展开制造沟通。')}</p>
+        <span class="eyebrow">${tx('A clearer next step', '让下一步更清楚')}</span>
+        <h2>${tx('A drawing is enough to start a better manufacturing conversation.', '一张图纸，就可以开始一次专业对话。')}</h2>
+        <p>${tx('Send what you have. We will review the part, identify the questions that matter and make the next step clear.', '把已有资料发给我们。我们会认真看懂零件、找出真正需要确认的问题，并把下一步说明清楚。')}</p>
       </div>
       <div class="cta-actions reveal">
-        <button class="button button-primary" type="button" data-action="open-rfq">${icon('upload', 18)}${tx('Upload drawings', '上传图纸')}</button>
+        <button class="button button-primary" type="button" data-action="open-rfq">${icon('upload', 18)}${tx('Send Your Drawings', '发送图纸')}</button>
         <a class="button button-ghost-light" href="tel:${COMPANY.phoneHref}">${icon('phone', 18)}${COMPANY.phone}</a>
       </div>
     </div></section>
@@ -723,50 +728,50 @@ function renderHome() {
     ${renderHero()}${renderValueStrip()}
     <section class="section"><div class="container intro-grid">
       <div class="intro-copy reveal">
-        <span class="eyebrow">${tx('Dongguan metal manufacturing', '东莞五金制造')}</span>
-        <h2>${tx('Built for practical engineering collaboration.', '为务实的工程协作而打造。')}</h2>
+        <span class="eyebrow">${tx('Dongguan · Custom Metal Manufacturing', '东莞 · 定制金属制造')}</span>
+        <h2>${tx('The best manufacturing relationships begin with clarity.', '可靠的制造合作，始于把事情说清楚。')}</h2>
         <p>${tx(
-          'Dongguan Zhanyi Hardware Products Co., Ltd. focuses on custom metal stamping, sheet metal fabrication, tooling and hardware components. We work from customer drawings and connect engineering feedback with production execution.',
-          '东莞市展益五金制品有限公司专注于定制五金冲压、精密钣金、模具及五金零部件。我们依据客户图纸开展工作，将工程反馈与生产执行有效衔接。'
+          'Dongguan Zhanyi Hardware Products Co., Ltd. works with engineering and sourcing teams on custom stampings, sheet metal enclosures, terminals, power structures and new-energy components. We begin with the drawing, raise important questions early and keep each decision visible as the project moves toward production.',
+          '东莞市展益五金制品有限公司面向工程与采购团队制造定制冲压件、钣金机箱、端子触点、电源结构件和新能源部件。我们从图纸开始，尽早提出重要问题，并让项目走向生产时的每个关键决定保持清晰。'
         )}</p>
         <div class="intro-links">
-          <a class="text-link" data-route href="${routeUrl('/about')}">${tx('About Zhanyi', '了解展益')}${icon('arrow-right', 17)}</a>
-          <a class="text-link" data-route href="${routeUrl('/quality')}">${tx('Quality approach', '质量方法')}${icon('arrow-right', 17)}</a>
+          <a class="text-link" data-route href="${routeUrl('/about')}">${tx('Meet Zhanyi', '认识展益')}${icon('arrow-right', 17)}</a>
+          <a class="text-link" data-route href="${routeUrl('/quality')}">${tx('How we protect quality', '了解质量如何建立')}${icon('arrow-right', 17)}</a>
         </div>
       </div>
       <div class="intro-media reveal">
         <img class="intro-media-main" src="${A('generated/hero-stamping.webp')}" alt="${tx('Metal stamping production environment', '五金冲压生产场景')}" loading="lazy">
         <img class="intro-media-detail" src="${A('products/formed-steel-mounting-bracket.jpg')}" alt="${tx('Custom metal products', '定制五金产品')}" loading="lazy">
-        <div class="intro-stamp"><strong>${tx('Drawing-led', '图纸驱动')}</strong><small>${tx('Custom manufacturing', '定制制造')}</small></div>
+        <div class="intro-stamp"><strong>${tx('Drawing-led', '由图纸驱动')}</strong><small>${tx('Built for delivery', '为可靠交付')}</small></div>
       </div>
     </div></section>
     <section class="section section-dark"><div class="container">
-      ${sectionHeading(tx('Core capabilities', '核心能力'), tx('One connected metal manufacturing workflow.', '连贯的一站式五金制造流程。'), tx('Capabilities are organized around the real decisions in a custom metal project: process, tooling, finish and verification.', '围绕定制五金项目中的真实决策组织能力：工艺、模具、表面与检验。'), { path: '/capabilities', label: tx('View all capabilities', '查看全部能力') })}
+      ${sectionHeading(tx('Core capabilities', '核心能力'), tx('One workflow. Fewer unknowns between drawing and delivery.', '一套连贯流程，减少图纸到交付之间的不确定。'), tx('Process, tooling, finish and inspection are considered as connected decisions, each serving the final part and assembly.', '工艺、模具、表面处理与检验不是孤立环节，每个决定都服务于最终零件与装配。'), { path: '/capabilities', label: tx('See how we work', '了解我们如何制造') })}
       ${renderCapabilityCards()}
     </div></section>
     <section class="section"><div class="container">
-      ${sectionHeading(tx('Product catalogue', '产品目录'), tx('Representative parts, made to your drawing.', '代表性产品，均可来图定制。'), tx('Browse the current product image library across stamping, sheet metal, enclosures, terminals and new energy hardware.', '浏览现有产品图库，覆盖冲压、钣金、机箱、端子与新能源五金。'), { path: '/products', label: tx('View complete catalogue', '查看完整目录') })}
+      ${sectionHeading(tx('Product catalogue', '产品目录'), tx('Representative parts. Your drawing defines the final product.', '展示代表性产品，最终零件由您的图纸定义。'), tx('Explore the range we can discuss across stamping, sheet metal, enclosures, terminals, power and new-energy hardware.', '浏览冲压、钣金、机箱、端子、电源与新能源五金等可沟通产品范围。'), { path: '/products', label: tx('Explore the product range', '查看产品范围') })}
       <div class="product-toolbar reveal">${renderFilters()}<span class="product-count" data-product-count>${productCountLabel(filteredProducts().length)}</span></div>
       <div class="product-grid reveal" data-product-grid data-limit="8">${renderProductGrid(filteredProducts(), 8)}</div>
     </div></section>
     ${renderProcessSection()}
     <section class="section section-paper"><div class="container">
-      ${sectionHeading(tx('Industries', '应用行业'), tx('Metal components for demanding product teams.', '面向多类工业产品团队的五金零件。'), tx('From compact terminals to formed structures and enclosures, the same disciplined workflow supports different applications.', '从小型端子到成型结构件与机箱，同一套严谨流程服务不同应用。'), { path: '/industries', label: tx('Explore industries', '了解应用行业') })}
+      ${sectionHeading(tx('Industries', '行业应用'), tx('The application should shape the part, and the way it is made.', '先理解零件要完成什么，再决定应当如何制造。'), tx('Connection, support, protection, thermal management and service access lead to different manufacturing decisions.', '连接、承托、防护、散热与维护方式，会导向不同的制造决策。'), { path: '/industries', label: tx('Explore applications', '了解行业应用') })}
       ${renderIndustryGrid()}
     </div></section>
     <section class="quality-band">
       <div class="quality-media"><img src="${A('generated/quality-lab.webp')}" alt="${tx('Precision inspection environment', '精密检验场景')}" loading="lazy"></div>
       <div class="quality-copy">
-        <span class="eyebrow">${tx('Quality approach', '质量方法')}</span><h2>${tx('Requirements become checkpoints.', '把需求转化为检验节点。')}</h2>
-        <p>${tx('Quality planning starts with the approved drawing and follows the project through incoming verification, first article review, process checks and final confirmation.', '质量规划从确认图纸开始，并贯穿来料确认、首件检验、过程检查与出货确认。')}</p>
+        <span class="eyebrow">${tx('Quality from the start', '质量从源头开始')}</span><h2>${tx('Quality is decided long before final inspection.', '质量，早在终检之前就已决定。')}</h2>
+        <p>${tx('The approved drawing, material identity, first article and process checkpoints create the basis for final acceptance. Inspection confirms the work; clarity controls it.', '确认图纸、材料识别、首件与过程节点共同建立最终验收依据。检验负责确认结果，清晰的标准负责控制过程。')}</p>
         <div class="quality-points">
-          ${[tx('Drawing revision control', '图纸版本控制'), tx('First article review', '首件确认'), tx('Defined inspection points', '既定检验节点'), tx('Final requirement check', '出货要求确认')].map((item) => `<span class="quality-point">${icon('check', 17)}${item}</span>`).join('')}
+          ${[tx('One confirmed revision', '一个确认版本'), tx('First article before volume', '量产前首件确认'), tx('Checks where variation matters', '在关键变化处检查'), tx('Clear release basis', '清晰放行依据')].map((item) => `<span class="quality-point">${icon('check', 17)}${item}</span>`).join('')}
         </div>
-        <a class="button button-light" data-route href="${routeUrl('/quality')}">${tx('See our quality workflow', '查看质量流程')}${icon('arrow-right', 18)}</a>
+        <a class="button button-light" data-route href="${routeUrl('/quality')}">${tx('See how quality is built', '了解质量如何建立')}${icon('arrow-right', 18)}</a>
       </div>
     </section>
     <section class="section"><div class="container">
-      ${sectionHeading(tx('Engineering insights', '工程洞察'), tx('Useful thinking for custom metal projects.', '服务于定制五金项目的实用思考。'), tx('Short technical notes help purchasing and engineering teams prepare clearer drawings, RFQs and production handovers.', '通过技术短文，帮助采购与工程团队准备更清晰的图纸、询价资料和量产交接。'), { path: '/insights', label: tx('Read all insights', '查看全部文章') })}
+      ${sectionHeading(tx('Engineering insights', '工程与采购洞察'), tx('Better questions lead to better parts.', '问题问得更好，零件才做得更好。'), tx('Practical notes for preparing clearer drawings, stronger RFQs and smoother production handoffs.', '帮助工程与采购团队把图纸、询价和量产交接准备得更清楚。'), { path: '/insights', label: tx('Read the insights', '阅读技术洞察') })}
       ${renderInsightCards()}
     </div></section>
     ${renderCta()}
@@ -801,8 +806,8 @@ function renderCapabilitiesPage() {
     <section class="section"><div class="container">
       ${sectionHeading(
         localize(data.eyebrow, tx('Capabilities', '制造能力')),
-        tx('Processes organized around real project decisions.', '围绕真实项目决策组织制造能力。'),
-        tx('Each capability connects material behavior, part geometry, tooling, finishing and inspection requirements.', '每项能力都围绕材料特性、零件结构、模具、表面处理和检验要求展开。')
+        tx('Every capability serves the same goal: a part ready for its real assembly.', '每一项能力，都服务于零件最终的装配与使用。'),
+        tx('Material behavior, geometry, tooling, finishing and inspection are reviewed as connected decisions rather than isolated processes.', '材料特性、零件结构、模具、表面处理和检验被放在同一个项目逻辑中判断，而不是彼此割裂。')
       )}
       <div class="capability-detail-grid reveal">
         ${items.map((item, index) => `
@@ -829,14 +834,14 @@ function renderProductsPage() {
   const visible = filteredProducts();
   return `
     ${renderPageHero(
-      tx('Custom Metal Product Catalogue', '定制五金产品目录'),
-      tx('Representative stamped parts, terminals, brackets, enclosures and power hardware. Every production project is reviewed against its drawing and requirements.', '展示冲压件、端子、支架、机箱与电源五金等代表性产品。每个量产项目均依据图纸和具体要求评审。'),
+      tx('Representative Products. Your Drawing Defines the Final Part.', '展示代表性产品，最终零件由您的图纸定义。'),
+      tx('Explore stamped parts, terminals, brackets, enclosures, power structures and energy components as a starting point for a drawing-led manufacturing discussion.', '浏览冲压件、端子、支架、机箱、电源结构件和新能源部件，以此作为来图制造沟通的起点。'),
       A('generated/hero-stamping.webp'),
       [{ path: '/', label: tx('Home', '首页') }, { path: '/products', label: tx('Products', '产品中心') }]
     )}
     <section class="section"><div class="container">
       <div class="product-page-heading reveal">
-        <div><span class="eyebrow">${tx('Product library', '产品图库')}</span><h2>${tx('Browse representative parts.', '浏览代表性五金产品。')}</h2></div>
+        <div><span class="eyebrow">${tx('Product library', '产品图库')}</span><h2>${tx('See what the right manufacturing conversation can begin with.', '从一件相似产品，开始更具体的制造沟通。')}</h2></div>
         <label class="product-search">
           <span class="skip-link">${tx('Search products', '搜索产品')}</span>
           <input type="search" data-product-search value="${escapeAttr(state.search)}" placeholder="${tx('Search product, material or process', '搜索产品、材料或工艺')}">
@@ -856,9 +861,9 @@ function renderProductDetail(slug) {
   const images = productItem.images.length ? productItem.images : [productItem.image];
   const related = state.products.filter((item) => item.slug !== productItem.slug && item.category === productItem.category).slice(0, 4);
   const blocks = [
-    [tx('01', '01'), tx('Drawing review', '图纸评审'), tx('Geometry, material, quantity, finish and critical requirements are clarified before planning.', '在规划前确认结构、材料、数量、表面处理和关键要求。')],
-    [tx('02', '02'), tx('Process planning', '工艺规划'), tx('The manufacturing route is selected around the part geometry, repeatability and project stage.', '围绕零件结构、重复性和项目阶段选择制造路径。')],
-    [tx('03', '03'), tx('Verification', '检验确认'), tx('Inspection points and acceptance references follow the confirmed drawing and project scope.', '检验节点与验收依据遵循确认图纸和项目边界。')],
+    [tx('01', '01'), tx('Clarify what matters', '先把关键点说清楚'), tx('Geometry, material, quantity, finish, assembly context and critical features are aligned before planning.', '在规划前对齐结构、材料、数量、表面处理、装配关系和关键特征。')],
+    [tx('02', '02'), tx('Choose a practical route', '选择务实的制造路径'), tx('The process is selected around geometry, repeatability, project stage and the result the part must deliver.', '围绕零件结构、重复性、项目阶段与最终用途选择制造路径。')],
+    [tx('03', '03'), tx('Define how acceptance works', '明确如何验收'), tx('Inspection points and acceptance references are tied to the approved drawing and agreed project scope.', '让检验节点和验收依据回到确认图纸与双方约定的项目边界。')],
   ];
   return `
     <section class="section section-compact"><div class="container">
@@ -888,10 +893,10 @@ function renderProductDetail(slug) {
             <div class="spec-row"><dt>${tx('Applications', '应用')}</dt><dd>${escapeHtml(localize(productItem.applications, tx('Project-specific applications', '按项目应用要求')))}</dd></div>
           </dl>
           <div class="detail-actions">
-            <button class="button button-primary" type="button" data-action="open-rfq" data-product="${escapeAttr(localize(productItem.title))}">${icon('send', 18)}${tx('Request a Quote', '获取报价')}</button>
-            <a class="button button-outline" href="tel:${COMPANY.phoneHref}">${icon('phone', 18)}${tx('Call us', '电话联系')}</a>
+            <button class="button button-primary" type="button" data-action="open-rfq" data-product="${escapeAttr(localize(productItem.title))}">${icon('send', 18)}${tx('Discuss This Part', '沟通这个零件')}</button>
+            <a class="button button-outline" href="tel:${COMPANY.phoneHref}">${icon('phone', 18)}${tx('Speak with us', '直接沟通')}</a>
           </div>
-          <p class="detail-note">${tx('Images show representative product types. Final specifications follow your approved drawing and project requirements.', '图片展示代表性产品类型，最终规格以确认图纸和项目要求为准。')}</p>
+          <p class="detail-note">${tx('This image represents a part family, not a fixed catalogue specification. Your approved drawing defines the final material, geometry, finish and acceptance basis.', '图片用于展示代表性零件类型，并非固定目录规格。最终材料、结构、表面处理与验收依据由确认图纸定义。')}</p>
         </div>
       </div>
     </div></section>
@@ -900,7 +905,7 @@ function renderProductDetail(slug) {
         ${blocks.map((block) => `<article class="detail-content-block"><span>${block[0]}</span><h3>${block[1]}</h3><p>${block[2]}</p></article>`).join('')}
       </div>
     </div></section>
-    ${related.length ? `<section class="section"><div class="container">${sectionHeading(tx('Related products', '相关产品'), tx('More parts in this category.', '浏览同类产品。'), tx('Use these images as a starting point for a drawing-based manufacturing discussion.', '这些图片可作为来图制造沟通的起点。'))}<div class="product-grid reveal">${renderProductGrid(related)}</div></div></section>` : ''}
+    ${related.length ? `<section class="section"><div class="container">${sectionHeading(tx('Related products', '相关产品'), tx('Other ways this capability takes shape.', '同类能力，还可以呈现为这些产品。'), tx('Use these representative parts to make your drawing-led manufacturing discussion more specific.', '以这些代表性零件为参考，让来图制造沟通更具体。'))}<div class="product-grid reveal">${renderProductGrid(related)}</div></div></section>` : ''}
     ${renderCta()}
   `;
 }
@@ -916,7 +921,7 @@ function renderIndustriesPage() {
       [{ path: '/', label: tx('Home', '首页') }, { path: '/industries', label: tx('Industries', '应用行业') }]
     )}
     <section class="section"><div class="container">
-      ${sectionHeading(localize(data.eyebrow, tx('Industries', '应用行业')), tx('Application needs shape manufacturing decisions.', '应用需求决定制造方案。'), tx('Connection, support, protection, thermal management and service access all influence how a metal part should be made.', '连接、承托、防护、散热和维护方式都会影响金属零件的制造方案。'))}
+      ${sectionHeading(localize(data.eyebrow, tx('Industries', '应用行业')), tx('Understand the job before choosing the process.', '先理解零件的职责，再选择制造方式。'), tx('Connection, support, protection, thermal management and service access each lead to different decisions in geometry, material, finish and inspection.', '连接、承托、防护、散热与维护方式，会分别影响结构、材料、表面处理与检验决策。'))}
       <div class="industry-page-grid reveal">
         ${items.map((item, index) => `
           <article class="industry-page-item" id="${escapeAttr(item.id)}">
@@ -943,7 +948,7 @@ function renderQualityPage() {
       [{ path: '/', label: tx('Home', '首页') }, { path: '/quality', label: tx('Quality', '质量管理') }]
     )}
     <section class="section"><div class="container">
-      ${sectionHeading(localize(data.eyebrow, tx('Quality management', '质量管理')), tx('Requirements become visible checkpoints.', '把要求转化为清晰的检验节点。'), tx('Material, critical features, appearance, assembly relationships and documentation are reviewed against the confirmed project basis.', '材料、关键特征、外观、装配关系和资料均依据确认的项目基准执行。'))}
+      ${sectionHeading(localize(data.eyebrow, tx('Quality management', '质量管理')), tx('Clear acceptance begins with a shared definition of good.', '先共同定义什么是合格，验收才会清晰。'), tx('Material, critical features, appearance, assembly relationships and records are checked against one confirmed project basis.', '材料、关键特征、外观、装配关系和资料，都回到同一个确认项目基准。'))}
       <div class="quality-flow reveal">
         ${principles.slice(0, 5).map((item, index) => `<article class="quality-flow-step"><span>${String(index + 1).padStart(2, '0')}</span><h3>${escapeHtml(localize(item.title))}</h3><p>${escapeHtml(localize(item.description))}</p></article>`).join('')}
       </div>
@@ -951,7 +956,7 @@ function renderQualityPage() {
     <section class="section section-paper"><div class="container quality-evidence">
       <img class="reveal" src="${A('generated/quality-lab.webp')}" alt="${tx('Precision inspection environment', '精密检验场景')}" loading="lazy">
       <div class="quality-evidence-copy reveal">
-        <span class="eyebrow">${tx('Project documentation', '项目资料')}</span>
+        <span class="eyebrow">${tx('Evidence for acceptance', '验收依据')}</span>
         <h2>${escapeHtml(localize(documentation.title, tx('Clear records support clear acceptance.', '清晰资料支撑清晰验收。')))}</h2>
         <p>${escapeHtml(localize(documentation.description, tx('Inspection records and approval information are planned according to actual project requirements.', '检验记录和确认资料根据实际项目要求进行规划。')))}</p>
         <div class="quality-checks">
@@ -978,10 +983,10 @@ function renderAboutPage() {
     <section class="section"><div class="container about-grid">
       <div class="about-copy reveal">
         <span class="eyebrow">${escapeHtml(localize(data.eyebrow, tx('About us', '关于我们')))}</span>
-        <h2>${tx('Custom metal manufacturing with direct project communication.', '以直接项目沟通服务定制五金制造。')}</h2>
+        <h2>${tx('Good parts begin with a working relationship built on clarity.', '好的零件，始于一段把事情说清楚的合作关系。')}</h2>
         <p>${escapeHtml(localize(data.overview, tx('Dongguan Zhanyi focuses on custom metal stamping, sheet metal fabrication, tooling and hardware components.', '东莞市展益五金制品有限公司专注于定制五金冲压、钣金、模具与五金零部件。')))}</p>
         <p>${escapeHtml(localize(data.positioning))}</p>
-        <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 18)}${tx('Discuss a project', '沟通项目')}</button>
+        <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 18)}${tx('Start with your drawing', '从图纸开始')}</button>
       </div>
       <div class="about-media-grid reveal">
         <img src="${A('generated/hero-stamping.webp')}" alt="${tx('Precision stamping environment', '精密冲压场景')}" loading="lazy">
@@ -990,7 +995,7 @@ function renderAboutPage() {
       </div>
     </div></section>
     <section class="section section-paper"><div class="container">
-      ${sectionHeading(tx('How we work', '我们的工作方式'), tx('Built around clarity, not generic claims.', '以清晰协作为核心，而非泛化宣传。'), tx('The site presents the product range and project workflow that can be discussed and verified for each inquiry.', '网站展示可在每个询盘中进一步沟通和核实的产品范围与项目流程。'))}
+      ${sectionHeading(tx('How we work', '我们的工作方式'), tx('Trust is built in the way the work is handled.', '信任，建立在每一次具体的处理方式里。'), tx('We keep drawings, open questions, manufacturing decisions and acceptance criteria visible so collaboration stays practical and accountable.', '让图纸、开放问题、制造决策与验收依据始终清晰可见，使合作保持务实，也让责任有迹可循。'))}
       <div class="principle-grid reveal">
         ${strengths.map((item, index) => `<article class="principle">${icon(icons[index % icons.length], 28)}<h3>${escapeHtml(localize(item.title))}</h3><p>${escapeHtml(localize(item.description))}</p></article>`).join('')}
       </div>
@@ -1015,7 +1020,7 @@ function renderInsightsPage() {
       breadcrumbs
     )}
     <section class="section"><div class="container">
-      ${sectionHeading(localize(data.eyebrow, tx('Insights', '技术洞察')), tx('Useful preparation for custom metal projects.', '为定制五金项目做好有效准备。'), tx('Each article is written to help purchasing and engineering teams make project information clearer.', '每篇内容都帮助采购与工程团队把项目资料准备得更清晰。'))}
+      ${sectionHeading(localize(data.eyebrow, tx('Insights', '技术洞察')), tx('Better decisions start before the first part is made.', '更好的决定，发生在第一件零件制造之前。'), tx('Each article turns a common sourcing or engineering question into practical information you can use in the next RFQ or design review.', '每篇内容都把常见的采购或工程问题，转化为下一次询价和设计评审中可以直接使用的信息。'))}
       ${active ? `<article class="article-expanded reveal" id="${escapeAttr(active.slug)}"><span class="eyebrow">${escapeHtml(localize(active.category))}</span><h2>${escapeHtml(localize(active.title))}</h2><p>${escapeHtml(localize(active.excerpt))}</p>${active.sections.length ? active.sections.map((section) => `<h3>${escapeHtml(localize(section.heading))}</h3><p>${escapeHtml(localize(section.body))}</p>`).join('') : `<p>${escapeHtml(localize(active.body))}</p>`}</article><div class="section-compact"></div>` : ''}
       ${renderInsightCards(items, 'insights-page-grid')}
     </div></section>
@@ -1037,25 +1042,25 @@ function renderRfqForm(formId, options = {}) {
         <div class="form-field"><label for="${formId}-phone">${tx('Phone / WhatsApp', '电话 / WhatsApp')}</label><input id="${formId}-phone" name="phone" type="tel" autocomplete="tel" maxlength="80"></div>
         <div class="form-field"><label for="${formId}-country">${tx('Country or region', '国家或地区')}</label><input id="${formId}-country" name="country" type="text" autocomplete="country-name" maxlength="100"></div>
         <div class="form-field"><label for="${formId}-category">${tx('Product category', '产品类别')}</label><select id="${formId}-category" name="productCategory"><option value="">${tx('Select a category', '选择产品类别')}</option>${state.categories.map((item) => `<option value="${escapeAttr(localize(item.label))}">${escapeHtml(localize(item.label))}</option>`).join('')}</select></div>
-        <div class="form-field"><label for="${formId}-quantity">${tx('Estimated quantity', '预计数量')}</label><input id="${formId}-quantity" name="quantity" type="text" maxlength="100" placeholder="${tx('Prototype, 1,000 pcs, annual volume...', '样件、1,000件、年用量等')}"></div>
-        <div class="form-field"><label for="${formId}-product">${tx('Product or project', '产品或项目')}</label><input id="${formId}-product" name="productName" type="text" maxlength="180" value="${escapeAttr(selectedProduct)}"></div>
-        <div class="form-field full"><label for="${formId}-message">${tx('Project details', '项目说明')} <span>*</span></label><textarea id="${formId}-message" name="message" required maxlength="12000" placeholder="${tx('Describe application, material, finish, assembly and target timing.', '请说明用途、材料、表面处理、装配关系和目标时间。')}" data-fs-field></textarea><span class="field-error" data-fs-error="message"></span></div>
+        <div class="form-field"><label for="${formId}-quantity">${tx('Expected quantity', '预计数量')}</label><input id="${formId}-quantity" name="quantity" type="text" maxlength="100" placeholder="${tx('Prototype, first batch, annual volume...', '样件、首批数量、年用量等')}"></div>
+        <div class="form-field"><label for="${formId}-product">${tx('Part or project name', '零件或项目名称')}</label><input id="${formId}-product" name="productName" type="text" maxlength="180" value="${escapeAttr(selectedProduct)}"></div>
+        <div class="form-field full"><label for="${formId}-message">${tx('What should we understand?', '希望我们重点了解什么？')} <span>*</span></label><textarea id="${formId}-message" name="message" required maxlength="12000" placeholder="${tx('Tell us what the part must do, material or finish requirements, assembly context and target timing.', '请说明零件用途、材料或表面要求、装配关系与目标时间。')}" data-fs-field></textarea><span class="field-error" data-fs-error="message"></span></div>
         <div class="form-field full">
           <span class="form-label">${tx('Drawings and attachments', '图纸与附件')}</span>
           <label class="file-drop" for="${formId}-files" data-file-drop>
-            ${icon('upload', 24)}<strong>${tx('Choose files or drop them here', '选择文件或拖放到此处')}</strong>
+            ${icon('upload', 24)}<strong>${tx('Add drawings or reference files', '添加图纸或参考资料')}</strong>
             <small>PDF, DWG, DXF, STEP, STP, IGES, IGS, ZIP, JPG, PNG, WEBP · ${tx('12 files / 30 MB total', '最多12个 / 总计30 MB')}</small>
             <input id="${formId}-files" type="file" data-file-input multiple accept=".pdf,.dwg,.dxf,.step,.stp,.iges,.igs,.zip,.jpg,.jpeg,.png,.webp">
           </label>
-          <p class="static-form-note">${tx('Selected file names are included with your inquiry. Send the actual drawings by replying to our email or through WhatsApp after submission.', '所选文件名会随询盘提交；提交后请通过回复邮件或 WhatsApp 发送实际图纸。')}</p>
+          <p class="static-form-note">${tx('Selected file names will be included in the inquiry. Because this static site does not store files, send the actual drawings by replying to our email or continuing on WhatsApp after submission.', '所选文件名会随询盘提交。由于静态网站不存储文件，提交后请通过回复邮件或 WhatsApp 继续发送实际图纸。')}</p>
           <div class="file-list" data-file-list></div>
         </div>
-        <label class="checkbox-row form-field full"><input type="checkbox" name="nda" value="yes"><span>${tx('Please note if an NDA is required before detailed drawing review.', '如需在详细图纸评审前签署保密协议，请勾选说明。')}</span></label>
+        <label class="checkbox-row form-field full"><input type="checkbox" name="nda" value="yes"><span>${tx('An NDA is required before detailed drawing review.', '详细图纸评审前需要签署保密协议。')}</span></label>
       </div>
       <div class="form-actions static-form-actions">
-        <button class="button button-primary" type="submit" data-fs-submit-btn>${icon('send', 18)}${tx('Send Inquiry', '提交询盘')}</button>
+        <button class="button button-primary" type="submit" data-fs-submit-btn>${icon('send', 18)}${tx('Send for Review', '提交评审')}</button>
         <button class="button button-outline" type="button" data-action="copy-rfq" data-form="${escapeAttr(formId)}">${icon('file', 18)}${tx('Copy inquiry details', '复制询价内容')}</button>
-        <span class="muted">${tx('Initial response target: within 24 hours after complete information is received.', '服务目标：收到完整资料后24小时内首次响应。')}</span>
+        <span class="muted">${tx('Service target: initial review within 24 hours after complete information is received.', '服务目标：收到完整资料后24小时内完成首次评审。')}</span>
       </div>
       <p class="form-status" data-form-status role="status"></p>
     </form>
@@ -1085,7 +1090,7 @@ function renderMapSection() {
     <section class="map-section">
       <div class="map-copy">
         <span class="eyebrow">${tx('Dongguan, China', '中国 · 东莞')}</span>
-        <h2>${tx('Located in the Pearl River Delta manufacturing region.', '位于珠三角制造业核心区域。')}</h2>
+        <h2>${tx('Based in Dongguan. Ready for projects beyond borders.', '扎根东莞，面向更广阔的合作。')}</h2>
         <p>${escapeHtml(address)}</p>
         <a class="button button-light" href="${escapeAttr(markerUrl)}" target="_blank" rel="noopener">${icon('map-pin', 18)}${tx('Plan a route with Baidu Maps', '使用百度地图规划路线')}</a>
       </div>
@@ -1120,17 +1125,17 @@ function renderContactPage() {
     <section class="section"><div class="container contact-layout">
       <aside class="contact-sidebar reveal">
         <span class="eyebrow">${escapeHtml(localize(data.eyebrow, tx('Project inquiry', '项目咨询')))}</span>
-        <h2>${tx('Start with the part information you already have.', '从您已有的零件资料开始。')}</h2>
+        <h2>${tx('Begin with what you know. We will help clarify the rest.', '先从已有资料开始，剩下的我们一起厘清。')}</h2>
         <p>${escapeHtml(localize(data.description))}</p>
         <div class="contact-methods">
           <a class="contact-method" href="tel:${escapeAttr(phoneHref)}">${icon('phone', 23)}<span><small>${tx('Phone', '联系电话')}</small><strong>${escapeHtml(phone)}</strong></span></a>
           <a class="contact-method" href="${escapeAttr(whatsappUrl())}" target="_blank" rel="noopener">${icon('message', 23)}<span><small>WhatsApp</small><strong>${escapeHtml(phone)}</strong></span></a>
           <div class="contact-method">${icon('map-pin', 23)}<span><small>${tx('Location', '所在地区')}</small><strong>${escapeHtml(address || tx('Dongguan, Guangdong, China', '中国广东省东莞市'))}</strong></span></div>
-          <div class="contact-method">${icon('gauge', 23)}<span><small>${tx('Service target', '服务目标')}</small><strong>${tx('Initial response within 24 hours after complete information is received', '收到完整资料后24小时内首次响应')}</strong></span></div>
+          <div class="contact-method">${icon('gauge', 23)}<span><small>${tx('Service target', '服务目标')}</small><strong>${tx('Initial review within 24 hours after complete information is received', '收到完整资料后24小时内完成首次评审')}</strong></span></div>
         </div>
       </aside>
       <div class="rfq-panel reveal">
-        <div class="rfq-panel-heading"><h2>${tx('Request a manufacturing review', '申请制造评审')}</h2><p>${tx('Send your project details directly to our team. Selected drawing names are included so the actual files can be matched when you reply by email or continue on WhatsApp.', '将项目资料直接提交给我们的团队。所选图纸名称会一并发送，便于您随后通过回复邮件或 WhatsApp 发送实际文件。')}</p></div>
+        <div class="rfq-panel-heading"><h2>${tx('Request an engineering review', '申请工程评审')}</h2><p>${tx('Tell us what the part must do and share the information you already have. We will review the project basis and respond with the questions or next step that matter.', '告诉我们零件要完成什么，并提交您已有的资料。我们会评审项目基础，并带着真正需要确认的问题或下一步回复。')}</p></div>
         ${renderRfqForm('contact-rfq')}
       </div>
     </div></section>
@@ -1148,7 +1153,7 @@ function renderNotFound() {
 function renderFooter() {
   const phone = state.settings.phone || COMPANY.phone;
   const phoneHref = String(phone).replace(/[^+\d]/g, '');
-  const disclaimer = localize(state.content.common?.disclaimer, tx('Generated capability visuals are illustrative. Product images show representative parts; final specifications follow approved drawings.', '能力场景图为示意视觉，产品图片展示代表性零件，最终规格以确认图纸为准。'));
+  const disclaimer = localize(state.content.common?.disclaimer, tx('Capability visuals are illustrative, and product images represent part families. Final specifications follow the approved drawing.', '能力场景图为示意视觉，产品图片用于展示代表性零件类型，最终规格以确认图纸为准。'));
   return `
     <footer class="site-footer">
       <div class="container footer-main">
@@ -1163,7 +1168,7 @@ function renderFooter() {
             <a data-route href="${routeUrl('/about')}">${tx('About Zhanyi', '关于展益')}</a>
             <a data-route href="${routeUrl('/quality')}">${tx('Quality Management', '质量管理')}</a>
             <a data-route href="${routeUrl('/industries')}">${tx('Industries', '应用行业')}</a>
-            <a data-route href="${routeUrl('/insights')}">${tx('Engineering Insights', '工程洞察')}</a>
+            <a data-route href="${routeUrl('/insights')}">${tx('Engineering Insights', '工程与采购洞察')}</a>
           </div>
         </div>
         <div class="footer-column">
@@ -1173,9 +1178,9 @@ function renderFooter() {
           </div>
         </div>
         <div class="footer-column">
-          <h2>${tx('Start a project', '开始项目')}</h2>
+          <h2>${tx('Start with a drawing', '从一张图纸开始')}</h2>
           <div class="footer-contact-actions">
-            <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 18)}${tx('Request a Quote', '获取报价')}</button>
+            <button class="button button-primary" type="button" data-action="open-rfq">${icon('send', 18)}${tx('Send Your Drawings', '发送图纸')}</button>
             <a class="button button-ghost-light" href="${escapeAttr(whatsappUrl())}" target="_blank" rel="noopener">${icon('message', 18)}WhatsApp</a>
             <a class="button button-ghost-light" data-route href="${routeUrl('/contact')}">${icon('map-pin', 18)}${tx('Contact page', '联系页面')}</a>
           </div>
@@ -1192,7 +1197,7 @@ function renderFooter() {
 function renderDialogs() {
   return `
     <dialog class="rfq-dialog" id="rfq-dialog">
-      <div class="dialog-header"><h2>${tx('Request a Manufacturing Review', '申请制造评审')}</h2><button class="icon-button dialog-close" type="button" data-action="close-rfq" title="${tx('Close', '关闭')}">${icon('x', 20)}</button></div>
+      <div class="dialog-header"><h2>${tx('Send Your Project for Review', '提交项目评审')}</h2><button class="icon-button dialog-close" type="button" data-action="close-rfq" title="${tx('Close', '关闭')}">${icon('x', 20)}</button></div>
       <div class="dialog-body">${renderRfqForm('modal-rfq')}</div>
     </dialog>
     <dialog class="lightbox-dialog" id="lightbox-dialog">
@@ -1214,7 +1219,7 @@ function renderMobileContactBar() {
     <div class="mobile-contact-bar">
       <a href="tel:${escapeAttr(phoneHref)}">${icon('phone', 18)}${tx('Call', '电话')}</a>
       <a href="${escapeAttr(whatsappUrl())}" target="_blank" rel="noopener">${icon('message', 18)}WhatsApp</a>
-      <button type="button" data-action="open-rfq">${icon('send', 18)}${tx('Request Quote', '获取报价')}</button>
+      <button type="button" data-action="open-rfq">${icon('send', 18)}${tx('Start RFQ', '发起询价')}</button>
     </div>
     <button class="icon-button back-to-top" type="button" data-action="back-to-top" title="${tx('Back to top', '返回顶部')}">${icon('arrow-up', 20)}</button>
   `;
@@ -1257,7 +1262,7 @@ function updateMetadata() {
   const seo = state.content.seo || {};
   const page = seo.pages?.[key] || {};
   let title = localize(page.title, localize(seo.defaultTitle, `${companyName()} | ${tx('Custom Metal Manufacturing', '定制五金制造')}`));
-  let description = localize(page.description, localize(seo.defaultDescription, tx('Custom metal stamping, sheet metal fabrication, tooling and precision hardware manufacturing support.', '提供定制五金冲压、钣金、模具及精密五金制造支持。')));
+  let description = localize(page.description, localize(seo.defaultDescription, tx('Custom metal parts manufactured from approved drawings, with visible decisions from engineering review to delivery.', '依据确认图纸制造定制金属零件，让从工程评审到交付的关键决定始终清晰可见。')));
   const imageByPage = {
     quality: A('generated/quality-lab.webp'),
     about: A('generated/global-review.webp'),
@@ -1654,7 +1659,7 @@ function addFiles(form, incoming) {
     }
     if (files.some((item) => item.name === file.name && item.size === file.size && item.lastModified === file.lastModified)) continue;
     if (files.length >= 12) {
-      rejected = tx('A maximum of 12 files is allowed.', '最多上传12个文件。');
+      rejected = tx('A maximum of 12 files can be selected.', '最多可选择12个文件。');
       break;
     }
     const total = files.reduce((sum, item) => sum + item.size, 0);
@@ -1678,16 +1683,16 @@ function buildRfqMessage(form) {
     [tx('Phone / WhatsApp', '电话 / WhatsApp'), values.get('phone')],
     [tx('Country or region', '国家或地区'), values.get('country')],
     [tx('Product category', '产品类别'), values.get('productCategory')],
-    [tx('Product or project', '产品或项目'), values.get('productName')],
-    [tx('Estimated quantity', '预计数量'), values.get('quantity')],
+    [tx('Part or project name', '零件或项目名称'), values.get('productName')],
+    [tx('Expected quantity', '预计数量'), values.get('quantity')],
     [tx('NDA required', '需要保密协议'), values.get('nda') === 'yes' ? tx('Yes', '是') : tx('No', '否')],
   ].filter(([, value]) => String(value || '').trim());
   const lines = [
-    tx('ZHANYI PRECISION - Project RFQ', '展益精密 - 项目询价'),
+    tx('ZHANYI PRECISION - Project Review Request', '展益精密 - 项目评审申请'),
     '',
     ...fields.map(([label, value]) => `${label}: ${String(value).trim()}`),
     '',
-    `${tx('Project details', '项目说明')}:`,
+    `${tx('What the team should understand', '希望团队重点了解的内容')}:`,
     String(values.get('message') || '').trim(),
   ];
   if (files.length) {
@@ -1723,7 +1728,7 @@ async function copyRfqMessage(form) {
   }
   try {
     await copyText(buildRfqMessage(form));
-    const message = tx('Inquiry details copied. Paste them into your preferred private chat.', '询价内容已复制，可粘贴到您常用的私域聊天工具。');
+    const message = tx('Project details copied. Paste them into WhatsApp, email or your preferred messaging channel.', '项目资料已复制，可粘贴到 WhatsApp、邮件或您常用的沟通工具。');
     const status = form.querySelector('[data-form-status]');
     status.className = 'form-status success';
     status.textContent = message;
@@ -1746,8 +1751,8 @@ function setRfqSubmitting(form, submitting) {
   if (!submit) return;
   submit.disabled = submitting;
   submit.innerHTML = submitting
-    ? `${icon('send', 18)}${tx('Sending Inquiry...', '正在提交询盘...')}`
-    : `${icon('send', 18)}${tx('Send Inquiry', '提交询盘')}`;
+    ? `${icon('send', 18)}${tx('Sending for Review...', '正在提交评审...')}`
+    : `${icon('send', 18)}${tx('Send for Review', '提交评审')}`;
 }
 
 function formspreeErrorMessage(error) {
@@ -1778,7 +1783,10 @@ function initializeRfqForms() {
       onInit: () => { form.dataset.formspreeReady = 'true'; },
       onSubmit: () => { setRfqStatus(form); },
       onSuccess: () => {
-        const message = tx('Thank you. Your inquiry has been sent successfully. Our team will review it and respond as soon as possible.', '感谢提交。您的询盘已成功发送，我们会尽快完成评审并回复。');
+        const message = localize(
+          sectionData('contact').successMessage,
+          tx('Thank you. Your inquiry is with us. We will review the information and contact you with any questions or the recommended next step.', '感谢提交，您的询盘已经送达。我们会认真查看资料，并带着需要确认的问题或建议的下一步与您联系。')
+        );
         form.reset();
         state.attachments[form.id] = [];
         renderFileList(form);

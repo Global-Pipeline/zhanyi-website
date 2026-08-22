@@ -81,8 +81,8 @@
   "common": {
     "primaryCta": {
       "label": {
-        "zh": "提交项目需求",
-        "en": "Discuss Your Project"
+        "zh": "发送图纸",
+        "en": "Send Your Drawings"
       },
       "href": "/contact"
     },
@@ -95,34 +95,34 @@
     },
     "phoneCta": {
       "label": {
-        "zh": "电话联系",
-        "en": "Call Us"
+        "zh": "直接沟通",
+        "en": "Speak With Us"
       },
       "href": "tel:+8613238323259"
     },
     "responseTarget": {
-      "zh": "服务目标：收到完整项目资料后24小时内完成首次响应。",
-      "en": "Service target: provide an initial response within 24 hours after receiving complete project information."
+      "zh": "我们的服务目标是：收到完整项目资料后24小时内完成首次评审，并把下一步说明清楚。",
+      "en": "Our service target is to review complete project information within 24 hours and make the next step clear."
     },
     "disclaimer": {
-      "zh": "能力场景图为示意视觉，产品图片展示代表性零件类型；具体材料、工艺、表面处理和最终规格以确认图纸与项目要求为准。",
-      "en": "Capability scenes are illustrative. Product images show representative part types; materials, processes, finishes and final specifications follow approved drawings and project requirements."
+      "zh": "能力场景图为示意视觉，产品图片用于展示可沟通的代表性零件类型。最终材料、工艺、表面处理与尺寸，以确认图纸和项目约定为准。",
+      "en": "Capability visuals are illustrative, and product photography represents part families open for discussion. Final materials, processes, finishes and dimensions are defined by the approved drawing and project agreement."
     }
   },
   "heroSlides": [
     {
       "id": "manufacturing-partner",
       "eyebrow": {
-        "zh": "定制金属制造",
-        "en": "Custom Metal Manufacturing"
+        "zh": "精密金属制造",
+        "en": "Precision Metal Manufacturing"
       },
       "title": {
-        "zh": "把复杂五金件，做成稳定可交付的产品",
-        "en": "Turning Complex Metal Parts into Production-Ready Components"
+        "zh": "从图纸，到可靠交付",
+        "en": "From Drawing to Dependable Delivery"
       },
       "description": {
-        "zh": "覆盖精密冲压、钣金机箱、端子触点、电源结构件与新能源五金，从图纸评审到生产交付保持清晰协同。",
-        "en": "Precision stampings, sheet metal enclosures, terminals, power components and new energy hardware supported by clear coordination from drawing review to delivery."
+        "zh": "展益以严谨评审、务实制造和清晰负责的项目沟通，帮助工程与采购团队让复杂金属设计稳妥走向生产。",
+        "en": "Zhanyi helps engineering and sourcing teams move demanding metal designs into production through disciplined review, practical manufacturing and clear project ownership."
       },
       "image": "/assets/generated/hero-stamping.webp",
       "imageAlt": {
@@ -131,15 +131,15 @@
       },
       "primaryAction": {
         "label": {
-          "zh": "提交项目需求",
-          "en": "Discuss Your Project"
+          "zh": "发送图纸",
+          "en": "Send Your Drawings"
         },
         "href": "/contact"
       },
       "secondaryAction": {
         "label": {
-          "zh": "了解制造能力",
-          "en": "View Capabilities"
+          "zh": "了解我们如何制造",
+          "en": "See How We Work"
         },
         "href": "/capabilities"
       }
@@ -151,12 +151,12 @@
         "en": "Stamping & Sheet Metal"
       },
       "title": {
-        "zh": "从精密小件到完整钣金结构",
-        "en": "From Precision Stampings to Complete Sheet Metal Structures"
+        "zh": "为精准装配而制造，为稳定量产而准备",
+        "en": "Built to Fit. Prepared to Repeat."
       },
       "description": {
-        "zh": "围绕功能、装配与外观要求规划冲压、冲孔、折弯、连接、表面处理和装配路径。",
-        "en": "Process planning aligned with function, assembly and appearance requirements across stamping, punching, bending, joining, finishing and assembly."
+        "zh": "从精密冲压件到完整机箱，每一个工艺决定都回到零件如何配合、如何工作，以及如何被清晰验收。",
+        "en": "From precision stampings to complete enclosures, every process decision begins with how the part must fit, function and be inspected."
       },
       "image": "/assets/generated/tooling-workshop.webp",
       "imageAlt": {
@@ -165,15 +165,15 @@
       },
       "primaryAction": {
         "label": {
-          "zh": "查看产品系列",
-          "en": "Explore Product Range"
+          "zh": "查看产品范围",
+          "en": "Explore the Product Range"
         },
         "href": "/products"
       },
       "secondaryAction": {
         "label": {
-          "zh": "电话联系",
-          "en": "Call Us"
+          "zh": "直接沟通",
+          "en": "Speak With Us"
         },
         "href": "tel:+8613238323259"
       }
@@ -185,12 +185,12 @@
         "en": "New Energy & Electrical"
       },
       "title": {
-        "zh": "为关键连接与设备结构提供定制五金",
-        "en": "Custom Hardware for Critical Connections and Equipment Structures"
+        "zh": "关键金属部件，更需要清晰而可靠的制造",
+        "en": "Critical Metal Components, Handled with Clarity."
       },
       "description": {
-        "zh": "支持铜排、端子、盖板、托盘、支架和箱体等项目，以图纸为依据组织材料、工艺和检验要求。",
-        "en": "Support for busbars, terminals, cover plates, trays, brackets and enclosures, with materials, processes and inspection aligned to project drawings."
+        "zh": "铜排、端子、盖板、托盘、支架与箱体，从材料和结构评审开始，把连接、装配、检验与交付边界逐项说清。",
+        "en": "For busbars, terminals, covers, trays, brackets and enclosures, we align material, geometry, assembly, inspection and delivery before production begins."
       },
       "image": "/assets/generated/global-review.webp",
       "imageAlt": {
@@ -199,8 +199,8 @@
       },
       "primaryAction": {
         "label": {
-          "zh": "咨询新能源项目",
-          "en": "Discuss a New-Energy Project"
+          "zh": "发送项目资料",
+          "en": "Send Your Project Details"
         },
         "href": "/contact"
       },
@@ -215,16 +215,16 @@
   ],
   "capabilities": {
     "eyebrow": {
-      "zh": "制造能力",
-      "en": "Manufacturing Capabilities"
+      "zh": "工程到制造",
+      "en": "Engineering to Production"
     },
     "title": {
-      "zh": "围绕图纸、功能和装配要求组织制造",
-      "en": "Manufacturing Organized Around Drawings, Function and Assembly"
+      "zh": "从最终装配出发，做对每一步制造决策",
+      "en": "Manufacturing Decisions Made with the Final Assembly in Mind"
     },
     "intro": {
-      "zh": "东莞市展益五金制品有限公司面向定制五金项目提供从可制造性沟通、工艺规划到生产与检验协同的服务。",
-      "en": "Dongguan Zhanyi Hardware Products Co., Ltd. supports custom metal projects through DFM review, process planning, production coordination and inspection planning."
+      "zh": "我们从图纸与应用场景出发，在生产开始前，把材料特性、成形策略、模具、表面处理与检验方式逐项对齐。",
+      "en": "We begin with your drawing and application, then align material behavior, forming strategy, tooling, finish and inspection before production begins."
     },
     "items": [
       {
@@ -234,8 +234,8 @@
           "en": "Precision Metal Stamping"
         },
         "description": {
-          "zh": "针对安装、连接、夹持和结构功能开发单件或连续成形方案，并关注孔位、折弯和装配关系。",
-          "en": "Single-stage and progressive forming approaches for mounting, connection, retention and structural functions, with attention to holes, bends and assembly relationships."
+          "zh": "把折弯、接触特征、安装孔位与装配关系作为一个整体评审，让冲压件更贴近图纸定义的配合与功能。",
+          "en": "Complex bends, contact features and mounting geometry are considered as one system, so stamped parts stay aligned with the fit and function defined in your drawing."
         },
         "highlights": {
           "zh": [
@@ -260,8 +260,8 @@
           "en": "Progressive Stamping"
         },
         "description": {
-          "zh": "为重复成形特征、端子和小型连接件规划连续工序，兼顾材料利用、工序稳定和后续装配。",
-          "en": "Progressive process planning for repeatable formed features, terminals and small connection components, considering material use, process stability and downstream assembly."
+          "zh": "面向重复量产的端子与成形件，在料带布局和工序顺序中同时考虑一致性、材料利用与后续自动化装配。",
+          "en": "For repeat-volume terminals and formed components, strip layout and operation sequence are developed with consistency, material use and downstream assembly in view."
         },
         "highlights": {
           "zh": [
@@ -286,8 +286,8 @@
           "en": "Sheet Metal Fabrication"
         },
         "description": {
-          "zh": "按设备结构与外观需求组织切割、冲孔、折弯和连接工艺，适用于底盘、面板、箱体与机柜。",
-          "en": "Cutting, punching, bending and joining processes arranged around equipment structure and appearance requirements for chassis, panels, enclosures and cabinets."
+          "zh": "机箱、面板与外壳不只是切割和折弯成形，更要同时照顾接口、通风、外观、装配和维护空间。",
+          "en": "Chassis, panels and enclosures are planned around interfaces, airflow, appearance, assembly and service access, not simply cut and bent to shape."
         },
         "highlights": {
           "zh": [
@@ -312,8 +312,8 @@
           "en": "Enclosures & Assemblies"
         },
         "description": {
-          "zh": "围绕面板接口、通风、门盖、安装点和内部空间完成结构拆分，并支持五金件、盖板和子组件装配。",
-          "en": "Structural breakdown around panel interfaces, ventilation, doors, covers, mounting points and internal space, with support for hardware, covers and subassembly integration."
+          "zh": "把内部布局转化为可执行的面板拆分、安装特征、通风与检修结构，并衔接五金件和子组件装配。",
+          "en": "We translate internal layouts into practical panel breaks, mounting features, ventilation and access, then coordinate hardware and subassembly needs."
         },
         "highlights": {
           "zh": [
@@ -338,8 +338,8 @@
           "en": "Terminals & Contacts"
         },
         "description": {
-          "zh": "提供压接翼、弹性触点、插接盒和导电连接片等结构的冲压成形支持。",
-          "en": "Stamping and forming support for crimp wings, spring contacts, receptacle boxes and conductive connection tabs."
+          "zh": "压接区、弹性特征与插接几何需要一起判断，才能让端子与触点更好地适配预定的电气装配关系。",
+          "en": "Crimp zones, spring features and mating geometry are reviewed together to support the intended fit within the electrical assembly."
         },
         "highlights": {
           "zh": [
@@ -364,8 +364,8 @@
           "en": "New-Energy Components"
         },
         "description": {
-          "zh": "面向储能和电池设备的铜排、盖板、托盘、支架和箱体项目，按连接、绝缘、通风及装配要求协同制造。",
-          "en": "Busbar, cover plate, tray, bracket and enclosure projects for energy-storage and battery equipment, coordinated around connection, insulation, ventilation and assembly requirements."
+          "zh": "面向电池与储能设备的铜排、盖板、托盘和支架，围绕走向、绝缘界面、通风与结构承托规划制造。",
+          "en": "Busbars, covers, trays and brackets are planned around routing, insulation interfaces, ventilation and structural support within battery and energy-storage equipment."
         },
         "highlights": {
           "zh": [
@@ -390,8 +390,8 @@
           "en": "Tooling & DFM Review"
         },
         "description": {
-          "zh": "在项目启动阶段评审材料、成形特征、孔边距离、折弯关系、装配基准和表面要求，形成可执行的制造路径。",
-          "en": "Early review of material, forming features, hole-to-edge relationships, bend geometry, assembly datums and finish requirements to define an executable manufacturing route."
+          "zh": "在模具或生产启动前，尽早识别结构、材料和装配风险，让问题在仍有调整空间时得到解决。",
+          "en": "Before tooling or production begins, we surface geometry, material and assembly risks while there is still time to resolve them efficiently."
         },
         "highlights": {
           "zh": [
@@ -416,8 +416,8 @@
           "en": "Finishing & Delivery Coordination"
         },
         "description": {
-          "zh": "依据图纸和使用环境衔接喷粉、镀层、氧化或拉丝等表面要求，并在包装前确认外观和装配状态。",
-          "en": "Finishing requirements such as powder coating, plating, anodizing or brushing are coordinated to drawings and service conditions, with appearance and assembly status reviewed before packing."
+          "zh": "把表面处理视为功能与装配的一部分，结合使用环境、遮蔽区域和外观标准衔接喷粉、镀层、氧化与拉丝。",
+          "en": "Finish is treated as part of function and assembly, with coating, plating, anodizing and brushing aligned to service conditions, masking and appearance expectations."
         },
         "highlights": {
           "zh": [
@@ -439,16 +439,16 @@
   },
   "industries": {
     "eyebrow": {
-      "zh": "行业应用",
-      "en": "Industries"
+      "zh": "行业与应用",
+      "en": "Industries & Applications"
     },
     "title": {
-      "zh": "让零件服务于真实的产品与设备",
-      "en": "Metal Components Built Around Real Product and Equipment Needs"
+      "zh": "零件不只是成形，更要胜任它在设备中的职责",
+      "en": "Metal Components Designed Around the Work They Must Do"
     },
     "intro": {
-      "zh": "从连接、承托、防护、散热到装配，围绕零件在终端产品与设备中的实际作用规划制造。",
-      "en": "Manufacturing is planned around the practical role each part plays in connection, support, protection, thermal management and assembly."
+      "zh": "连接、承托、防护、散热与维护方式，都会改变一件金属零件应当如何设计制造。我们从实际用途出发，而不是从工艺清单出发。",
+      "en": "Connection, support, protection, thermal management and service access all shape the right manufacturing route. We begin with the application, not a process list."
     },
     "items": [
       {
@@ -458,8 +458,8 @@
           "en": "New Energy & Energy Storage"
         },
         "description": {
-          "zh": "铜排、端子盖板、托盘、支架和箱体，用于连接、绝缘布置、通风与设备结构。",
-          "en": "Busbars, terminal cover plates, trays, brackets and enclosures for connection, insulation routing, ventilation and equipment structures."
+          "zh": "电池与储能设备中的连接几何、绝缘界面、通风和结构承托需要协同考虑。我们面向这些装配关系制造铜排、盖板、托盘、支架与箱体。",
+          "en": "In battery and energy-storage equipment, connection geometry, insulation interfaces, ventilation and structural support must work together. We manufacture busbars, covers, trays, brackets and enclosures around those relationships."
         },
         "productCategories": [
           "new-energy",
@@ -474,8 +474,8 @@
           "en": "Electrical & Power"
         },
         "description": {
-          "zh": "接线盒、电源机壳、端子、接触片和结构盖板，支持模块安装、线缆连接与维护。",
-          "en": "Junction boxes, power chassis, terminals, contacts and structural covers for module installation, cable connection and service access."
+          "zh": "从接线盒和电源机壳，到端子、触点和结构盖板，零件需要兼顾连接、模块安装、维护空间与防护要求。",
+          "en": "From junction boxes and power chassis to terminals, contacts and covers, each part must balance connection, module mounting, service access and protection."
         },
         "productCategories": [
           "power-components",
@@ -490,8 +490,8 @@
           "en": "Industrial Equipment"
         },
         "description": {
-          "zh": "机箱、面板、安装支架、底盘和内部固定件，围绕设备空间、强度和维护方式进行设计协同。",
-          "en": "Chassis, panels, mounting brackets, bases and internal retainers coordinated around equipment space, structural needs and service access."
+          "zh": "工业设备中的底盘、面板、护罩和支架，既要适配内部布局，也要经得起装配、维护与重复使用中的实际要求。",
+          "en": "Chassis, panels, guards and brackets for industrial equipment are developed around internal layouts, assembly access, maintenance and repeated use."
         },
         "productCategories": [
           "sheet-metal-enclosures",
@@ -506,8 +506,8 @@
           "en": "Electronics"
         },
         "description": {
-          "zh": "小型冲压件、弹片、端子、屏蔽与固定结构，用于紧凑空间中的连接和装配。",
-          "en": "Small stampings, spring clips, terminals, shielding and retention structures for connection and assembly in compact spaces."
+          "zh": "紧凑空间里的端子、弹片、支架与外壳，对孔位、折弯、接触和装配关系更敏感，需要在生产前把关键细节确认清楚。",
+          "en": "Terminals, clips, brackets and housings in compact electronics depend on precise relationships between holes, bends, contacts and assembly features."
         },
         "productCategories": [
           "precision-stamping",
@@ -522,8 +522,8 @@
           "en": "Communications & Test Equipment"
         },
         "description": {
-          "zh": "机架式机箱、通风底盘、接口面板和内部支架，支持设备模块化和维护便利性。",
-          "en": "Rackmount chassis, ventilated bases, interface panels and internal brackets supporting modular equipment and serviceability."
+          "zh": "机架式机箱、通风底盘、接口面板与内部支架围绕模块化布局、散热路径和维护便利性展开。",
+          "en": "Rackmount chassis, ventilated bases, interface panels and internal brackets are planned around modular layouts, airflow and serviceability."
         },
         "productCategories": [
           "sheet-metal-enclosures",
@@ -537,8 +537,8 @@
           "en": "Commercial Equipment"
         },
         "description": {
-          "zh": "不锈钢柜体、操作面板、门盖和结构组件，兼顾外观、清洁与日常使用。",
-          "en": "Stainless steel cabinets, operator panels, doors, covers and structural components balancing appearance, cleaning and daily use."
+          "zh": "不锈钢柜体、操作面板、门盖与结构组件，在满足日常使用的同时，也要兼顾外观、清洁和易维护性。",
+          "en": "Stainless cabinets, operator panels, doors and structural assemblies balance daily use with appearance, cleaning and maintainability."
         },
         "productCategories": [
           "sheet-metal-enclosures",
@@ -549,16 +549,16 @@
   },
   "quality": {
     "eyebrow": {
-      "zh": "质量管理",
-      "en": "Quality Management"
+      "zh": "质量从源头开始",
+      "en": "Quality from the Start"
     },
     "title": {
-      "zh": "以图纸和确认要求为质量基准",
-      "en": "Quality Anchored to Drawings and Confirmed Requirements"
+      "zh": "质量，不从终检开始",
+      "en": "Quality Begins Before Production Does"
     },
     "summary": {
-      "zh": "质量策划从项目资料开始。材料、关键特征、外观、装配关系和检验记录根据图纸及双方确认内容执行，让每个项目拥有清晰的验收边界。",
-      "en": "Quality planning starts with project information. Materials, critical features, appearance, assembly relationships and inspection records follow drawings and mutually confirmed requirements, creating a clear acceptance basis for each project."
+      "zh": "它始于正确的图纸版本、对关键特征的共同理解，以及清晰的验收依据。从材料识别到最终放行，每一道检查都回到项目真正需要什么。",
+      "en": "It begins with the correct drawing revision, a shared understanding of critical features and clear acceptance criteria. From material identification to final release, every check ties back to what the project actually requires."
     },
     "principles": [
       {
@@ -568,8 +568,8 @@
           "en": "Drawing & Revision Control"
         },
         "description": {
-          "zh": "生产、检验和变更沟通围绕已确认版本展开，减少不同版本混用风险。",
-          "en": "Production, inspection and change communication are organized around the confirmed revision to reduce version-mix risks."
+          "zh": "以双方确认的图纸版本作为生产、检验与变更沟通的共同依据，减少信息不一致带来的风险。",
+          "en": "One confirmed revision becomes the common reference for production, inspection and change communication, reducing avoidable ambiguity."
         }
       },
       {
@@ -579,8 +579,8 @@
           "en": "Material Identification"
         },
         "description": {
-          "zh": "根据项目要求确认材料牌号、状态和表面需求，并规划必要的标识与资料。",
-          "en": "Material grade, condition and finish requirements are confirmed per project, with identification and documentation planned where required."
+          "zh": "在生产放行前确认材料牌号、状态与表面需求，并按项目需要规划标识和相关资料。",
+          "en": "Material grade, condition and finish are confirmed before production release, with identification and supporting records planned where the project requires them."
         }
       },
       {
@@ -590,8 +590,8 @@
           "en": "First-Article Review"
         },
         "description": {
-          "zh": "在批量推进前核对关键结构、孔位、折弯、装配和外观要求。",
-          "en": "Critical features, holes, bends, assembly relationships and appearance requirements are reviewed before volume production."
+          "zh": "批量生产前，依据确认图纸复核关键尺寸、孔位、折弯、装配关系与外观，让问题停在量产之前。",
+          "en": "Before volume production, the first article is reviewed against the approved drawing for critical dimensions, holes, bends, assembly relationships and appearance."
         }
       },
       {
@@ -601,8 +601,8 @@
           "en": "In-Process Checks"
         },
         "description": {
-          "zh": "针对冲压、折弯、连接和表面处理节点设置与项目风险相匹配的检查。",
-          "en": "Checks are aligned with project risk across stamping, bending, joining and finishing stages."
+          "zh": "把检验节点放在工艺变化真正会影响结果的位置，及时关注冲压、折弯、连接与表面处理状态。",
+          "en": "Checkpoints are placed where process variation matters, with attention to stamping, bending, joining and finishing as the work progresses."
         }
       },
       {
@@ -612,19 +612,19 @@
           "en": "Final Review & Release"
         },
         "description": {
-          "zh": "包装前复核数量、外观、关键特征、装配状态和项目约定资料。",
-          "en": "Quantity, appearance, critical features, assembly status and agreed project documents are reviewed before packing."
+          "zh": "包装前再次确认数量、外观、关键特征、装配状态及项目约定资料，确保交付有明确依据。",
+          "en": "Before packing, quantity, appearance, key features, assembly status and agreed documentation are reviewed against the project basis."
         }
       }
     ],
     "documentation": {
       "title": {
-        "zh": "项目资料",
-        "en": "Project Documentation"
+        "zh": "让验收有据可循",
+        "en": "Evidence That Keeps Acceptance Clear"
       },
       "description": {
-        "zh": "检验记录、材料资料、样件确认和包装标识可根据项目实际要求进行规划与确认。",
-        "en": "Inspection records, material documents, sample approval and packing identification can be planned and confirmed according to actual project requirements."
+        "zh": "根据项目实际需要规划图纸版本、首件确认、检验记录与包装标识，让双方对“什么是合格”保持一致理解。",
+        "en": "Drawing revisions, first-article approvals, inspection records and packing identification are planned to the project, keeping both sides aligned on what acceptance means."
       },
       "items": {
         "zh": [
@@ -644,168 +644,168 @@
   },
   "workflow": {
     "eyebrow": {
-      "zh": "项目流程",
-      "en": "Project Workflow"
+      "zh": "从询价到交付",
+      "en": "From RFQ to Delivery"
     },
     "title": {
-      "zh": "从图纸到交付，每一步都保持可沟通",
-      "en": "A Clear Path from Drawing Review to Delivery"
+      "zh": "从首次评审到最终交付，每一步都更清楚",
+      "en": "A Clearer Path from First Review to Final Delivery"
     },
     "intro": {
-      "zh": "服务目标：在收到完整项目资料后24小时内完成首次响应；具体报价和方案时间取决于零件复杂度与资料完整度。",
-      "en": "Service target: provide an initial response within 24 hours after receiving complete project information. Quotation and planning time depend on part complexity and information completeness."
+      "zh": "您应该始终知道哪些事项已经确认、哪些问题仍待决定，以及项目下一步会发生什么。",
+      "en": "You should always know what has been confirmed, what remains open and what happens next."
     },
     "steps": [
       {
         "id": "share-requirements",
         "number": "01",
         "title": {
-          "zh": "提交资料",
-          "en": "Share Requirements"
+          "zh": "从已有资料开始",
+          "en": "Start with What You Have"
         },
         "description": {
-          "zh": "提供图纸、用途、材料偏好、数量、表面要求、装配关系和目标时间。",
-          "en": "Provide drawings, application, material preference, quantity, finish requirements, assembly relationships and target timing."
+          "zh": "图纸、样件、用途、数量或目标时间都可以成为起点，资料越完整，首次判断越有效。",
+          "en": "Drawings, samples, application, quantity and target timing all help us begin; the clearer the input, the more useful the first review."
         }
       },
       {
         "id": "dfm-review",
         "number": "02",
         "title": {
-          "zh": "可制造性评审",
-          "en": "DFM Review"
+          "zh": "提前看见制造风险",
+          "en": "Surface Manufacturing Risks Early"
         },
         "description": {
-          "zh": "核对材料、成形、孔位、折弯、连接和检验要求，并提出需要确认的问题。",
-          "en": "Review material, forming, holes, bends, joining and inspection requirements, then identify points requiring confirmation."
+          "zh": "评审可能影响成形、装配、外观、检验与成本的关键问题，并把需要确认的事项尽早提出。",
+          "en": "We identify questions that may affect forming, assembly, appearance, inspection or cost while there is still time to act."
         }
       },
       {
         "id": "quotation-planning",
         "number": "03",
         "title": {
-          "zh": "报价与工艺规划",
-          "en": "Quotation & Process Planning"
+          "zh": "让方案与报价基于同一前提",
+          "en": "Align the Route and Commercial Scope"
         },
         "description": {
-          "zh": "基于已确认资料形成制造路径、交付边界和商务报价。",
-          "en": "Define the manufacturing route, delivery scope and commercial quotation from confirmed information."
+          "zh": "建议工艺、报价边界、开放问题与项目节奏基于同一套资料确认，减少后续理解偏差。",
+          "en": "The proposed process, quotation scope, open points and project timing are aligned against one shared set of information."
         }
       },
       {
         "id": "sample-approval",
         "number": "04",
         "title": {
-          "zh": "样件与确认",
-          "en": "Sample & Approval"
+          "zh": "用样件确认真实结果",
+          "en": "Use the Sample to Confirm the Real Result"
         },
         "description": {
-          "zh": "按项目需要制作样件或首件，验证结构、装配、外观和关键要求。",
-          "en": "Produce samples or first articles as required to verify structure, assembly, appearance and critical requirements."
+          "zh": "依据确认版本检查关键结构、装配与外观，并把调整内容记录清楚，再进入下一阶段。",
+          "en": "The sample is reviewed for critical geometry, fit and appearance, with adjustments recorded before the project moves forward."
         }
       },
       {
         "id": "production-inspection",
         "number": "05",
         "title": {
-          "zh": "生产与检验",
-          "en": "Production & Inspection"
+          "zh": "按确认要求组织生产",
+          "en": "Produce to the Confirmed Basis"
         },
         "description": {
-          "zh": "按照确认版本组织生产，在关键工序和最终放行阶段执行项目约定检查。",
-          "en": "Run production to the confirmed revision with project-agreed checks at critical operations and final release."
+          "zh": "让已确认的图纸、样件与检验节点贯穿生产过程，使制造执行与验收依据保持一致。",
+          "en": "Approved drawings, samples and inspection points guide production so execution and acceptance remain aligned."
         }
       },
       {
         "id": "packing-delivery",
         "number": "06",
         "title": {
-          "zh": "包装与交付",
-          "en": "Packing & Delivery"
+          "zh": "把交付细节也纳入项目",
+          "en": "Treat Delivery Details as Part of the Project"
         },
         "description": {
-          "zh": "根据零件表面、形状和运输要求安排防护、标签和交付资料。",
-          "en": "Arrange protection, labeling and delivery documentation around part finish, geometry and transport requirements."
+          "zh": "完成终检后确认包装、标签、数量与交付安排，让零件以约定状态抵达下一环节。",
+          "en": "After final review, packing, labeling, quantity and delivery details are confirmed so parts arrive in the agreed condition."
         }
       }
     ]
   },
   "about": {
     "eyebrow": {
-      "zh": "关于我们",
-      "en": "About Us"
+      "zh": "关于展益",
+      "en": "Who We Are"
     },
     "title": {
-      "zh": "专注定制五金，让工程沟通更直接",
-      "en": "Focused on Custom Hardware and Direct Engineering Communication"
+      "zh": "把复杂的制造工作，沟通得清楚，执行得扎实",
+      "en": "A Manufacturing Partner That Keeps the Work Clear"
     },
     "overview": {
-      "zh": "东莞市展益五金制品有限公司专注于定制金属零部件，产品覆盖精密冲压件、钣金机箱、端子触点、插头五金、电源结构件、新能源五金以及支架与散热件。我们以图纸和项目要求为起点，组织工艺评审、生产协同、检验与交付沟通。",
-      "en": "Dongguan Zhanyi Hardware Products Co., Ltd. focuses on custom metal components across precision stampings, sheet metal enclosures, terminals and contacts, plug hardware, power components, new energy hardware, brackets and heat sinks. Work begins with drawings and project requirements, followed by process review, production coordination, inspection and delivery planning."
+      "zh": "东莞市展益五金制品有限公司专注定制金属零部件，覆盖精密冲压件、钣金机箱、端子触点、插头五金、电源结构件、新能源五金以及支架与散热件。不同产品背后，我们坚持同一套工作逻辑：先理解零件要完成什么，再明确生产需要控制什么，并让从评审到交付的关键决定始终清晰可见。",
+      "en": "Dongguan Zhanyi Hardware Products Co., Ltd. manufactures custom metal components across precision stampings, sheet metal enclosures, terminals and contacts, plug hardware, power structures, new-energy hardware, brackets and heat sinks. Across that range, one working principle remains constant: understand what the part must do, define what production must control and keep key decisions visible from review through delivery."
     },
     "positioning": {
-      "zh": "我们希望成为客户产品团队与制造现场之间清晰、务实的协作接口，在项目前期明确材料、工艺、检查和交付边界，让后续推进更透明。",
-      "en": "Our role is to provide a clear, practical interface between customer product teams and manufacturing execution, aligning material, process, inspection and delivery scope early so each project can move forward transparently."
+      "zh": "我们相信，可靠的供应商不只负责把零件做出来，也应该尽早提出问题、坦诚说明取舍，并让客户随时清楚项目进行到哪里。",
+      "en": "We believe a dependable supplier should do more than make parts. It should raise questions early, explain trade-offs honestly and make it easy for customers to understand where a project stands."
     },
     "strengths": [
       {
         "id": "product-range",
         "title": {
-          "zh": "跨品类金属制造",
-          "en": "Cross-Category Metal Manufacturing"
+          "zh": "不同零件，同一份责任标准",
+          "en": "One Standard Across Every Part"
         },
         "description": {
-          "zh": "从小型冲压端子到钣金柜体，以一致的项目逻辑管理不同结构件。",
-          "en": "A consistent project approach across small stamped terminals and larger sheet metal cabinets."
+          "zh": "无论是小型端子还是完整机箱，项目都从功能、配合与验收边界开始。",
+          "en": "Whether the part is a compact terminal or a complete enclosure, the project begins with function, fit and acceptance."
         }
       },
       {
         "id": "drawing-led",
         "title": {
-          "zh": "图纸驱动",
-          "en": "Drawing-Led Execution"
+          "zh": "以图纸作为共同语言",
+          "en": "Drawings as the Common Language"
         },
         "description": {
-          "zh": "围绕版本、材料、功能、装配和外观要求展开工艺与质量沟通。",
-          "en": "Process and quality communication centered on revision, material, function, assembly and appearance requirements."
+          "zh": "围绕版本、材料、关键特征、装配关系和外观要求展开每一次工艺与质量沟通。",
+          "en": "Revision, material, critical features, assembly relationships and appearance anchor every process and quality discussion."
         }
       },
       {
         "id": "manufacturing-communication",
         "title": {
-          "zh": "制造问题前置",
-          "en": "Early Manufacturing Feedback"
+          "zh": "让问题停在成为延误之前",
+          "en": "Questions Raised Before They Become Delays"
         },
         "description": {
-          "zh": "在生产前识别需要确认的成形、孔位、折弯、连接和表面问题。",
-          "en": "Identify forming, hole, bend, joining and finish questions before production begins."
+          "zh": "在生产前提出成形、孔位、折弯、连接与表面问题，为调整保留时间和选择。",
+          "en": "Forming, hole, bend, joining and finish questions are raised before production, while there is still room to choose."
         }
       },
       {
         "id": "international-projects",
         "title": {
-          "zh": "国际项目沟通",
-          "en": "International Project Communication"
+          "zh": "跨越语言，保持信息清晰",
+          "en": "Clear Across Borders"
         },
         "description": {
-          "zh": "以中英文内容、清晰资料清单和结构化询盘流程服务跨境项目沟通。",
-          "en": "Bilingual content, clear information checklists and a structured inquiry flow for cross-border project communication."
+          "zh": "双语内容、结构化询盘和清晰资料清单，让跨境项目从第一次沟通起就更容易推进。",
+          "en": "Bilingual content, structured RFQs and clear information checklists make cross-border projects easier to move from the first conversation."
         }
       }
     ],
     "cta": {
       "title": {
-        "zh": "有图纸或样件需要评估？",
-        "en": "Have a Drawing or Sample to Review?"
+        "zh": "一张图纸，就可以开始一次专业对话",
+        "en": "A Drawing Is Enough to Start a Better Manufacturing Conversation"
       },
       "description": {
-        "zh": "提交零件资料、用途和数量需求，我们将按照24小时内首次响应的服务目标与您联系。",
-        "en": "Share part information, application and quantity requirements. Our service target is to provide an initial response within 24 hours."
+        "zh": "发送零件资料、用途与数量需求。我们的服务目标是在收到完整信息后24小时内完成首次评审，并明确下一步。",
+        "en": "Share the part information, application and expected quantity. Our service target is to complete an initial review within 24 hours of receiving complete information and clarify the next step."
       },
       "action": {
         "label": {
-          "zh": "开始项目沟通",
-          "en": "Start a Project Discussion"
+          "zh": "发送图纸，开始评审",
+          "en": "Send Your Drawing for Review"
         },
         "href": "/contact"
       }
@@ -813,16 +813,16 @@
   },
   "insights": {
     "eyebrow": {
-      "zh": "技术洞察",
-      "en": "Engineering Insights"
+      "zh": "工程与采购洞察",
+      "en": "Engineering & Sourcing Insights"
     },
     "title": {
-      "zh": "帮助采购与工程团队更高效地准备项目",
-      "en": "Practical Guidance for Better-Prepared Manufacturing Projects"
+      "zh": "让五金项目少走弯路的工程思考",
+      "en": "Practical Thinking for Better Metal Parts"
     },
     "intro": {
-      "zh": "内容围绕图纸准备、工艺选择、表面处理和询价资料展开，避免泛化宣传。",
-      "en": "Content focuses on drawing preparation, process selection, finishing and RFQ information rather than generic promotion."
+      "zh": "写给希望把图纸、询价与量产交接做得更清楚的工程师和采购团队。",
+      "en": "Notes for engineers and sourcing teams who want clearer drawings, better RFQs and smoother production handoffs."
     },
     "items": [
       {
@@ -832,42 +832,42 @@
           "en": "Process Selection"
         },
         "title": {
-          "zh": "冲压还是激光切割：如何为钣金零件选择起始工艺",
-          "en": "Stamping or Laser Cutting: Choosing a Starting Process for Sheet Metal Parts"
+          "zh": "冲压还是激光切割：为当前项目选择合适的起点",
+          "en": "Stamping or Laser Cutting? Choose for the Project You Have Today"
         },
         "excerpt": {
-          "zh": "从数量、结构重复性、模具投入、变更频率和后续折弯装配角度比较两种工艺。",
-          "en": "Compare the two processes through quantity, feature repeatability, tooling investment, change frequency and downstream bending or assembly."
+          "zh": "合适的起始工艺取决于结构、数量、变更风险与模具经济性，而不是单独比较一个零件价格。",
+          "en": "The right starting process depends on geometry, volume, change risk and tooling economics, not one unit price."
         },
         "sections": [
           {
             "heading": {
-              "zh": "先看零件与项目阶段",
-              "en": "Start with the Part and Project Stage"
+              "zh": "先看结构，也看项目阶段",
+              "en": "Start with Geometry and Project Stage"
             },
             "body": {
-              "zh": "早期验证和设计仍在变化时，激光切割通常更便于快速调整；结构稳定并出现重复需求后，可以进一步评估冲压或连续模方案。",
-              "en": "When design validation is early and changes remain likely, laser cutting is usually easier to adjust. Once geometry is stable and demand repeats, stamping or progressive tooling can be evaluated."
+              "zh": "激光切割通常更适合需要快速验证或仍可能调整的项目；当结构趋于稳定、数量提升且重复性更重要时，冲压与模具方案可能更有价值。选择时应把折弯顺序、公差策略和后续变更一起考虑。",
+              "en": "Laser cutting often suits early validation or designs that may still change. As geometry stabilizes, volume rises and repeatability matters more, stamping and dedicated tooling may become the stronger route. Bend sequence, tolerance strategy and future changes should be considered together."
             }
           },
           {
             "heading": {
-              "zh": "不要只比较单件价格",
-              "en": "Do Not Compare Unit Price Alone"
+              "zh": "比较项目总成本，而不只是单件价格",
+              "en": "Compare Total Project Economics"
             },
             "body": {
-              "zh": "工艺选择还应考虑模具投入、材料利用、操作次数、变更成本、后续折弯以及检验方式。",
-              "en": "Process selection should also consider tooling investment, material utilization, operation count, change cost, downstream bending and inspection approach."
+              "zh": "单件价格无法完整反映模具、换线、二次工序、检验、材料利用与预期生命周期。把这些因素放进同一张比较表，才能看清哪种工艺真正适合项目。",
+              "en": "Piece price alone hides tooling, setup, secondary operations, inspection, material use and expected program life. Put them on one comparison sheet to see which route truly fits the project."
             }
           },
           {
             "heading": {
-              "zh": "准备可比较的资料",
-              "en": "Prepare Comparable Information"
+              "zh": "用同一套资料做出可比较的判断",
+              "en": "Use One Decision-Ready Data Set"
             },
             "body": {
-              "zh": "提供相同版本的图纸、预估数量、材料和表面要求，才能让不同制造方案在一致边界下比较。",
-              "en": "Use the same drawing revision, estimated quantity, material and finish requirements so alternative manufacturing routes can be compared on equal terms."
+              "zh": "提供二维图、三维模型、材料、数量区间、关键尺寸、表面要求与目标时间，并标出哪些位置允许讨论。只有输入一致，工艺与报价才真正可比。",
+              "en": "Provide 2D drawings, 3D models, material, volume ranges, critical dimensions, finish and target timing, and mark what is open to discussion. Comparable input leads to comparable process and quotation decisions."
             }
           }
         ]
@@ -879,42 +879,42 @@
           "en": "Design Guide"
         },
         "title": {
-          "zh": "钣金机箱询价前的结构检查清单",
-          "en": "A Structural Checklist Before Requesting a Sheet Metal Enclosure Quote"
+          "zh": "钣金机箱询价前：一次能减少返工的结构检查",
+          "en": "Before You Quote a Sheet Metal Enclosure: A Design Review That Reduces Rework"
         },
         "excerpt": {
-          "zh": "确认面板开孔、折弯方向、通风、安装件、门盖关系和外观面，可减少后续反复。",
-          "en": "Confirm panel openings, bend directions, ventilation, hardware, door relationships and cosmetic surfaces to reduce later revisions."
+          "zh": "先把装配基准、功能面、外观面与五金件关系说清楚，往往比后期反复修改更有效。",
+          "en": "Clear assembly datums, functional surfaces, cosmetic expectations and hardware relationships before quotation to reduce later rework."
         },
         "sections": [
           {
             "heading": {
-              "zh": "定义装配基准",
-              "en": "Define Assembly Datums"
+              "zh": "先定义装配从哪里开始",
+              "en": "Define Where Assembly Starts"
             },
             "body": {
-              "zh": "标明电路板、模块、导轨、门体和外部接口所依赖的基准，避免仅以外形尺寸表达装配关系。",
-              "en": "Identify the datums used by circuit boards, modules, rails, doors and external interfaces rather than relying only on overall dimensions."
+              "zh": "明确底板、接口、导轨或内部模块所依赖的基准，并标出关键孔位与配合尺寸。没有共同基准，零件即使单独合格，也可能在总装时出现偏差。",
+              "en": "Identify the datums used by the base, interfaces, rails or internal modules, then mark critical holes and fit dimensions. Without a shared datum structure, individually acceptable parts can still miss alignment in final assembly."
             }
           },
           {
             "heading": {
-              "zh": "区分功能面与外观面",
-              "en": "Separate Functional and Cosmetic Surfaces"
+              "zh": "区分功能要求与外观要求",
+              "en": "Separate Functional and Cosmetic Requirements"
             },
             "body": {
-              "zh": "明确哪些表面可见、哪些区域需要防刮或纹理一致，以及接地点或配合面是否允许覆盖表面处理。",
-              "en": "Identify visible surfaces, areas requiring scratch protection or finish consistency, and whether grounding or mating surfaces may be coated."
+              "zh": "承载、接地、散热和接口区域应与主要外观面分开标识，并说明允许的焊点、挂点、色差与纹理范围，避免验收标准停留在主观判断。",
+              "en": "Separate load-bearing, grounding, thermal and interface zones from primary cosmetic surfaces. Define acceptable weld visibility, rack marks, color variation and texture so appearance is not left to subjective judgment."
             }
           },
           {
             "heading": {
-              "zh": "把五金件写进资料",
-              "en": "Include Hardware in the Package"
+              "zh": "把五金件和装配方向纳入图纸",
+              "en": "Include Hardware and Assembly Direction"
             },
             "body": {
-              "zh": "压铆螺母、螺柱、铰链、把手和紧固件应在图纸或BOM中明确，便于评估安装空间和工序。",
-              "en": "PEM-style hardware, studs, hinges, handles and fasteners should be defined in the drawing or BOM so installation space and operations can be reviewed."
+              "zh": "压铆件、螺柱、铰链、把手和密封件会影响孔位、折弯顺序与可达空间。应在询价资料中明确型号、方向和装配责任。",
+              "en": "Inserted hardware, studs, hinges, handles and seals affect holes, bend sequence and tool access. Include part references, orientation and assembly responsibility in the RFQ package."
             }
           }
         ]
@@ -926,42 +926,42 @@
           "en": "Surface Finishing"
         },
         "title": {
-          "zh": "如何在功能、外观与装配之间选择金属表面处理",
-          "en": "Selecting a Metal Finish Across Function, Appearance and Assembly"
+          "zh": "选择金属表面处理：先满足功能，再定义外观",
+          "en": "Choosing a Metal Finish: Start with Function, Then Define Appearance"
         },
         "excerpt": {
-          "zh": "表面处理不仅是颜色选择，还会影响接地、配合、边缘覆盖、包装与外观验收。",
-          "en": "Finishing is more than color; it affects grounding, fit, edge coverage, packing and cosmetic acceptance."
+          "zh": "耐腐蚀、导电、绝缘、装配与外观并非独立问题，合适的表面方案需要把它们放在一起判断。",
+          "en": "Corrosion resistance, conductivity, insulation, assembly and appearance are connected decisions, not separate checkboxes."
         },
         "sections": [
           {
             "heading": {
-              "zh": "从使用环境开始",
+              "zh": "先理解零件将在哪里工作",
               "en": "Begin with the Service Environment"
             },
             "body": {
-              "zh": "说明室内或室外、清洁频率、接触介质、温度条件和可见程度，制造方才能协助梳理适合的处理方向。",
-              "en": "State indoor or outdoor use, cleaning frequency, contact media, temperature conditions and visibility so suitable finishing routes can be discussed."
+              "zh": "室内、户外、潮湿、高温、清洁频率与化学接触都会影响表面处理选择。先说明环境和预期寿命，再讨论颜色与质感。",
+              "en": "Indoor or outdoor use, humidity, heat, cleaning frequency and chemical exposure all influence finish selection. Define the environment and expected life before discussing color and texture."
             }
           },
           {
             "heading": {
-              "zh": "标出不能覆盖的位置",
+              "zh": "把不能覆盖的位置明确标出来",
               "en": "Mark Areas That Must Remain Uncoated"
             },
             "body": {
-              "zh": "接地点、导电接触区、螺纹、精密配合面和焊接区域应在图纸中明确是否需要遮蔽。",
-              "en": "Grounding points, conductive contacts, threads, close-fitting surfaces and weld areas should clearly indicate whether masking is required."
+              "zh": "接地点、配合面、螺纹、导电接触区和精密尺寸可能需要遮蔽或特殊处理。若这些区域没有提前定义，表面处理会直接影响装配与功能。",
+              "en": "Grounding points, mating surfaces, threads, conductive contact zones and precision dimensions may require masking or special treatment. If they are not defined early, the finish can directly affect fit and function."
             }
           },
           {
             "heading": {
-              "zh": "定义可接受外观",
-              "en": "Define Acceptable Appearance"
+              "zh": "用可执行的方式定义外观",
+              "en": "Define Appearance in Executable Terms"
             },
             "body": {
-              "zh": "颜色、光泽、纹理、挂点位置和允许的轻微差异应尽量通过样板或明确标准沟通。",
-              "en": "Color, gloss, texture, rack-mark locations and acceptable minor variation should be communicated through samples or clear criteria where possible."
+              "zh": "尽量通过色号、光泽、纹理样板、主外观面和可接受差异说明要求，让供应商知道应当如何检验，而不是只写“外观良好”。",
+              "en": "Use color references, gloss, texture samples, primary cosmetic surfaces and acceptable variation so the supplier knows how appearance will be judged, rather than relying on “good appearance.”"
             }
           }
         ]
@@ -973,42 +973,42 @@
           "en": "RFQ Preparation"
         },
         "title": {
-          "zh": "一份高效五金件询价资料应包含什么",
-          "en": "What an Effective Custom Metal Parts RFQ Should Include"
+          "zh": "一份更好的五金件询价：让供应商给出更好的答案",
+          "en": "A Better Metal Parts RFQ: Information That Leads to Better Answers"
         },
         "excerpt": {
-          "zh": "完整资料能缩短问题往返，并让报价、工艺和交付边界更加清楚。",
-          "en": "Complete information reduces question cycles and makes quotation, process and delivery scope clearer."
+          "zh": "完整而有重点的资料不仅缩短问答往返，也能让工艺建议、报价边界和交期判断更可靠。",
+          "en": "A complete, focused RFQ reduces question cycles and produces more useful process, quotation and delivery decisions."
         },
         "sections": [
           {
             "heading": {
-              "zh": "核心技术资料",
-              "en": "Core Technical Information"
+              "zh": "先给出决定制造方案的技术信息",
+              "en": "Provide the Technical Information That Drives the Route"
             },
             "body": {
-              "zh": "建议提供二维图、三维模型、材料、表面要求、关键特征、装配用途和版本信息。",
-              "en": "Provide a 2D drawing, 3D model, material, finish, critical features, assembly use and revision information where available."
+              "zh": "二维图、三维模型、材料、厚度、关键特征、装配用途、表面要求和版本信息，共同决定零件应当如何制造与检验。",
+              "en": "2D drawings, 3D models, material, thickness, critical features, assembly use, finish and revision information together determine how the part should be made and inspected."
             }
           },
           {
             "heading": {
-              "zh": "商务与计划信息",
-              "en": "Commercial and Planning Information"
+              "zh": "数量和时间同样是工程输入",
+              "en": "Quantity and Timing Are Engineering Inputs Too"
             },
             "body": {
-              "zh": "说明样件数量、预计批量、目标时间、包装需求和交付地区，以便形成合理的项目边界。",
-              "en": "State sample quantity, expected production quantity, target timing, packing needs and delivery region to define a practical project scope."
+              "zh": "样件数量、预计批量、年用量、目标时间、包装和交付地区都会影响模具、工艺、产能安排与报价方式。",
+              "en": "Prototype quantity, expected batch size, annual volume, target timing, packing and delivery region influence tooling, process, capacity planning and quotation structure."
             }
           },
           {
             "heading": {
-              "zh": "列出允许讨论的项目",
-              "en": "List Items Open to Discussion"
+              "zh": "明确哪些内容可以讨论",
+              "en": "Show What Is Open to Discussion"
             },
             "body": {
-              "zh": "若材料、表面或局部结构允许替代，应明确标注，便于制造评审时提出可执行建议。",
-              "en": "If material, finish or local geometry may be adjusted, mark those items clearly so executable alternatives can be discussed during manufacturing review."
+              "zh": "若材料、表面、局部结构或公差存在调整空间，请直接标注。清楚的开放项能让制造方提出替代方案，而不会误改真正关键的设计意图。",
+              "en": "If material, finish, local geometry or tolerances have room for adjustment, say so. Clear open points invite practical alternatives without compromising the design intent that matters."
             }
           }
         ]
@@ -1017,16 +1017,16 @@
   },
   "contact": {
     "eyebrow": {
-      "zh": "项目咨询",
-      "en": "Project Inquiry"
+      "zh": "开始一个项目",
+      "en": "Start a Project"
     },
     "title": {
-      "zh": "把图纸、样件或需求发给我们",
-      "en": "Share Your Drawing, Sample or Project Requirement"
+      "zh": "把图纸发来，让下一步更清楚",
+      "en": "Send the Drawing. Let Us Make the Next Step Clear."
     },
     "description": {
-      "zh": "请尽量提供零件用途、材料、数量、表面处理、装配关系和目标时间。我们的服务目标是在收到完整项目资料后24小时内首次响应。",
-      "en": "Please include application, material, quantity, finish, assembly relationships and target timing where possible. Our service target is to provide an initial response within 24 hours after receiving complete project information."
+      "zh": "告诉我们零件要完成什么、预计数量、材料或表面要求，以及希望何时交付。收到完整资料后，我们的服务目标是在24小时内完成首次评审，并回复下一步所需信息。",
+      "en": "Tell us what the part must do, the quantity you expect, any material or finish requirements and your target timing. Once the information is complete, our service target is to review it within 24 hours and respond with the next questions or recommended step."
     },
     "phone": "+86 132 3832 3259",
     "phoneLabel": {
@@ -1108,8 +1108,8 @@
       }
     ],
     "successMessage": {
-      "zh": "提交成功。我们的目标是在收到完整项目资料后24小时内首次响应。",
-      "en": "Submitted successfully. Our target is to provide an initial response within 24 hours after receiving complete project information."
+      "zh": "感谢提交，您的询盘已经送达。我们会认真查看资料，并带着需要确认的问题或建议的下一步与您联系。",
+      "en": "Thank you. Your inquiry is with us. We will review the information and contact you with any questions or the recommended next step."
     }
   },
   "seo": {
@@ -1118,92 +1118,92 @@
       "en": "Dongguan Zhanyi Hardware Products Co., Ltd."
     },
     "defaultTitle": {
-      "zh": "东莞市展益五金制品有限公司｜定制冲压与钣金制造",
-      "en": "Dongguan Zhanyi Hardware Products Co., Ltd. | Custom Stamping & Sheet Metal"
+      "zh": "展益精密｜定制冲压、钣金与金属零部件制造",
+      "en": "Zhanyi Precision | Custom Metal Stamping & Sheet Metal Manufacturing"
     },
     "defaultDescription": {
-      "zh": "定制精密冲压件、钣金机箱、端子触点、插头五金、电源结构件、新能源五金及支架散热件。",
-      "en": "Custom precision stampings, sheet metal enclosures, terminals and contacts, plug hardware, power components, new energy hardware, brackets and heat sinks."
+      "zh": "东莞展益提供精密冲压、钣金机箱、端子触点、电源与新能源金属零部件制造，从图纸评审到可靠交付保持清晰协作。",
+    "en": "Custom precision stampings, sheet metal enclosures, terminals, power and new-energy components, with key decisions kept visible from drawing review to dependable delivery."
     },
     "pages": {
       "home": {
         "title": {
-          "zh": "定制冲压与钣金制造｜东莞市展益五金制品有限公司",
-          "en": "Custom Metal Stamping & Sheet Metal Manufacturing | Dongguan Zhanyi Hardware Products Co., Ltd."
+          "zh": "从图纸到可靠交付｜展益精密金属制造",
+          "en": "Custom Metal Parts from Drawing to Delivery | Zhanyi Precision"
         },
         "description": {
-          "zh": "从图纸评审到生产交付，提供精密冲压、钣金机箱、端子触点、电源结构件和新能源五金项目协同。",
-          "en": "Project coordination from drawing review to delivery for precision stampings, sheet metal enclosures, terminals, power components and new energy hardware."
+          "zh": "展益面向工程与采购团队提供精密冲压、钣金机箱、端子触点、电源及新能源金属零部件制造与项目协作。",
+          "en": "Zhanyi manufactures precision stampings, sheet metal enclosures, terminals, power and new-energy metal components for engineering and sourcing teams."
         }
       },
       "products": {
         "title": {
-          "zh": "定制五金产品｜冲压件、机箱、端子与新能源结构件",
-          "en": "Custom Metal Products | Stampings, Enclosures, Terminals & New Energy Components"
+          "zh": "定制金属产品｜冲压件、机箱、端子与新能源部件",
+          "en": "Custom Metal Products | Stampings, Enclosures, Terminals & Energy Components"
         },
         "description": {
-          "zh": "查看精密冲压件、钣金机箱、端子触点、插头五金、电源结构件、新能源五金和支架散热件。",
-          "en": "Explore precision stampings, sheet metal enclosures, terminals and contacts, plug hardware, power components, new energy hardware, brackets and heat sinks."
+          "zh": "浏览展益代表性冲压件、钣金机箱、端子触点、插头五金、电源结构件、新能源部件、支架与散热件。",
+          "en": "Explore representative Zhanyi stampings, sheet metal enclosures, terminals, plug hardware, power structures, energy components, brackets and heat sinks."
         }
       },
       "capabilities": {
         "title": {
-          "zh": "制造能力｜冲压、钣金、机箱与装配",
-          "en": "Manufacturing Capabilities | Stamping, Sheet Metal, Enclosures & Assembly"
+          "zh": "制造能力｜从工程评审到生产与检验",
+          "en": "Manufacturing Capabilities | From Engineering Review to Production"
         },
         "description": {
-          "zh": "了解精密冲压、连续模、钣金加工、机箱装配、端子触点、新能源结构件和可制造性评审。",
-          "en": "Learn about precision stamping, progressive forming, sheet metal fabrication, enclosure assembly, terminals, new-energy structures and DFM review."
+          "zh": "了解展益如何衔接精密冲压、连续模、钣金、机箱装配、端子、新能源部件、DFM 与表面处理。",
+          "en": "See how Zhanyi connects precision stamping, progressive tooling, sheet metal, enclosures, terminals, energy components, DFM and finishing."
         }
       },
       "industries": {
         "title": {
-          "zh": "行业应用｜新能源、电气、工业与电子设备",
-          "en": "Industries | New Energy, Electrical, Industrial & Electronic Equipment"
+          "zh": "行业应用｜围绕真实装配需求制造金属零件",
+          "en": "Industries | Metal Parts Built Around Real Assembly Needs"
         },
         "description": {
-          "zh": "面向新能源、电气电源、工业设备、电子、通信测试和商用设备的定制金属零部件。",
+          "zh": "面向新能源、电气电源、工业设备、电子、通信测试与商用设备的定制金属零部件制造。",
           "en": "Custom metal components for new energy, electrical power, industrial equipment, electronics, communications, testing and commercial equipment."
         }
       },
       "quality": {
         "title": {
-          "zh": "质量管理｜以图纸和项目要求为基准",
-          "en": "Quality Management | Based on Drawings and Project Requirements"
+          "zh": "质量管理｜质量从图纸与首件之前开始",
+          "en": "Quality Management | Quality Begins Before Production"
         },
         "description": {
-          "zh": "了解图纸版本、材料识别、首件确认、过程检查、终检和项目资料管理方式。",
-          "en": "Learn how drawing revisions, material identification, first-article review, in-process checks, final review and project documents are managed."
+          "zh": "了解展益如何通过图纸版本、材料识别、首件确认、过程检查、终检与项目资料建立清晰验收依据。",
+          "en": "See how drawing control, material identification, first-article review, process checks, final release and records create clear acceptance."
         }
       },
       "about": {
         "title": {
-          "zh": "关于东莞市展益五金制品有限公司",
-          "en": "About Dongguan Zhanyi Hardware Products Co., Ltd."
+          "zh": "关于展益｜清晰、务实的定制金属制造伙伴",
+          "en": "About Zhanyi | A Clear, Practical Custom Metal Manufacturing Partner"
         },
         "description": {
-          "zh": "专注定制金属零部件，以图纸、制造沟通、检验和交付协同服务项目。",
-          "en": "Focused on custom metal components with drawing-led manufacturing communication, inspection and delivery coordination."
+          "zh": "认识东莞市展益五金制品有限公司，以及我们如何通过提前评审、直接沟通和清晰责任推进定制金属项目。",
+          "en": "Meet Dongguan Zhanyi Hardware Products Co., Ltd. and learn how early review, direct communication and clear ownership move custom metal projects forward."
         }
       },
       "insights": {
         "title": {
-          "zh": "五金制造技术洞察｜设计、工艺与询价指南",
-          "en": "Metal Manufacturing Insights | Design, Process & RFQ Guides"
+          "zh": "金属制造洞察｜设计、工艺、表面与询价指南",
+          "en": "Metal Manufacturing Insights | Design, Process, Finish & RFQ Guides"
         },
         "description": {
-          "zh": "关于冲压、激光切割、钣金机箱设计、表面处理和询价资料准备的实用内容。",
-          "en": "Practical guidance on stamping, laser cutting, enclosure design, surface finishing and RFQ preparation."
+          "zh": "面向工程师和采购团队的实用内容，帮助优化冲压、钣金机箱、表面处理和五金件询价决策。",
+          "en": "Practical guidance for engineers and sourcing teams on stamping, sheet metal enclosures, finishing and custom metal RFQs."
         }
       },
       "contact": {
         "title": {
-          "zh": "联系东莞市展益五金制品有限公司｜提交项目需求",
-          "en": "Contact Dongguan Zhanyi Hardware Products Co., Ltd. | Submit a Project Inquiry"
+          "zh": "联系展益｜发送图纸并开始制造评审",
+          "en": "Contact Zhanyi | Send Your Drawing for Manufacturing Review"
         },
         "description": {
-          "zh": "提交图纸、样件或定制五金需求，服务目标为收到完整项目资料后24小时内首次响应。",
-          "en": "Share drawings, samples or custom metal requirements. Service target: initial response within 24 hours after receiving complete project information."
+          "zh": "提交图纸、样件或定制五金需求。收到完整资料后，我们的服务目标是在24小时内完成首次评审并明确下一步。",
+          "en": "Share drawings, samples or custom metal requirements. Our service target is an initial review within 24 hours of receiving complete information."
         }
       }
     }

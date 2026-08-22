@@ -8,8 +8,8 @@
         "en": "Precision Stampings"
       },
       "description": {
-        "zh": "面向结构、固定、连接与弹性接触需求的定制冲压及成形件。",
-        "en": "Custom stamped and formed components for structural, fastening, connection and spring-contact applications."
+        "zh": "围绕配合、固定、连接与弹性功能开发的精密冲压和成形零件。",
+        "en": "Precision stamped and formed parts developed around fit, retention, connection and spring function."
       }
     },
     {
@@ -19,8 +19,8 @@
         "en": "Sheet Metal Enclosures"
       },
       "description": {
-        "zh": "用于工业、电气与商用设备的钣金机箱、机柜和结构外壳。",
-        "en": "Sheet metal chassis, cabinets and structural enclosures for industrial, electrical and commercial equipment."
+        "zh": "兼顾内部布局、接口、通风、外观与维护需求的钣金机箱、机柜和结构外壳。",
+        "en": "Sheet metal chassis, cabinets and enclosures planned around internal layouts, interfaces, airflow, appearance and service access."
       }
     },
     {
@@ -30,8 +30,8 @@
         "en": "Terminals & Contacts"
       },
       "description": {
-        "zh": "用于导电、连接和装配的冲压端子、触点与接触片。",
-        "en": "Stamped terminals, contacts and conductive clips for electrical connection and assembly."
+        "zh": "面向导电连接、压接、插接与弹性接触关系的端子、触点和接触片。",
+        "en": "Terminals, contacts and conductive clips developed for crimping, mating and spring-contact relationships."
       }
     },
     {
@@ -41,8 +41,8 @@
         "en": "Plug Hardware"
       },
       "description": {
-        "zh": "适用于插头、插座和电气连接组件的弹片、插针与接触五金。",
-        "en": "Spring clips, pins and contact hardware for plugs, sockets and electrical connection assemblies."
+        "zh": "服务于插头、插座及电气接口装配的插针、弹片和接触五金。",
+        "en": "Pins, spring clips and contact hardware for plugs, sockets and electrical interface assemblies."
       }
     },
     {
@@ -52,8 +52,8 @@
         "en": "Power Components"
       },
       "description": {
-        "zh": "面向电源、电气控制和配电设备的盒体、底板、盖板及结构件。",
-        "en": "Boxes, bases, covers and structural parts for power, electrical control and distribution equipment."
+        "zh": "面向电源、电气控制与配电设备的盒体、底板、盖板和结构组件。",
+        "en": "Boxes, bases, covers and structural assemblies for power, electrical control and distribution equipment."
       }
     },
     {
@@ -63,8 +63,8 @@
         "en": "New Energy Components"
       },
       "description": {
-        "zh": "用于储能、电池和新能源设备的铜排、盖板、托盘与定制结构件。",
-        "en": "Busbars, cover plates, trays and custom structures for energy storage, battery and new-energy equipment."
+        "zh": "围绕连接、绝缘界面、通风与承托需求制造的铜排、盖板、托盘和新能源结构件。",
+        "en": "Busbars, covers, trays and energy-system structures developed around connection, insulation interfaces, ventilation and support."
       }
     },
     {
@@ -74,8 +74,8 @@
         "en": "Brackets & Heat Sinks"
       },
       "description": {
-        "zh": "用于安装、承托、定位和热管理的折弯支架与散热结构件。",
-        "en": "Formed brackets and thermal-management structures for mounting, support, positioning and heat transfer."
+        "zh": "用于安装、承托、定位与热管理的成形支架和散热结构件。",
+        "en": "Formed brackets and thermal structures for mounting, support, positioning and heat management."
       }
     }
   ],
@@ -92,8 +92,8 @@
         "en": "Formed Steel Mounting Bracket"
       },
       "description": {
-        "zh": "多折弯一体成形支架，集成安装孔、长槽和定位边，适合需要稳定装配关系的设备结构。",
-        "en": "A multi-bend bracket with integrated mounting holes, slots and locating edges for equipment structures that require consistent assembly geometry."
+        "zh": "多道折弯、长槽与安装孔共同维持装配位置，适合对配合关系和重复安装有明确要求的设备结构。",
+        "en": "Multiple bends, slots and mounting holes work together to hold alignment in equipment assemblies where predictable fit-up matters."
       },
       "materials": {
         "zh": [
@@ -142,8 +142,8 @@
         "en": "Multi-Angle Stamped Support"
       },
       "description": {
-        "zh": "通过切口、长槽和多向折弯形成的轻量支撑结构，可用于定位、承托和快速装配。",
-        "en": "A lightweight support formed with cutouts, slots and multi-directional bends for positioning, support and efficient assembly."
+        "zh": "通过切口、长槽与多向折弯兼顾轻量和支撑，使内部模块定位与装配更直接。",
+        "en": "Cutouts, slots and multi-directional bends balance low weight with stable support, making internal module positioning and assembly more direct."
       },
       "materials": {
         "zh": [
@@ -192,8 +192,8 @@
         "en": "One-Piece Formed Retainer"
       },
       "description": {
-        "zh": "由单片材料冲压折弯形成的固定卡座，带有弹性夹持边和底部安装孔，可减少装配零件数量。",
-        "en": "A one-piece stamped retainer with spring gripping tabs and base mounting holes, designed to reduce separate assembly components."
+        "zh": "以单片材料形成夹持边和安装结构，在保持固定功能的同时减少独立零件与装配步骤。",
+        "en": "Formed from one piece with gripping and mounting features, this retainer reduces separate components while preserving the required holding function."
       },
       "materials": {
         "zh": [
@@ -242,8 +242,8 @@
         "en": "Spring Contact Clip"
       },
       "description": {
-        "zh": "带有回弹臂和卡扣端部的冲压弹片，适合在有限空间内实现接触、压紧或快速连接。",
-        "en": "A stamped spring clip with resilient arms and locking ends for contact, clamping or quick connection in compact assemblies."
+        "zh": "回弹臂与卡扣端部在有限空间内提供接触、压紧或快速连接，可按预定行程与装配关系评审。",
+        "en": "Resilient arms and locking ends provide contact, clamping or quick connection in compact assemblies, with travel and fit reviewed to the application."
       },
       "materials": {
         "zh": [
@@ -292,8 +292,8 @@
         "en": "Rackmount Equipment Chassis"
       },
       "description": {
-        "zh": "带前面板开孔、通风位、把手和侧板安装结构的机架式钣金机箱，适合按设备布局进行定制。",
-        "en": "A rackmount sheet metal chassis with front-panel cutouts, ventilation, handles and side-panel mounting features, adaptable to equipment layouts."
+        "zh": "前面板接口、通风、把手与侧板安装结构围绕设备布局规划，便于内部模块装配和后续维护。",
+        "en": "Front-panel interfaces, ventilation, handles and side-panel features are planned around the equipment layout for cleaner module assembly and service access."
       },
       "materials": {
         "zh": [
@@ -346,8 +346,8 @@
         "en": "Powder-Coated Instrument Enclosure"
       },
       "description": {
-        "zh": "由上盖与箱体组成的紧凑型钣金外壳，支持按面板、接口和内部安装需求配置开孔。",
-        "en": "A compact two-piece sheet metal enclosure configurable for panel openings, interfaces and internal mounting requirements."
+        "zh": "紧凑型上下壳结构可按面板、接口与内部安装需求配置开孔，并把外观和装配要求一并纳入评审。",
+        "en": "This compact two-piece enclosure can be configured around panel openings, interfaces and internal mounting while keeping appearance and assembly in the same review."
       },
       "materials": {
         "zh": [
@@ -398,8 +398,8 @@
         "en": "Stainless Steel Equipment Cabinet"
       },
       "description": {
-        "zh": "带操作面板、门体和侧面功能开孔的不锈钢柜体，可用于需要易清洁表面和模块化装配的设备。",
-        "en": "A stainless steel cabinet with operator-panel openings, access doors and side features for equipment requiring cleanable surfaces and modular assembly."
+        "zh": "操作面板、门体与侧面功能开孔围绕模块化装配和日常维护布置，不锈钢表面便于清洁与外观管理。",
+        "en": "Operator-panel openings, access doors and side features are arranged for modular assembly and routine maintenance, with stainless surfaces suited to cleaning and appearance control."
       },
       "materials": {
         "zh": [
@@ -450,8 +450,8 @@
         "en": "Ventilated Equipment Chassis"
       },
       "description": {
-        "zh": "集成长条通风孔、安装法兰和内部固定位置的设备底盘，兼顾空气流动与结构支撑。",
-        "en": "An equipment chassis with elongated ventilation slots, mounting flanges and internal fixing points for airflow and structural support."
+        "zh": "长条通风孔、安装法兰与内部固定点共同服务空气流动和结构承托，可按模块布局调整。",
+        "en": "Elongated vents, mounting flanges and internal fixing points work together for airflow and structural support, adaptable to the module layout."
       },
       "materials": {
         "zh": [
@@ -502,8 +502,8 @@
         "en": "Carrier-Strip Crimp Terminals"
       },
       "description": {
-        "zh": "以连续料带形式生产的压接端子，包含压接翼、连接孔和成形接触区域，便于后续自动化装配。",
-        "en": "Crimp terminals produced on a continuous carrier strip with crimp wings, connection holes and formed contact areas for downstream automated assembly."
+        "zh": "压接翼、连接孔与接触区域以连续料带方式组织，便于后续自动化送料、压接与装配规划。",
+        "en": "Crimp wings, connection holes and contact zones are organized on a continuous carrier strip for downstream feeding, crimping and automated assembly planning."
       },
       "materials": {
         "zh": [
@@ -552,8 +552,8 @@
         "en": "Formed Electrical Contact Terminal"
       },
       "description": {
-        "zh": "带压接区、定位孔和折弯接触臂的一体式端子，可根据连接方向调整成形结构。",
-        "en": "A one-piece terminal with a crimp zone, locating holes and a formed contact arm, adaptable to connection orientation."
+        "zh": "压接区、定位孔与折弯接触臂集成在同一零件中，可围绕连接方向和装配空间调整成形关系。",
+        "en": "The crimp zone, locating holes and formed contact arm are integrated into one part, with geometry adaptable to connection direction and assembly space."
       },
       "materials": {
         "zh": [
@@ -604,8 +604,8 @@
         "en": "Box Receptacle Terminal"
       },
       "description": {
-        "zh": "由多面折弯形成的盒式接触端子，具有导向和夹持结构，适合插接式电气连接。",
-        "en": "A box-shaped receptacle terminal formed through multiple bends, with guiding and retention features for plug-in electrical connections."
+        "zh": "多面折弯形成导向与夹持区域，使插接位置更清晰，适合需要紧凑连接结构的电气装配。",
+        "en": "Multiple bends create guiding and retention zones for a defined mating position in compact electrical assemblies."
       },
       "materials": {
         "zh": [
@@ -654,8 +654,8 @@
         "en": "Angled Crimp Contact"
       },
       "description": {
-        "zh": "集成压接翼、安装孔与折弯触点的端子结构，适用于需要转向连接的紧凑空间。",
-        "en": "A terminal integrating crimp wings, mounting holes and an angled contact for directional connections in compact spaces."
+        "zh": "将压接翼、安装孔与转向触点整合在一个结构中，为紧凑空间里的方向性连接保留装配路径。",
+        "en": "Crimp wings, mounting holes and an angled contact are combined in one structure to preserve a practical connection path in compact spaces."
       },
       "materials": {
         "zh": [
@@ -704,8 +704,8 @@
         "en": "Plug Spring Contact Pair"
       },
       "description": {
-        "zh": "成对使用的弹性夹持触点，带有安装孔和卷曲接触区，用于稳定夹持插针或导电部件。",
-        "en": "Paired spring contacts with mounting holes and rolled contact zones for retaining plug pins or conductive elements."
+        "zh": "成对弹性触点通过卷曲接触区夹持插针或导电部件，安装孔便于保持两侧位置关系。",
+        "en": "Paired spring contacts use rolled contact zones to retain pins or conductive elements, with mounting holes helping preserve their relationship in assembly."
       },
       "materials": {
         "zh": [
@@ -754,8 +754,8 @@
         "en": "Copper Plug Contact Set"
       },
       "description": {
-        "zh": "包含夹持、导向和连接结构的多种铜制接触件，适用于不同插头及电气接口设计。",
-        "en": "A set of copper contact components with gripping, guiding and connection features for varied plug and electrical interface designs."
+        "zh": "多种铜制接触件分别承担夹持、导向与连接作用，可围绕不同插头和接口结构组合评审。",
+        "en": "Copper contact components divide gripping, guiding and connection functions across a set that can be reviewed around different plug and interface designs."
       },
       "materials": {
         "zh": [
@@ -804,8 +804,8 @@
         "en": "Plug Pins & Contact Components"
       },
       "description": {
-        "zh": "由插针、导电片和弹性接触件组成的插头五金组合，可按不同接口结构进行定制。",
-        "en": "A plug hardware group combining pins, conductive blades and spring contacts, configurable for different interface structures."
+        "zh": "插针、导电片与弹性接触件组成完整接口五金组合，可依据插头结构、方向和装配方式进行配置。",
+        "en": "Pins, conductive blades and spring contacts form an interface hardware set configurable around plug geometry, orientation and assembly method."
       },
       "materials": {
         "zh": [
@@ -856,8 +856,8 @@
         "en": "Galvanized Electrical Junction Box"
       },
       "description": {
-        "zh": "带敲落孔、可拆盖板和内部安装位的电气盒体，便于线缆引入、维护和模块安装。",
-        "en": "An electrical box with knockouts, removable covers and internal mounting points for cable entry, maintenance and component installation."
+        "zh": "敲落孔、可拆盖板与内部安装位兼顾线缆引入、模块固定和维护操作，适用于多种电气布局。",
+        "en": "Knockouts, removable covers and internal mounting points balance cable entry, component fixing and service access across varied electrical layouts."
       },
       "materials": {
         "zh": [
@@ -906,8 +906,8 @@
         "en": "Power Module Rail Cover"
       },
       "description": {
-        "zh": "长条形折弯底座与盖板组合，带有卡扣和安装特征，可用于电源模块或线性组件防护。",
-        "en": "A long formed base-and-cover set with latching and mounting features for protecting power modules or linear assemblies."
+        "zh": "长条形底座与盖板通过卡扣和安装特征形成防护通道，可围绕电源模块或线性组件长度进行调整。",
+        "en": "A formed base and cover create a protective channel through latching and mounting features, adaptable to power modules or other linear assemblies."
       },
       "materials": {
         "zh": [
@@ -958,8 +958,8 @@
         "en": "Power Control Chassis"
       },
       "description": {
-        "zh": "由通风前板、底盘和可拆盖板组成的电源控制机壳，便于内部元件安装和维护。",
-        "en": "A power-control chassis with a ventilated front panel, base and removable cover for internal component installation and service access."
+        "zh": "通风前板、底盘与可拆盖板兼顾内部元件安装、空气流动和维护入口，适合按控制模块布局定制。",
+        "en": "A ventilated front panel, base and removable cover balance component mounting, airflow and service access around the control-module layout."
       },
       "materials": {
         "zh": [
@@ -1010,8 +1010,8 @@
         "en": "Insulated Flexible Copper Busbar"
       },
       "description": {
-        "zh": "带端部连接孔和绝缘包覆的柔性铜排，可适应设备内部的空间转向与导电连接需求。",
-        "en": "A flexible copper busbar with terminal holes and insulation covering for routed conductive connections inside equipment."
+        "zh": "柔性铜排通过端部连接孔和绝缘包覆适应设备内部转向，在有限空间中衔接导电连接与布线路径。",
+        "en": "Terminal holes and insulation covering allow the flexible busbar to route conductive connections through constrained equipment layouts."
       },
       "materials": {
         "zh": [
@@ -1062,8 +1062,8 @@
         "en": "Battery Terminal Cover Plates"
       },
       "description": {
-        "zh": "带端子安装位、通孔和定位特征的金属盖板，用于电池或储能模块的连接与结构防护。",
-        "en": "Metal cover plates with terminal seats, openings and locating features for connection and structural protection in battery or energy-storage modules."
+        "zh": "端子安装位、通孔与定位特征围绕电池或储能模块的连接和防护关系布置，便于与周边结构对齐。",
+        "en": "Terminal seats, openings and locating features are arranged around connection and protection needs in battery or energy-storage modules."
       },
       "materials": {
         "zh": [
@@ -1114,8 +1114,8 @@
         "en": "Perforated New-Energy Protection Tray"
       },
       "description": {
-        "zh": "大面积均布冲孔并带折边加强的金属托盘，可用于需要通风、隔离或承托的新能源设备结构。",
-        "en": "A metal tray with dense perforations and reinforced formed edges for ventilation, separation or support in new-energy equipment."
+        "zh": "均布冲孔与折边加强兼顾通风、隔离和承托，可根据新能源设备内部空间与安装方向调整。",
+        "en": "Distributed perforations and reinforced edges balance ventilation, separation and support, adaptable to the internal space and mounting direction of energy equipment."
       },
       "materials": {
         "zh": [
@@ -1166,8 +1166,8 @@
         "en": "U-Channel Support Bracket"
       },
       "description": {
-        "zh": "带上下安装孔和底部开口的U形支架，可为模块、框架或内部组件提供承托与定位。",
-        "en": "A U-channel bracket with upper, lower and base mounting features for supporting and locating modules, frames or internal components."
+        "zh": "上下安装孔与底部开口形成清晰的承托和定位关系，适合模块、框架或内部组件固定。",
+        "en": "Upper, lower and base mounting features create a clear support and locating relationship for modules, frames or internal components."
       },
       "materials": {
         "zh": [
@@ -1218,8 +1218,8 @@
         "en": "Zinc-Plated Offset Bracket"
       },
       "description": {
-        "zh": "两端折弯并集成螺纹连接位的偏置支架，用于跨距固定、间距补偿和结构连接。",
-        "en": "An offset bracket with formed ends and threaded fixing points for spanning, spacing compensation and structural connection."
+        "zh": "两端折弯与螺纹固定点形成偏置连接，用于跨距安装、间距补偿和内部结构衔接。",
+        "en": "Formed ends and threaded fixing points create an offset connection for spanning, spacing compensation and internal structural alignment."
       },
       "materials": {
         "zh": [
@@ -1270,8 +1270,8 @@
         "en": "Finned Aluminum Heat Spreader"
       },
       "description": {
-        "zh": "集成散热鳍片、安装边和结构孔位的铝制散热板，可与电源或电子模块配合装配。",
-        "en": "An aluminum heat spreader integrating cooling fins, mounting edges and structural holes for assembly with power or electronic modules."
+        "zh": "散热鳍片、安装边与结构孔位集成在同一铝制部件中，便于与电源或电子模块建立稳定装配关系。",
+        "en": "Cooling fins, mounting edges and structural holes are integrated into one aluminum component for a defined assembly relationship with power or electronic modules."
       },
       "materials": {
         "zh": [
